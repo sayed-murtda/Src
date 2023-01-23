@@ -1,0 +1,24 @@
+{
+  "sidebar":{
+      "tilte":"قلوبل كار",
+      "Language":"اللغة",
+      "Arabic":"عربي",
+      "English":"الانجلينزية",
+      "notification":"الاشعارات",
+      "AboutUs":"من نحن",
+      "ContactUs":"تواصل معنا"
+  },
+  "title":{
+    "cars":"السيارات",
+    "Services":"الخدمات"
+},
+"cars":{
+  "body":"لاتوجد سيارات "
+},
+"Services":{
+  "body":"لاتوجد خدمات "
+}
+
+
+
+}

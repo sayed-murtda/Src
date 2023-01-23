@@ -1,0 +1,61 @@
+<ion-app>
+
+  <ion-menu contentId="main-content" color="primary" > 
+    <ion-header color="primary" dir="ltr" >
+      <ion-toolbar class="sidebarup" color="primary">
+        <ion-title>
+          {{'sidebar.tilte' |translate}}
+         </ion-title>
+         <ion-button (click)="dark()"  slot="end" fill="clear" color="light" >
+          <ion-icon slot="end" name="{{lang.moon}}" color="light" > </ion-icon>
+        </ion-button>
+      </ion-toolbar>
+
+    </ion-header>
+    <ion-content class="ion-padding" color="secondary" >
+
+      
+        
+       
+          <ion-button  expand="block" fill="clear" shape="round" color="light">
+            {{'sidebar.notification' |translate}}
+          </ion-button>
+          <ion-button  expand="block" fill="clear" shape="round" color="light">
+            {{'sidebar.AboutUs' |translate}}
+          </ion-button>
+          <ion-button  expand="block" fill="clear" shape="round" color="light">
+            {{'sidebar.ContactUs' |translate}}
+          </ion-button>
+
+      
+       <div class="language" role="radiogroup" aria-labelledby="language-switcher1" color="light">
+        <p class="hidden" id="language-switcher1" color="light" >{{'sidebar.Language' |translate}}        </p>
+        <div>
+        <div class="language__container--left language__container--fr" (click)="ar()">
+        <input class="language__control" type="radio" id="language1-1" name="language-switch1" [checked]="lang.check_ar">
+          <label class="language__label" for="language1-1">
+          </label>
+        </div>
+        <div class="language__container--right language__container--en" (click)="en()">
+          <input class="language__control" type="radio" id="language1-2" name="language-switch1" [checked]="lang.check_en">
+          <label class="language__label" for="language1-2">
+          </label>
+        </div>
+      </div>
+      </div>
+  
+
+      
+
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-content class="ion-padding">
+    </ion-content>
+  </div>
+
+      <ion-router-outlet id="main-content">
+   
+  </ion-router-outlet>
+</ion-app>

@@ -1,0 +1,94 @@
+ion-tabs {
+
+    // --------------Custom Semi Transparent & Rounded Tabs----------------------
+    ion-tab-bar {
+        direction: ltr;
+        position: absolute;
+        bottom: 0;
+        width: 100%;        
+        --background: transparent;
+        border-radius: 20px 20px 0 0;
+        --border: 0;
+        ion-tab-button {
+            --background: var(--ion-color-primary);
+            --color: var(--ion-color-medium);
+            --color-selected: var(--ion-color-dark);
+            
+            ion-icon {
+                font-size: 1.5rem;
+                color: var(--ion-color-light);
+            }
+        }
+
+     
+
+    }
+    svg {
+        width: 80px;
+        margin-top: 17px;
+        path {
+            fill: var(--ion-color-primary);
+        }
+    }
+
+    ion-tab-button.search {
+        margin-right: -1px;
+        margin-left: -2px;
+        border-top-right-radius: 20px;
+    }
+    ion-tab-button.wishlist {
+        margin-left: -1px;
+        margin-right: -2px;
+        border-top-left-radius: 20px;
+    }
+    ion-fab {
+        direction: ltr;
+ 
+        ion-fab-button {
+            --background: var(--ion-color-primary-gradient);
+            ion-icon {
+                color: red;
+                font-size: 2rem;
+                color: var(--ion-color-light);
+
+                
+            }
+        }
+
+
+    }
+}
+
+
+@media only screen and (min-width: 600px) {
+    ion-tabs {
+
+        // --------------Custom Semi Transparent & Rounded Tabs----------------------
+        ion-tab-bar {
+          
+          
+    
+            ion-tab-button:nth-child(5){
+                border-end-end-radius: 30px;
+                border-start-end-radius: 30px;
+            }
+    
+            ion-tab-button:nth-child(1){
+                border-end-start-radius: 30px;
+                border-start-start-radius: 30px;
+            }
+    
+            margin-bottom: 20px;
+        }
+       
+    
+       
+        ion-fab {
+           
+    
+            margin-bottom: 20px;
+    
+        }
+    }
+    
+  }

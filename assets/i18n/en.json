@@ -1,0 +1,21 @@
+{
+    "sidebar":{
+        "tilte":"GlobalCars",
+        "Language":"Language",
+        "Arabic":"Arabic",
+        "English":"English",
+        "notification":"Notification",
+        "AboutUs":"About Us",
+        "ContactUs":"Contact Us"
+    },
+    "title":{
+        "cars":"cars",
+        "Services":"Services"
+    },
+    "cars":{
+        "body":"No cars"
+      },
+      "Services":{
+        "body":"No Services"
+      }
+}

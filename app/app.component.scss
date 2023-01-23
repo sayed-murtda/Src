@@ -1,0 +1,88 @@
+ion-thumbnail{
+    --size: 1px;
+    --border-radius: 14px;
+  }
+
+// language variables
+
+$language-width: 60px;
+$language-height: 30px;
+$language-focus: #85bffd;
+$language-border: #ccc;
+$language-hover: #eee;
+$language-checked: white;
+
+
+// language styles
+
+.language {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1;
+  margin: 1em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.language__container--left,
+.language__container--right {
+  position: relative;
+  float: left;
+  width: $language-width;
+  height: $language-height;
+}
+
+.language__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $language-width;
+  height: $language-height;
+  border: 1px solid $language-border;
+  padding: 10px;
+  background-repeat: round;
+  background-size: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  
+}
+
+.language__container--left .language__label {
+  border-radius: 4px 0 0 4px;
+}
+
+.language__container--right .language__label {
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.language__control:hover + .language__label,
+.language__control:focus + .language__label {
+  background-color: $language-hover;
+}
+
+.language__control:checked + .language__label {
+  background-color: $language-checked;
+  border: 3px solid black;
+}
+
+.language__control:focus + .language__label,
+.language__control:checked:focus + .language__label {
+  z-index: 2;
+  outline: 2px solid $language-focus;
+  box-shadow: 0 0 8px $language-focus;
+}
+
+
+// country flags
+
+.language__container--fr .language__label {
+  background-image: url('../assets/img/ar.png');
+}
+
+.language__container--en .language__label {
+  background-image: url('../assets/img/er.png');
+}
