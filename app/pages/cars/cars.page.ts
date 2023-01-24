@@ -20,6 +20,7 @@ export class CarsPage implements OnInit {
   ngOnInit() {
   }
 
+  Available_adv = true;
   cars: Car[] = [
 
     {
