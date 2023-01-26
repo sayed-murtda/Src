@@ -21,6 +21,12 @@ export class CarsPage implements OnInit {
   }
 
   Available_adv = true;
+  filter = false;
+
+  first_year:any;
+  last_year: any;
+
+
   cars: Car[] = [
 
     {
@@ -79,6 +85,11 @@ export class CarsPage implements OnInit {
   likeCar(i:any){
     // console.log(i);
     this.cars[i].like = !this.cars[i].like;
+
+  }
+
+  display_filter(){
+    this.filter = !this.filter;
 
   }
 
