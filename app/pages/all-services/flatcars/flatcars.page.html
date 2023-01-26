@@ -1,0 +1,17 @@
+<app-headerpage title="{{'Flatcars.title'|translate}}"></app-headerpage>
+
+
+<ion-content>
+
+    <ion-list lines="full" *ngFor="let person of flatOwners">
+        <ion-item lines="none">
+            <h5>{{person.name}}</h5>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{person.city}}</ion-label>
+            <a slot="end" href="https://wa.me/973{{person.number}}" target="_blank">
+                <ion-icon class="whatsapp" name="logo-whatsapp"></ion-icon>
+            </a>
+        </ion-item>
+    </ion-list>
+</ion-content>

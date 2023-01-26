@@ -20,5 +20,20 @@
     },
     "Showrooms": {
         "title": "Showrooms"
+    },
+    "Flatcars": {
+        "title": "Flat cars"
+    },
+    "CarAccessories": {
+        "title": "Car Accessories"
+    },
+    "DrivingInstructors": {
+        "title": "Driving Instructors"
+    },
+    "CarRentalLocations": {
+        "title": "Car Rental Locations"
+    },
+    "RepairShops": {
+        "title": "Repair Shops"
     }
 }
