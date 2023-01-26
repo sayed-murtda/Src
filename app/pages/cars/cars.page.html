@@ -1,13 +1,98 @@
-<app-headerpage title="{{'title.cars'|translate}}" ></app-headerpage>
+<app-headerpage title="{{'title.cars'|translate}}" >
 
+</app-headerpage>
+  <ion-button (click)="display_filter()"> {{'cars.filter' |translate}} </ion-button>
 <ion-content>
 
 
-    <ion-item>
+    <!-- <ion-item>
         <ion-label>    {{'cars.body' |translate}}        </ion-label>
-    </ion-item>
+    </ion-item> -->
 
-    <div class="container">
+    
+
+
+    <ion-card *ngIf="filter">
+      <ion-item>
+        <ion-label>{{'cars.Select_years_range' |translate}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{'cars.from' |translate}}</ion-label>
+        <ion-input type="number" [(ngModel)]="first_year" placeholder="2000"></ion-input>
+        <ion-label>{{'cars.to' |translate}}</ion-label>
+        <ion-input type="number" [(ngModel)]="last_year" placeholder="2023"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{'cars.Select_brand' |translate}} </ion-label>
+
+        <ion-list>
+          <ion-item>
+            <ion-select>
+              <ion-select-option value="apples">{{'cars.toyota' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Nissan' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Hyundai' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Honda' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Mitsubishi' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.BMW' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Lexus' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Mercedes_Benz' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Ford' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Kia' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Other_make' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Chevrolet' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Jeep' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Land_Rover' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Volkswagen' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.GMC' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Mazda' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Prosche' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Audi' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Infiniti' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Dodge' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Chery' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Renault' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Jaguar' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Suzuki' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Volvo' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Subaru' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Geely' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Hummer' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.MG' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.MINI' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Isuzu' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Peugeot' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Skoda' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Chrysler' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Ssang_Yong' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Rover' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Alfa_Romeo' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Daihatsu' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.BYD' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Citroen' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Fiat' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Brilliance' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Opel' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Proton' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Daewoo' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Lada' |translate}}</ion-select-option>
+              <ion-select-option value="bananas">{{'cars.Saipa' |translate}}</ion-select-option>
+              <ion-select-option value="apples">{{'cars.Seat' |translate}}</ion-select-option>
+              <ion-select-option value="oranges">{{'cars.Speranza' |translate}}</ion-select-option>
+
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+      </ion-item>
+
+
+      
+    </ion-card>
+
+
+    <div class="container" *ngIf="!filter">
 
       <div *ngFor="let car of cars; let i=index;">
 
