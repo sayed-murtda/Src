@@ -1,4 +1,28 @@
 <app-headerpage title="{{'Showrooms.title'|translate}}"></app-headerpage>
 <ion-content>
-    <h1>Till now</h1>
+    <ion-card *ngFor="let showroom of showrooms">
+        <ion-row>
+            <ion-col size="2.5"><img class="showroomImg" src="{{showroom.logo}}" onclick=""></ion-col>
+            <ion-col>
+                <ion-card-header>
+                    <ion-card-title>{{showroom.name}}</ion-card-title>
+                    <ion-card-subtitle>{{showroom.city}}</ion-card-subtitle>
+                    <ion-card-subtitle>{{showroom.number}}</ion-card-subtitle>
+                </ion-card-header>
+            </ion-col>
+        </ion-row>
+        <ion-card-content>
+            <ion-item lines="none">
+                <a slot="end" href="{{showroom.location}}" target="_blank">
+                    <img class="showroomLinks" src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Maps_Pin_FullColor.max-1000x1000.png">
+                </a>
+                <a slot="end" href="{{showroom.instagram}}" target="_blank">
+                    <img class="showroomLinks" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png">
+                </a>
+                <a slot="end" href="https://wa.me/973{{showroom.whatsapp}}" target="_blank">
+                    <ion-icon class="whatsapp showroomLinks" name="logo-whatsapp"></ion-icon>
+                </a>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
