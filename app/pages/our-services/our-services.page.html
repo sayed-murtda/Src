@@ -1,11 +1,36 @@
 <app-headerpage title="{{'title.Services'|translate}}"></app-headerpage>
 
 <ion-content>
-    <ion-item>
-        <ion-label> {{'Services.body' |translate}}</ion-label>
-    </ion-item>
-    <ion-button routerLink="/tabs/showrooms" expand="block" fill="clear" shape="round">
-        Click me
-    </ion-button>
+    <ion-card color="secondary" routerLink="/tabs/showrooms" class="cards">
+        <ion-card-header>
+            <ion-card-title color="light">{{'Showrooms.title'|translate}}</ion-card-title>
+        </ion-card-header>
+    </ion-card>
+    <ion-card color="secondary" routerLink="/tabs/flatcars" class="cards">
+        <ion-card-header>
+            <ion-card-title color="light">{{'Flatcars.title'|translate}}</ion-card-title>
+        </ion-card-header>
+    </ion-card>
+    <ion-card color="secondary" routerLink="/tabs/showrooms" class="cards">
+        <ion-card-header>
+            <ion-card-title color="light">{{'RepairShops.title'|translate}}</ion-card-title>
+        </ion-card-header>
+    </ion-card>
+    <ion-card color="secondary" routerLink="/tabs/showrooms" class="cards">
+        <ion-card-header>
+            <ion-card-title color="light">{{'CarRentalLocations.title'|translate}}</ion-card-title>
+        </ion-card-header>
+    </ion-card>
+    <ion-card color="secondary" routerLink="/tabs/showrooms" class="cards">
+        <ion-card-header>
+            <ion-card-title color="light">{{'CarAccessories.title'|translate}}</ion-card-title>
+        </ion-card-header>
+    </ion-card>
+    <ion-card color="secondary" routerLink="/tabs/showrooms" class="cards">
+        <ion-card-header>
+            <ion-card-title color="light">{{'DrivingInstructors.title'|translate}}</ion-card-title>
+        </ion-card-header>
+    </ion-card>
+
 
 </ion-content>

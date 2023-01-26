@@ -78,6 +78,21 @@
     },
     "Showrooms": {
         "title": "المعارض"
+    },
+    "Flatcars": {
+        "title": "السطحات"
+    },
+    "CarAccessories": {
+        "title": "إكسسوارات السيارات"
+    },
+    "DrivingInstructors": {
+        "title": "مدربين السياقة"
+    },
+    "CarRentalLocations": {
+        "title": "أماكن تأجير السيارات"
+    },
+    "RepairShops": {
+        "title": "كراجات"
     }
 
 

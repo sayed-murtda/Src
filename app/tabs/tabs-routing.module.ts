@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/all-services/showrooms/showrooms.module').then( m => m.ShowroomsPageModule)
       },
       {
+        path: 'flatcars',
+        loadChildren: () => import('../pages/all-services//flatcars/flatcars.module').then( m => m.FlatcarsPageModule)
+      },
+      {
         path: 'cars',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
