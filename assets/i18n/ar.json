@@ -13,6 +13,7 @@
         "Services": "الخدمات"
     },
     "cars": {
+        "budget": "حصر السعر",
         "body": "لاتوجد سيارات ",
         "filter": "ابحث",
         "Select_years_range": "اختر السنوات",
