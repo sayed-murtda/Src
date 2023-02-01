@@ -94,6 +94,15 @@
     },
     "RepairShops": {
         "title": "كراجات"
+    },
+    "Profile": {
+        "title": "الملف التعريفي",
+        "name": "الاسم",
+        "username": "الاسم المستخدم",
+        "email": "الإيميل",
+        "password": "كلمة المرور",
+        "gender": "الجنس",
+        "phone": "الهاتف"
     }
 
 

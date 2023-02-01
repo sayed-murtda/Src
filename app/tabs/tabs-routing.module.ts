@@ -16,12 +16,16 @@ const routes: Routes = [
         loadChildren: () => import('../pages/our-services/our-services.module').then( m => m.OurServicesPageModule)
       },
       {
-      path: 'showrooms',
+        path: 'showrooms',
         loadChildren: () => import('../pages/all-services/showrooms/showrooms.module').then( m => m.ShowroomsPageModule)
       },
       {
         path: 'flatcars',
         loadChildren: () => import('../pages/all-services//flatcars/flatcars.module').then( m => m.FlatcarsPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../pages/profile/profile.module').then( m => m.ProfilePageModule)
       },
       {
         path: 'cars',
