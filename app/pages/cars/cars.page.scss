@@ -1,7 +1,7 @@
 .car-img{
     width: 25%;
     height: 100%;
-}
+} 
 
 .car-test{
     margin-left: 10px;
@@ -17,4 +17,21 @@
 .advertisement{
 
     height: 40px;
+}
+
+.container{
+    width: 100%;
+    ion-thumbnail{
+        width: 100px !important;
+        height: 100px !important;
+        img{
+            border-radius: 10px;
+        }
+    }
+
+    #btn{
+        padding: 10px 20px;
+        color: #fff;
+        background-color: rgb(217, 7, 7)
+    }
 }

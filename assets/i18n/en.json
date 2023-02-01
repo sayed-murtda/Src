@@ -1,6 +1,6 @@
 {
     "sidebar": {
-        "tilte": "GlobalCars",
+        "tilte": "GlobalCars", 
         "Language": "Language",
         "Arabic": "Arabic",
         "English": "English",
@@ -10,9 +10,11 @@
     },
     "title": {
         "cars": "cars",
-        "Services": "Services"
+        "Services": "Services",
+        "detail": "details"
     },
     "cars": {
+        "close": "Close",
         "budget": "Budget Range:",
         "body": "No cars",
         "filter": "Filter",
@@ -106,6 +108,9 @@
         "gender": "Gender",
         "male": "Male",
         "female": "Female"
+    },
+    "detail": {
+        "title": "details"
     },
 
 

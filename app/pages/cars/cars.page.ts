@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import {IonContent} from '@ionic/angular'
 
 interface Car{
   name: string;
@@ -14,12 +16,14 @@ interface Car{
   styleUrls: ['./cars.page.scss'],
 })
 export class CarsPage implements OnInit {
-
-  constructor() { }
+  @ViewChild (IonContent , { static: true })
+  content: any;
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
-
+  new= false;
+  old= false;
   Available_adv = true;
   filter = false;
   car_selected_brand: any;
@@ -140,6 +144,7 @@ export class CarsPage implements OnInit {
   }
 
   display_filter(){
+    this.content.scrollToTop(500);
     this.filter = !this.filter;
 
   }
@@ -154,6 +159,18 @@ export class CarsPage implements OnInit {
     }
     this.display_models = true;
     
+  }
+
+  go(){
+    this.router.navigateByUrl('/view-detail')
+  }
+
+  new_Cars(){
+
+  }
+
+  old_Cars(){
+
   }
 
 
