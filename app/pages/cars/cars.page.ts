@@ -161,7 +161,7 @@ export class CarsPage implements OnInit {
     
   }
 
-  go(){
+  go(i:any){
     this.router.navigateByUrl('/view-detail')
   }
 

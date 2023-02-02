@@ -80,7 +80,7 @@
 
       <div *ngFor="let car of cars; let i=index;">
 
-        <ion-card *ngIf="(i)%5==0 && i!=0 && Available_adv" (click)="go()">
+        <ion-card *ngIf="(i)%5==0 && i!=0 && Available_adv">
           <ion-item >
 
             
@@ -113,7 +113,7 @@
                     <p>clean inside and outside</p>
                     <div>
                       <span style="float:right;">
-                      <button id="btn">detail</button>
+                      <button id="btn"  (click)="go(i)">detail</button>
                       </span>
                     </div>
                   </ion-label>
@@ -122,30 +122,6 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-
-          <!-- <ion-card >
-
-            <ion-item class="cars">
-
-                <div class="car-img">
-                  <img src='../assets/img/{{car.img}}' alt="">
-                </div>
-
-                <div class="car-test">
-                  <ion-label> {{car.name}} {{car.year}} </ion-label>
-                  <ion-label> {{car.price}}BD </ion-label>
-                </div>
-
-                <div *ngIf="car.like" slot="end">
-                  <ion-icon color="primary" name="heart-outline" (click)="likeCar(i)"></ion-icon>
-                </div>
-                <div *ngIf="!car.like" slot="end">
-                <ion-icon color="primary" name='heart' (click)="likeCar(i)"></ion-icon>
-                </div>
-              
-            </ion-item>
-                    
-          </ion-card> -->
       </div>
     
 

@@ -1,0 +1,46 @@
+.toolbar{
+    height: 64px;
+    line-height: 84px;
+    
+}
+
+img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.container{
+    height: 100%;
+    .pic{
+        img{       
+            height: 200px;
+            width: 100%;
+            
+        }
+    }
+
+    .scrolling-wrapper {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        background-color: rgb(224, 240, 240);
+      
+        .card {
+          display: inline-block;
+          .extPic{
+            border-radius: 30px;
+            padding: 0px 10px;
+            padding-top: 10px;
+            height: 150px;
+            width: 200px;
+          }
+        }
+      }
+
+      .adv{
+        height: 200px;
+        width: 300px;
+        padding: 10px;
+        border-radius: 30px;
+      }
+}
