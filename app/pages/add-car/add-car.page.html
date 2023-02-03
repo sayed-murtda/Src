@@ -23,57 +23,70 @@
 
     <ion-item class="price">
         <ion-label>Price:</ion-label> 
-        <ion-input type="text" placeholder="1000BD"></ion-input>
+        <ion-input type="number" placeholder="1000BD"></ion-input>
     </ion-item>
+
     <ion-list >
       <ion-item >
         <ion-label>Brand:</ion-label> 
-        <ion-select    color="dark" placeholder="Select fruit">
-          <ion-select-option color="dark" value="apples">Apples</ion-select-option>
-          <ion-select-option value="oranges">Oranges</ion-select-option>
-          <ion-select-option value="bananas">Bananas</ion-select-option>
+        <ion-select     placeholder="Select Brand">
+          <ion-select-option  value="Toyota">Toyota</ion-select-option>
+          <ion-select-option value="Lexus">Lexus</ion-select-option>
+          <ion-select-option value="Mazda">Mazda</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
-  
-    <br>
-    <div align="center">
-        <ion-label>
-            <h1>Car details</h1>
-        </ion-label>
-    </div>
+
+    <ion-list >
+      <ion-item >
+        <ion-label>Model:</ion-label> 
+        <ion-select    placeholder="Select Model">
+          <ion-select-option  value="apples">Camry</ion-select-option>
+          <ion-select-option value="oranges">Mazda 6</ion-select-option>
+          <ion-select-option value="bananas">Mazda 3</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
 
     <ion-item>
-        <ion-label>
-            <h2>Brand: <span style="float: right;">Hundai</span></h2>
-            <h2>Model: <span style="float: right;">Sonata</span></h2>
-            <h2>Year: <span style="float: right;">2016</span></h2>
-            <h2>Killometers: <span style="float: right;">50000 to 59999</span></h2>
-            <h2>State: <span style="float: right;">Used</span></h2>
-
-            <br>
-            <h1>Discription:</h1>
-            <h2>-Excellent Condition</h2>
-            <h2>-Agent Maintenance</h2>
-            <h2>-No Accidents</h2>
-        </ion-label>
+      <ion-label>Year</ion-label>
+      <ion-input type="number" placeholder="2020" max="2030" min="1900"></ion-input>
     </ion-item>
 
-    <!-- start testing -->
-        <ion-item lines="none">
-            <ion-label>
-                <h1>seller info:</h1>
-            </ion-label>
-        </ion-item>
+    <ion-item>
+      <ion-label>Killometers</ion-label>
+      <ion-input type="number" placeholder="90000KM" ></ion-input>
+    </ion-item>
+
+    <ion-list >
+      <ion-item >
+        <ion-label>State:</ion-label> 
+        <ion-select    placeholder="Select State">
+          <ion-select-option value="New">New</ion-select-option>
+          <ion-select-option value="Used">Used</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>Discription</ion-label>
+      <ion-textarea placeholder="Type Discription here"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tell:</ion-label>
+      <ion-input type="tel" placeholder="Phone number"></ion-input>
+    </ion-item>
 
     
+    <ion-item>
+      <ion-label>WhatsApp:</ion-label>
+      <ion-input type="tel" placeholder="WhatsApp number"></ion-input>
+    </ion-item>
 
-
-
-    
-   
-
-   
+    <ion-button color="primary" expand="block"  >
+      Send <ion-icon name="share-outline"></ion-icon>
+    </ion-button>
 
 </div>
 
