@@ -26,6 +26,9 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('../pages/profile/profile.module').then( m => m.ProfilePageModule)
+      },  {
+        path: 'favorite',
+        loadChildren: () => import('../pages/favorite/favorite.module').then( m => m.FavoritePageModule)
       },
       {
         path: 'cars',
