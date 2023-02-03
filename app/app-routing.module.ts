@@ -5,7 +5,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },  {
+  },
+  {
     path: 'view',
     loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule)
   },
@@ -13,6 +14,11 @@ const routes: Routes = [
     path: 'view-detail',
     loadChildren: () => import('./pages/view-detail/view-detail.module').then( m => m.ViewDetailPageModule)
   },
+  {
+    path: 'add-car',
+    loadChildren: () => import('./pages/add-car/add-car.module').then( m => m.AddCarPageModule)
+  },
+
 
 
 

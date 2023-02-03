@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-view-detail',
   templateUrl: './view-detail.page.html',
@@ -7,13 +7,14 @@ import { Router } from '@angular/router';
 })
 export class ViewDetailPage implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
   go(){
-    this.router.navigateByUrl('/')
+    this.navCtrl.navigateBack("/");
+
   }
 
   

@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar class="toolbar" color="primary">
+
+     
+          <ion-button (click)="back()"   slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+      
+
+    <ion-title>{{'title.detail'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="container">
+    <div class="pic">
+
+         <ion-slides pager >
+          </ion-slides>
+         <ion-slides pager >
+          <ion-slide style="height: 300px;" *ngIf="images.length<4" (click)="img()"><ion-icon style="font-size: 50px;" name="add-outline" color="primary" ></ion-icon></ion-slide>
+                <ion-slide *ngFor="let item of images; let i=index"  >
+                  <ion-button  class="delete" fill="clear" (click)="delete(i)">
+                    <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+                  </ion-button>
+                 
+                  <ion-img [src]="item.path"></ion-img>
+                </ion-slide>
+          </ion-slides>
+              
+    </div>
+
+    <ion-item class="price">
+        <ion-label>Price:</ion-label> 
+        <ion-input type="number" placeholder="1000BD"></ion-input>
+    </ion-item>
+
+    <ion-list >
+      <ion-item >
+        <ion-label>Brand:</ion-label> 
+        <ion-select     placeholder="Select Brand">
+          <ion-select-option  value="Toyota">Toyota</ion-select-option>
+          <ion-select-option value="Lexus">Lexus</ion-select-option>
+          <ion-select-option value="Mazda">Mazda</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list >
+      <ion-item >
+        <ion-label>Model:</ion-label> 
+        <ion-select    placeholder="Select Model">
+          <ion-select-option  value="apples">Camry</ion-select-option>
+          <ion-select-option value="oranges">Mazda 6</ion-select-option>
+          <ion-select-option value="bananas">Mazda 3</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>Year</ion-label>
+      <ion-input type="number" placeholder="2020" max="2030" min="1900"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Killometers</ion-label>
+      <ion-input type="number" placeholder="90000KM" ></ion-input>
+    </ion-item>
+
+    <ion-list >
+      <ion-item >
+        <ion-label>State:</ion-label> 
+        <ion-select    placeholder="Select State">
+          <ion-select-option value="New">New</ion-select-option>
+          <ion-select-option value="Used">Used</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>Discription</ion-label>
+      <ion-textarea placeholder="Type Discription here"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tell:</ion-label>
+      <ion-input type="tel" placeholder="Phone number"></ion-input>
+    </ion-item>
+
+    
+    <ion-item>
+      <ion-label>WhatsApp:</ion-label>
+      <ion-input type="tel" placeholder="WhatsApp number"></ion-input>
+    </ion-item>
+
+    <ion-button color="primary" expand="block"  >
+      Send <ion-icon name="share-outline"></ion-icon>
+    </ion-button>
+
+</div>
+
+</ion-content>

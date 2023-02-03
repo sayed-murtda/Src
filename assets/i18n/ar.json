@@ -11,7 +11,8 @@
     "title": {
         "cars": "السيارات",
         "Services": "الخدمات",
-        "detail": "تفاصيل"
+        "detail": "تفاصيل",
+        "favorite": "المفضلة"
     },
     "cars": {
         "close": "اغلاق",

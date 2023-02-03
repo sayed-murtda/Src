@@ -7,13 +7,15 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+//translate
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-
+// Storage
 import { IonicStorageModule } from '@ionic/storage-angular';
 
+//camera
 
 
 export function HttpLoaderFactory(http: HttpClient) {
