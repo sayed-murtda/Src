@@ -15,8 +15,17 @@
   <div class="container">
     <div class="pic">
 
-         <ion-slides pager>
-                <ion-slide style="height: 300px;" (click)="img()"><ion-icon style="font-size: 50px;" name="add-outline" color="primary" ></ion-icon></ion-slide>
+         <ion-slides pager >
+          </ion-slides>
+         <ion-slides pager >
+          <ion-slide style="height: 300px;" *ngIf="images.length<4" (click)="img()"><ion-icon style="font-size: 50px;" name="add-outline" color="primary" ></ion-icon></ion-slide>
+                <ion-slide *ngFor="let item of images; let i=index"  >
+                  <ion-button  class="delete" fill="clear" (click)="delete(i)">
+                    <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+                  </ion-button>
+                 
+                  <ion-img [src]="item.path"></ion-img>
+                </ion-slide>
           </ion-slides>
               
     </div>
