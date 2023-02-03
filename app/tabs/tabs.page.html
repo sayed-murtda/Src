@@ -1,7 +1,7 @@
 <ion-tabs #tabs (ionTabsDidChange)="setCurrentTab($event)">
 
-    <ion-fab vertical="bottom" horizontal="center" translucent="true">
-        <ion-fab-button routerLink="/tabs/add-post">
+    <ion-fab vertical="bottom" horizontal="center" translucent="true" (click)="onClick()" >
+        <ion-fab-button >
             <ion-icon name="add-outline"></ion-icon>
         </ion-fab-button>
     </ion-fab>

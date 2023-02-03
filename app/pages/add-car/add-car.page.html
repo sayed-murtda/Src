@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar class="toolbar" color="primary">
+
+     
+          <ion-button (click)="back()"   slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+      
+
+    <ion-title>{{'title.detail'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="container">
+    <div class="pic">
+
+         <ion-slides pager>
+                <ion-slide style="height: 300px;"><ion-icon style="font-size: 50px;" name="add-outline" color="primary" ></ion-icon></ion-slide>
+          </ion-slides>
+              
+    </div>
+
+    <ion-item class="price">
+        <ion-label>Price:</ion-label> 
+        <ion-input type="text" placeholder="1000BD"></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label>Brand:</ion-label> 
+        <ion-select color="dark" placeholder="Select fruit">
+          <ion-select-option color="dark" value="apples">Apples</ion-select-option>
+          <ion-select-option value="oranges">Oranges</ion-select-option>
+          <ion-select-option value="bananas">Bananas</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  
+    <br>
+    <div align="center">
+        <ion-label>
+            <h1>Car details</h1>
+        </ion-label>
+    </div>
+
+    <ion-item>
+        <ion-label>
+            <h2>Brand: <span style="float: right;">Hundai</span></h2>
+            <h2>Model: <span style="float: right;">Sonata</span></h2>
+            <h2>Year: <span style="float: right;">2016</span></h2>
+            <h2>Killometers: <span style="float: right;">50000 to 59999</span></h2>
+            <h2>State: <span style="float: right;">Used</span></h2>
+
+            <br>
+            <h1>Discription:</h1>
+            <h2>-Excellent Condition</h2>
+            <h2>-Agent Maintenance</h2>
+            <h2>-No Accidents</h2>
+        </ion-label>
+    </ion-item>
+
+    <!-- start testing -->
+        <ion-item lines="none">
+            <ion-label>
+                <h1>seller info:</h1>
+            </ion-label>
+        </ion-item>
+
+    
+
+
+
+    
+   
+
+   
+
+</div>
+
+</ion-content>

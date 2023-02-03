@@ -13,6 +13,10 @@ const routes: Routes = [
     path: 'view-detail',
     loadChildren: () => import('./pages/view-detail/view-detail.module').then( m => m.ViewDetailPageModule)
   },
+  {
+    path: 'add-car',
+    loadChildren: () => import('./pages/add-car/add-car.module').then( m => m.AddCarPageModule)
+  },
 
 
 

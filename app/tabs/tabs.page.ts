@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonTabs } from '@ionic/angular';
 
 @Component({
@@ -11,12 +12,16 @@ export class TabsPage {
   @ViewChild('tabs') tabs: any;
 
   
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
   setCurrentTab(event:any) {
     this.selectTab = this.tabs.getSelected();
+  }
+
+  onClick(){
+    this.router.navigateByUrl('/add-car')
   }
 }
