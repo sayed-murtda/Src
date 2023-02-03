@@ -11,7 +11,9 @@
     "title": {
         "cars": "cars",
         "Services": "Services",
-        "detail": "details"
+        "detail": "details",
+        "favorite": "favorite"
+
     },
     "cars": {
         "close": "Close",
