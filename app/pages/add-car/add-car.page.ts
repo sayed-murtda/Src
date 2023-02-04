@@ -92,7 +92,7 @@ export class AddCarPage implements OnInit {
       maximumImagesCount : 4,
       limit:4
     };
-    Camera.pickImages(options).then((res)=>{
+    Camera.pickImages(options).then((res: any)=>{
     var image:any[]= res.photos;
     if(image.length+this.images.length>4)
     this.presentAlert();
