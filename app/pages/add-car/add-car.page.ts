@@ -74,8 +74,7 @@ export class AddCarPage implements OnInit {
   async selectImage() {
     const image = await Camera.getPhoto({
       quality: 90,
-      allowEditing: true,
-      height:30,
+      allowEditing: false,
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera // Camera, Photos or Prompt!
   });
