@@ -58,7 +58,9 @@ export class AddCarPage implements OnInit {
       this.images.forEach((res:any) =>{
          this.fetchBlob(res.path).then((ress:any) =>  this.imagesBlod.push(ress))      } )
       
-      this.CarSrv.addCar(car,this.imagesBlod);
+      this.CarSrv.addCar(car,this.imagesBlod).then(()=>{
+        console.log("done all add with image");
+      });
     }
     else {
       this.translate.get('addcars.AlertSend').subscribe(
