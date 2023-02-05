@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {IonContent} from '@ionic/angular'
+import { CarsService } from '../../Service/cars.service';
 
 interface Car{
   name: string;
@@ -18,7 +19,7 @@ interface Car{
 export class CarsPage implements OnInit {
   @ViewChild (IonContent , { static: true })
   content: any;
-  constructor(public router: Router) { }
+  constructor(public router: Router,public CarsSrv:CarsService) { }
 
   ngOnInit() {
   }

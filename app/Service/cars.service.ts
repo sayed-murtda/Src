@@ -22,7 +22,7 @@ export interface car {
   User_id?:string;
   Tell?:string;
   WhatsApp?:string;
-  photos_url?:string[]
+  Image_index:number;
 }
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,7 @@ export class CarsService {
 
   private CarCollection: AngularFirestoreCollection<car>;
   public Cars:car[] = [];
+  public loading:boolean=false;
 
 
   constructor(private  afs:  AngularFirestore, private db: AngularFireDatabase, private storage: AngularFireStorage) { 
@@ -40,7 +41,6 @@ export class CarsService {
 
 
   async addCar(Car: car, images: any[]): Promise<any> {
-  
     return this.CarCollection.add(Car)
       .then(async (docRef) => {
         let i = 1;
@@ -48,6 +48,7 @@ export class CarsService {
           await this.uploadFile(docRef.id + i, img);
           i++;
         }
+        this.loading=false;
       });
   }
 
@@ -68,9 +69,9 @@ export class CarsService {
     }
 
 
-  updateCarIamge(Car_id:string,photos_url: string[]): Promise<void> {
-          return this.CarCollection.doc(Car_id).update({ photos_url: photos_url });
-    }
+  // updateCarIamge(Car_id:string,photos_url: string[]): Promise<void> {
+  //         return this.CarCollection.doc(Car_id).update({ photos_url: photos_url });
+  //   }
       
     
 }

@@ -27,15 +27,15 @@ export class AddCarPage implements OnInit {
     private CarSrv:CarsService
     ) {
       this.AddCarForm = formbuilder.group({
-        Price: ['2999', Validators.compose([Validators.required,Validators.pattern('[0-9]*'), Validators.min(100), Validators.max(100000)])],
-        Brand: ['fsdf', Validators.compose([Validators.required])],
-        Model: ['sdfds', Validators.compose([Validators.required])],
-        Year: ['2020', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(1900), Validators.max(2024)])],
-        KM: ['34324', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(0), Validators.max(1000000)])],
-        New: ['false', Validators.compose([Validators.required])],
-        Disc: ['sfd'],
-        Tell: ['33333333', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],
-        WhatsApp: ['33333333', Validators.compose([ Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],        
+        Price: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'), Validators.min(100), Validators.max(100000)])],
+        Brand: ['', Validators.compose([Validators.required])],
+        Model: ['', Validators.compose([Validators.required])],
+        Year: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(1900), Validators.max(2024)])],
+        KM: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(0), Validators.max(1000000)])],
+        New: ['', Validators.compose([Validators.required])],
+        Disc: [''],
+        Tell: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],
+        WhatsApp: ['', Validators.compose([ Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],        
         });
 
         
@@ -45,7 +45,7 @@ export class AddCarPage implements OnInit {
   }
 
   Login(val:any){
-    if ( this.AddCarForm.valid  ){
+    if ( this.AddCarForm.valid && this.images.length>1 ){
       const now = new Date();
 
       let car : car={...this.AddCarForm.value,
@@ -53,11 +53,14 @@ export class AddCarPage implements OnInit {
         User_id:null,
         Sold_date:null,
         Sold:false,
-        accept:false
+        accept:false,
+        Image_index:this.images.length
       }
       this.images.forEach((res:any) =>{
          this.fetchBlob(res.path).then((ress:any) =>  this.imagesBlod.push(ress))      } )
       
+      this.CarSrv.loading=true;
+      this.back();
       this.CarSrv.addCar(car,this.imagesBlod).then(()=>{
         console.log("done all add with image");
       });

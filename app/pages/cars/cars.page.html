@@ -1,6 +1,30 @@
 <app-headerpage title="{{'title.cars'|translate}}" >
 
 </app-headerpage>
+
+<ion-card *ngIf="CarsSrv.loading" class="loadingcard" >
+
+  
+   
+
+    <div class="load">
+
+      <div class="loadtext">
+        <div class="loader"></div>
+      </div>
+     
+      <div class="loadtext text">
+        Loading Uploade Car  
+       </div>
+      </div>
+
+ 
+
+</ion-card>
+
+  
+
+
   <ion-button (click)="display_filter()"> <span *ngIf="!filter">{{'cars.filter' |translate}}</span> <span *ngIf="filter">{{'cars.close' |translate}}</span>  </ion-button>
 <ion-content [scrollEvents]="true">
 
