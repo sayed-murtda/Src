@@ -3,32 +3,50 @@
 <ion-content>
     <ion-card color="secondary" routerLink="/tabs/showrooms" class="cards">
         <ion-card-header>
-            <ion-card-title color="light">{{'Showrooms.title'|translate}}</ion-card-title>
+            <ion-card-title color="light" style="display: flex;">
+                <div class="circle"><img src="../../../assets/img/showroom.png" class="logos" alt=""></div>
+                <div class="titles">{{'Showrooms.title'|translate}}</div>
+            </ion-card-title>
         </ion-card-header>
     </ion-card>
     <ion-card color="secondary" routerLink="/tabs/flatcars" class="cards">
         <ion-card-header>
-            <ion-card-title color="light">{{'Flatcars.title'|translate}}</ion-card-title>
+            <ion-card-title color="light" class="cardTitle">
+                <div class="circle "><img src="../../../assets/img/flatcar.png " class="logos " alt=" "></div>
+                <div class="titles ">{{'Flatcars.title'|translate}}</div>
+            </ion-card-title>
+        </ion-card-header>
+    </ion-card>
+    <ion-card color="secondary " disabled="true " routerLink="/tabs/showrooms " class="cards ">
+        <ion-card-header>
+            <ion-card-title color="light " class="cardTitle">
+                <div class="circle"><img src="../../../assets/img/carRepair.png" class="logos" alt=""></div>
+                <div class="titles">{{'RepairShops.title'|translate}}</div>
+            </ion-card-title>
         </ion-card-header>
     </ion-card>
     <ion-card color="secondary" disabled="true" routerLink="/tabs/showrooms" class="cards">
         <ion-card-header>
-            <ion-card-title color="light">{{'RepairShops.title'|translate}}</ion-card-title>
+            <ion-card-title color="light" class="cardTitle">
+                <div class="circle "><img src="../../../assets/img/carRent.png " class="logos " alt=" "></div>
+                <div class="titles ">{{'CarRentalLocations.title'|translate}}</div>
+            </ion-card-title>
+        </ion-card-header>
+    </ion-card>
+    <ion-card color="secondary " disabled="true " routerLink="/tabs/showrooms " class="cards ">
+        <ion-card-header>
+            <ion-card-title color="light " class="cardTitle">
+                <div class="circle"><img src="../../../assets/img/carAccessories.png" class="logos" alt=""></div>
+                <div class="titles">{{'CarAccessories.title'|translate}}</div>
+            </ion-card-title>
         </ion-card-header>
     </ion-card>
     <ion-card color="secondary" disabled="true" routerLink="/tabs/showrooms" class="cards">
         <ion-card-header>
-            <ion-card-title color="light">{{'CarRentalLocations.title'|translate}}</ion-card-title>
-        </ion-card-header>
-    </ion-card>
-    <ion-card color="secondary" disabled="true" routerLink="/tabs/showrooms" class="cards">
-        <ion-card-header>
-            <ion-card-title color="light">{{'CarAccessories.title'|translate}}</ion-card-title>
-        </ion-card-header>
-    </ion-card>
-    <ion-card color="secondary" disabled="true" routerLink="/tabs/showrooms" class="cards">
-        <ion-card-header>
-            <ion-card-title color="light">{{'DrivingInstructors.title'|translate}}</ion-card-title>
+            <ion-card-title color="light" class="cardTitle">
+                <div class="circle "><img src="../../../assets/img/carInstructor.png " class="logos " alt=" "></div>
+                <div class="titles ">{{'DrivingInstructors.title'|translate}}</div>
+            </ion-card-title>
         </ion-card-header>
     </ion-card>
 

@@ -1,3 +1,26 @@
 .cards {
     height: 11.5vh;
 }
+
+.logos {
+    width: 3rem;
+    height: auto;
+    padding: 0.3rem;
+    margin: auto;
+}
+
+.circle {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 0.5rem 0 0.5rem;
+}
+
+.titles {
+    margin: auto 0;
+}
+
+.cardTitle {
+    display: flex;
+}

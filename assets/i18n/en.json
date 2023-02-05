@@ -1,6 +1,6 @@
 {
     "sidebar": {
-        "tilte": "GlobalCars", 
+        "tilte": "GlobalCars",
         "Language": "Language",
         "Arabic": "Arabic",
         "English": "English",
@@ -95,7 +95,7 @@
         "title": "Driving Instructors"
     },
     "CarRentalLocations": {
-        "title": "Car Rental Locations"
+        "title": "Car Rental"
     },
     "RepairShops": {
         "title": "Repair Shops"
@@ -113,6 +113,9 @@
     },
     "detail": {
         "title": "details"
+    },
+    "Sign": {
+        "title": "Signin / Signup"
     },
 
 

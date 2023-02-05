@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-title>Sign in/up</ion-title> -->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="ion-no-margin">
+        <ion-img src="../../../assets/img/header1.png"></ion-img>
+
+        <ion-segment swipe-gesture="true" class="segment" [(ngModel)]="sign">
+            <ion-segment-button style="color: white;" value="signin">
+                Sign in
+            </ion-segment-button>
+            <ion-segment-button style="color: white;" value="signup">
+                Sign up
+            </ion-segment-button>
+        </ion-segment>
+
+    </ion-card>
+
+
+    <div [ngSwitch]="sign">
+        <ion-list *ngSwitchCase="'signin'">
+            <ion-card-content>
+                <div class="wrapform">
+                    <ion-item>
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <ion-input type="text" name="email" [(ngModel)]="email" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <ion-input type="password" name="password" [(ngModel)]="password" required></ion-input>
+                    </ion-item>
+                </div>
+                <div class="password_forgot">
+                    <ion-button fill="clear">Forgot Password?</ion-button>
+                </div>
+                <div class="sign-btn-wrap">
+                    <ion-button shape="round" fill="solid" class="sign-btn">Login</ion-button>
+                </div>
+
+                <div class="text-tag">
+                    <span>Or via Social media</span>
+                </div>
+
+                <div class="social-btns">
+                    <ion-button fill="clear" class="googlebtn ion-no-padding">
+                        <ion-img src="../../../assets/img/google.png"></ion-img>
+                    </ion-button>
+                </div>
+            </ion-card-content>
+        </ion-list>
+    </div>
+    <div [ngSwitch]="sign">
+        <ion-list *ngSwitchCase="'signup'">
+            <ion-item>
+                <h2>Ruby</h2>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
