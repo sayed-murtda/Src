@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, AlertController, NavController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { car, CarsService } from '../../Service/cars.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-car',
@@ -8,14 +10,48 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
   styleUrls: ['./add-car.page.scss'],
 })
 export class AddCarPage implements OnInit {
+
+  AddCarForm: FormGroup;
+
+
   images:any[]=[];
+  car:car = {} as car;
   constructor(private navCtrl: NavController,
     private actionSheetCtrl: ActionSheetController,
-    private alertController: AlertController
-    ) { }
+    private alertController: AlertController,
+    private CarSrv:CarsService,
+    public formbuilder: FormBuilder
+    ) {
+      this.AddCarForm = formbuilder.group({
+        username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(8), Validators.maxLength(30)])],
+        Price: ['', Validators.compose([Validators.required])],
+        Brand: ['', Validators.compose([Validators.required])],
+        Model: ['', Validators.compose([Validators.required])],
+        Year: ['', Validators.compose([Validators.required])],
+        Killometers: ['', Validators.compose([Validators.required])],
+        State: ['', Validators.compose([Validators.required])],
+        Discription: ['', Validators.compose([Validators.required])],
+        Tell: ['', Validators.compose([Validators.required])],
+        WhatsApp: ['', Validators.compose([Validators.required])],
+        
+        });
+
+        
+    }
 
   ngOnInit() {
   }
+
+  Login(val:any){
+    if ( this.AddCarForm.valid )
+    console.log(this.AddCarForm);
+    
+  //  alert('Login Successful ' + val.username);
+  }
+ 
+
+ 
+  
 
   back(){
     this.navCtrl.navigateBack("/");
@@ -107,9 +143,7 @@ export class AddCarPage implements OnInit {
 
   async saveImage(photo: Photo) {
     const filePath = 'phone/';
-
     const fileName = new Date().getTime() ;
-
     this.images.push({
       name:fileName,
       path:photo.webPath});

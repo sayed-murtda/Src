@@ -34,4 +34,16 @@ export class CarsService {
   constructor(private  afs:  AngularFirestore) { 
     this.CarCollection  =  this.afs.collection<car>('cars');
   }
+
+  addCar(Car: car): Promise<any> {
+          return this.CarCollection.add(Car).then((docRef )=>{
+            console.log(docRef);
+          });     
+    }
+
+  updateCarIamge(Car_id:string,photos_url: string[]): Promise<void> {
+          return this.CarCollection.doc(Car_id).update({ photos_url: photos_url });
+    }
+      
+    
 }
