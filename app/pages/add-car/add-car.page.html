@@ -44,7 +44,7 @@
 
     <ion-item class="price">
         <ion-label>{{'addcars.Price'|translate}}:</ion-label> 
-        <ion-input type="number" placeholder="1000BD" formControlName="Price" minlength="8" ></ion-input>
+        <ion-input type="number" placeholder="1000BD" formControlName="Price"  ></ion-input>
     </ion-item>
 
     <ion-list >
@@ -76,13 +76,13 @@
 
     <ion-item>
       <ion-label>{{'addcars.Killometers'|translate}}:</ion-label> 
-      <ion-input type="number" placeholder="90000KM"  formControlName="Killometers" ></ion-input>
+      <ion-input type="number" placeholder="90000KM"  formControlName="KM" ></ion-input>
     </ion-item>
 
     <ion-list >
       <ion-item >
         <ion-label>{{'addcars.State'|translate}}:</ion-label> 
-        <ion-select    placeholder="Select State"  formControlName="State">
+        <ion-select    placeholder="Select State"  formControlName="New">
           <ion-select-option value="New">{{'addcars.New'|translate}}</ion-select-option>
           <ion-select-option value="Used">{{'addcars.Used'|translate}}</ion-select-option>
         </ion-select>
@@ -91,7 +91,7 @@
 
     <ion-item>
       <ion-label>{{'addcars.Discription'|translate}}</ion-label>
-      <ion-textarea placeholder="Type Discription here"  formControlName="Discription"></ion-textarea>
+      <ion-textarea placeholder="Type Discription here"  formControlName="Disc"></ion-textarea>
     </ion-item>
 
     <ion-item>

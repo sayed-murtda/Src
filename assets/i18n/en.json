@@ -28,7 +28,7 @@
         "Send": "Send",
         "New": "New",
         "Used": "Used",
-        "Alert": "Fill in all fields",
+        "AlertSend": "Fill in all fields and Upload The Image",
         "AlertImg": "Please,You can Upload 4 Images Maximum"
 
     },

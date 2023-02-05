@@ -3,14 +3,13 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 
 export interface car {
   id?: string;
+  Price:number;
   Brand: string;
   Model: string;
-  price:number;
   Year: number;
   KM: number;
   New: boolean;
   Disc:string;
-
   date:Date;
   Sold_date:Date;
   Sold:boolean;
@@ -18,8 +17,8 @@ export interface car {
 
   Showrooms_id?:string;
   User_id?:string;
-  phone?:string;
-  whatsApp?:string;
+  Tell?:string;
+  WhatsApp?:string;
   photos_url?:string[]
 }
 @Injectable({
@@ -35,11 +34,15 @@ export class CarsService {
     this.CarCollection  =  this.afs.collection<car>('cars');
   }
 
-  addCar(Car: car): Promise<any> {
+  addCar(Car: car,images:any[]): Promise<any> {
+      console.log(images);
+      
           return this.CarCollection.add(Car).then((docRef )=>{
-            console.log(docRef);
+            console.log(docRef.id);
           });     
     }
+
+    
 
   updateCarIamge(Car_id:string,photos_url: string[]): Promise<void> {
           return this.CarCollection.doc(Car_id).update({ photos_url: photos_url });

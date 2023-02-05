@@ -4,6 +4,10 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 import { car, CarsService } from '../../Service/cars.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { Filesystem } from '@capacitor/filesystem';
+
+
+
 
 @Component({
   selector: 'app-add-car',
@@ -13,26 +17,25 @@ import { TranslateService } from '@ngx-translate/core';
 export class AddCarPage implements OnInit {
 
   AddCarForm: FormGroup;
-
-
+  imagesBlod :any[]=[];
   images:any[]=[];
-  car:car = {} as car;
   constructor(private navCtrl: NavController,
     private actionSheetCtrl: ActionSheetController,
     private alertController: AlertController,
     public formbuilder: FormBuilder,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private CarSrv:CarsService
     ) {
       this.AddCarForm = formbuilder.group({
-        Price: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'), Validators.min(100), Validators.max(100000)])],
-        Brand: ['', Validators.compose([Validators.required])],
-        Model: ['', Validators.compose([Validators.required])],
-        Year: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(1900), Validators.max(2024)])],
-        Killometers: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(0), Validators.max(1000000)])],
-        State: ['', Validators.compose([Validators.required])],
-        Discription: [''],
-        Tell: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],
-        WhatsApp: ['', Validators.compose([ Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],        
+        Price: ['2999', Validators.compose([Validators.required,Validators.pattern('[0-9]*'), Validators.min(100), Validators.max(100000)])],
+        Brand: ['fsdf', Validators.compose([Validators.required])],
+        Model: ['sdfds', Validators.compose([Validators.required])],
+        Year: ['2020', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(1900), Validators.max(2024)])],
+        KM: ['34324', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(0), Validators.max(1000000)])],
+        New: ['false', Validators.compose([Validators.required])],
+        Disc: ['sfd'],
+        Tell: ['33333333', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],
+        WhatsApp: ['33333333', Validators.compose([ Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],        
         });
 
         
@@ -42,8 +45,21 @@ export class AddCarPage implements OnInit {
   }
 
   Login(val:any){
-    if ( this.AddCarForm.valid )
-    console.log(this.AddCarForm);
+    if ( this.AddCarForm.valid  ){
+      const now = new Date();
+
+      let car : car={...this.AddCarForm.value,
+        date:now,
+        User_id:null,
+        Sold_date:null,
+        Sold:false,
+        accept:false
+      }
+      this.images.forEach((res:any) =>{
+         this.fetchBlob(res.path).then((ress:any) =>  this.imagesBlod.push(ress))      } )
+      
+      this.CarSrv.addCar(car,this.imagesBlod);
+    }
     else {
       this.translate.get('addcars.AlertSend').subscribe(
         value => {
@@ -53,8 +69,21 @@ export class AddCarPage implements OnInit {
     }
   //  alert('Login Successful ' + val.username);
   }
- 
 
+  fetchBlob(uri:any) {
+    return new Promise((resolve, reject) => {
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', uri);
+      xhr.responseType = 'blob';
+      xhr.onload = () => {
+        resolve(xhr.response);
+      };
+      xhr.onerror = (error) => {
+        reject(error);
+      };
+      xhr.send();
+    });
+  }
  
   
 
