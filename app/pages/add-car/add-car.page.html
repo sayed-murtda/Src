@@ -5,7 +5,7 @@
           <ion-button (click)="back()"   slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
       
 
-    <ion-title>{{'title.detail'|translate}}</ion-title>
+    <ion-title>{{'addcars.title'|translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -31,32 +31,25 @@
     </div>
 
     <form [formGroup]="AddCarForm" (ngSubmit)="Login(AddCarForm.value)">
-      <ion-item>
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text" formControlName="username"></ion-input>
-      </ion-item>
-       <ion-item *ngIf="AddCarForm.controls['username'].hasError('required') && AddCarForm.controls['username'].touched">
-      <p>Sorry, field username is required!</p></ion-item>
-       <ion-item *ngIf="AddCarForm.controls['username'].hasError('pattern') && AddCarForm.controls['username'].touched">
-      <p>Sorry, only small and capital letters are allowed!</p></ion-item> 
-       <ion-item *ngIf="AddCarForm.controls['username'].hasError('minlength') && AddCarForm.controls['username'].touched">
-      <p>Sorry, minimum username length is 8!</p></ion-item>
+      
+       <!-- <ion-item *ngIf="AddCarForm.controls['username'].hasError('minlength') && AddCarForm.controls['username'].touched">
+      <p>Sorry, minimum username length is 8!</p></ion-item> -->
       
          
-        <ion-button [disabled]="!AddCarForm.valid"
+        <!-- <ion-button [disabled]="!AddCarForm.valid"
          full color="primary" style="margin-top: 20px;" type="submit"> Login
          </ion-button> 
-        
+         -->
         
 
     <ion-item class="price">
-        <ion-label>Price:</ion-label> 
-        <ion-input type="number" placeholder="1000BD" formControlName="Price"></ion-input>
+        <ion-label>{{'addcars.Price'|translate}}:</ion-label> 
+        <ion-input type="number" placeholder="1000BD" formControlName="Price" minlength="8" ></ion-input>
     </ion-item>
 
     <ion-list >
       <ion-item >
-        <ion-label>Brand:</ion-label> 
+        <ion-label>{{'addcars.Brand'|translate}}:</ion-label> 
         <ion-select     placeholder="Select Brand"  formControlName="Brand" >
           <ion-select-option  value="Toyota">Toyota</ion-select-option>
           <ion-select-option value="Lexus">Lexus</ion-select-option>
@@ -67,7 +60,7 @@
 
     <ion-list >
       <ion-item >
-        <ion-label>Model:</ion-label> 
+        <ion-label>{{'addcars.Modle'|translate}}:</ion-label> 
         <ion-select    placeholder="Select Model"  formControlName="Model">
           <ion-select-option  value="apples">Camry</ion-select-option>
           <ion-select-option value="oranges">Mazda 6</ion-select-option>
@@ -77,43 +70,43 @@
     </ion-list>
 
     <ion-item>
-      <ion-label>Year</ion-label>
+      <ion-label>{{'addcars.Year'|translate}}:</ion-label> 
       <ion-input type="number" placeholder="2020" max="2030" min="1900"  formControlName="Year" ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Killometers</ion-label>
+      <ion-label>{{'addcars.Killometers'|translate}}:</ion-label> 
       <ion-input type="number" placeholder="90000KM"  formControlName="Killometers" ></ion-input>
     </ion-item>
 
     <ion-list >
       <ion-item >
-        <ion-label>State:</ion-label> 
+        <ion-label>{{'addcars.State'|translate}}:</ion-label> 
         <ion-select    placeholder="Select State"  formControlName="State">
-          <ion-select-option value="New">New</ion-select-option>
-          <ion-select-option value="Used">Used</ion-select-option>
+          <ion-select-option value="New">{{'addcars.New'|translate}}</ion-select-option>
+          <ion-select-option value="Used">{{'addcars.Used'|translate}}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
 
     <ion-item>
-      <ion-label>Discription</ion-label>
+      <ion-label>{{'addcars.Discription'|translate}}</ion-label>
       <ion-textarea placeholder="Type Discription here"  formControlName="Discription"></ion-textarea>
     </ion-item>
 
     <ion-item>
-      <ion-label>Tell:</ion-label>
-      <ion-input type="tel" placeholder="Phone number"  formControlName="Tell"></ion-input>
+      <ion-label>{{'addcars.Tell'|translate}}</ion-label>
+      <ion-input type="tel" placeholder="Phone number"  formControlName="Tell" minlength="8"></ion-input>
     </ion-item>
 
     
     <ion-item>
-      <ion-label>WhatsApp:</ion-label>
-      <ion-input type="tel" placeholder="WhatsApp number"  formControlName="WhatsApp"></ion-input>
+      <ion-label>{{'addcars.WhatsApp'|translate}}</ion-label>
+      <ion-input type="tel" placeholder="WhatsApp number"  formControlName="WhatsApp"  minlength="8" ></ion-input>
     </ion-item>
 
-    <ion-button color="primary" expand="block"  >
-      Send <ion-icon name="share-outline"></ion-icon>
+    <ion-button color="primary" expand="block" type="sub" >
+      {{'addcars.Send'|translate}} <ion-icon name="share-outline"></ion-icon>
     </ion-button>
 
   </form>

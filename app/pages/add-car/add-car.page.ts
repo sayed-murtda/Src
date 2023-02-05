@@ -3,6 +3,7 @@ import { ActionSheetController, AlertController, NavController } from '@ionic/an
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { car, CarsService } from '../../Service/cars.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-car',
@@ -19,21 +20,19 @@ export class AddCarPage implements OnInit {
   constructor(private navCtrl: NavController,
     private actionSheetCtrl: ActionSheetController,
     private alertController: AlertController,
-    private CarSrv:CarsService,
-    public formbuilder: FormBuilder
+    public formbuilder: FormBuilder,
+    public translate: TranslateService
     ) {
       this.AddCarForm = formbuilder.group({
-        username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(8), Validators.maxLength(30)])],
-        Price: ['', Validators.compose([Validators.required])],
+        Price: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'), Validators.min(100), Validators.max(100000)])],
         Brand: ['', Validators.compose([Validators.required])],
         Model: ['', Validators.compose([Validators.required])],
-        Year: ['', Validators.compose([Validators.required])],
-        Killometers: ['', Validators.compose([Validators.required])],
+        Year: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(1900), Validators.max(2024)])],
+        Killometers: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'),Validators.min(0), Validators.max(1000000)])],
         State: ['', Validators.compose([Validators.required])],
-        Discription: ['', Validators.compose([Validators.required])],
-        Tell: ['', Validators.compose([Validators.required])],
-        WhatsApp: ['', Validators.compose([Validators.required])],
-        
+        Discription: [''],
+        Tell: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],
+        WhatsApp: ['', Validators.compose([ Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],        
         });
 
         
@@ -45,7 +44,13 @@ export class AddCarPage implements OnInit {
   Login(val:any){
     if ( this.AddCarForm.valid )
     console.log(this.AddCarForm);
-    
+    else {
+      this.translate.get('addcars.AlertSend').subscribe(
+        value => {
+          this.presentAlert(value);
+        }
+      )
+    }
   //  alert('Login Successful ' + val.username);
   }
  
@@ -57,10 +62,10 @@ export class AddCarPage implements OnInit {
     this.navCtrl.navigateBack("/");
   }
 
-  async presentAlert() {
+  async presentAlert(mas:any) {
     const alert = await this.alertController.create({
-      header: 'Error',
-      subHeader: 'Please,You can Select 4 Images Maximum',
+      header: 'Alert',
+      subHeader: mas,
       buttons: ['OK'],
     });
 
@@ -130,7 +135,11 @@ export class AddCarPage implements OnInit {
     Camera.pickImages(options).then((res: any)=>{
     var image:any[]= res.photos;
     if(image.length+this.images.length>4)
-    this.presentAlert();
+    this.translate.get('addcars.AlertImg').subscribe(
+      value => {
+        this.presentAlert(value);
+      }
+    )
     else
       for(var i =0;i<image.length;i++){
         this.saveImage(image[i])
