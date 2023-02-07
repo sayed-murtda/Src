@@ -14,7 +14,25 @@
         "detail": "details",
         "favorite": "favorite"
 
-    }, "addcars": {
+    },
+    "Sign": {
+        "signin": "Sign In",
+        "signup": "Sign Up",
+        "login": "Login",
+        "forgetpass": "Forgot Password?",
+        "viasocialmedia": "Or via Social media"
+    },
+    "cars": {
+        "close": "Close",
+        "budget": "Budget Range:",
+        "body": "No cars",
+        "filter": "Filter",
+        "Select_years_range": "Select years range:",
+        "from": "From",
+        "to": "To",
+        "Select_brand": "Select a Brand:"
+    },
+    "addcars": {
         "title": "Add cars",
         "Price": "Price",
         "Modle": "Modle",
@@ -64,10 +82,6 @@
     "detail": {
         "title": "details"
     },
-    "Sign": {
-        "title": "Signin / Signup"
-    },
-
 
 
     "car_info": [{ "brand": "Seat", "models": ["Alhambra", "Altea", "Altea XL", "Arosa", "Cordoba", "Cordoba Vario", "Exeo", "Ibiza", "Ibiza ST", "Exeo ST", "Leon", "Leon ST", "Inca", "Mii", "Toledo"] },

@@ -1,0 +1,97 @@
+<ion-header>
+    <ion-toolbar class="toolbar" color="primary">
+
+
+        <ion-button (click)="back()" slot="start">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+
+
+        <ion-title>{{'title.detail'|translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <div class="container">
+        <div class="pic">
+
+            <ion-slides pager>
+            </ion-slides>
+            <ion-slides pager>
+                <ion-slide style="height: 300px;" *ngIf="images.length<1" (click)="img()">
+                    <ion-icon style="font-size: 50px;" name="add-outline" color="primary"></ion-icon>
+                </ion-slide>
+                <ion-slide *ngFor="let item of images; let i=index">
+                    <ion-button class="delete" fill="clear" (click)="delete(i)">
+                        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+                    </ion-button>
+
+                    <ion-img [src]="item.path"></ion-img>
+                </ion-slide>
+            </ion-slides>
+
+        </div>
+
+        <form [formGroup]="AddCarForm" (ngSubmit)="Login(AddCarForm.value)">
+            <ion-item>
+                <ion-label floating>Name: </ion-label>
+                <ion-input placeholder="Sayed Ali Murtadha" type="text" formControlName="Name"></ion-input>
+            </ion-item>
+            <div *ngIf="AddCarForm.controls['Name'].hasError('required') && AddCarForm.controls['Name'].touched">
+                <p class="ion-no-margin">Sorry, Name is required!</p>
+            </div>
+            <div *ngIf="AddCarForm.controls['Name'].hasError('pattern') && AddCarForm.controls['Name'].touched">
+                <p class="ion-no-margin">Sorry, only small and capital letters are allowed!</p>
+            </div>
+
+
+
+            <ion-item>
+                <ion-label>Email:</ion-label>
+                <ion-input placeholder="example@someone.com" formControlName="Email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Password:</ion-label>
+                <ion-input placeholder="Ali123456" formControlName="Password"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>City:</ion-label>
+                <ion-input placeholder="Sitra" formControlName="City"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Instagram:</ion-label>
+                <ion-input placeholder="Insta profile URL" formControlName="Insta"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Location:</ion-label>
+                <ion-input placeholder="location URL" formControlName="Location"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Tell:</ion-label>
+                <ion-input type="tel" placeholder="Phone number" formControlName="Tell"></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label>WhatsApp:</ion-label>
+                <ion-input type="tel" placeholder="WhatsApp number" formControlName="WhatsApp"></ion-input>
+            </ion-item>
+
+            <ion-button [disabled]="!AddCarForm.valid" type="submit" color="primary" expand="block">
+                <ion-icon class="ion-padding" name="share-outline"></ion-icon>
+                Add Showroom
+            </ion-button>
+
+        </form>
+
+
+    </div>
+
+</ion-content>

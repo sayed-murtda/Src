@@ -7,9 +7,7 @@ ion-toolbar {
     --opacity: 0;
 }
 
-ion-content {
-    --ion-background-color: #d69c9c;
-}
+ion-content {}
 
 .background {
     --ion-background-color: #b90504;
@@ -38,7 +36,8 @@ ion-icon {
 }
 
 .password_forgot {
-    text-align: right;
+    display: flex;
+    justify-content: end;
     ion-button {
         font-size: 12px;
     }

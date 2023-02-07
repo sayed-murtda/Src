@@ -1,8 +1,8 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar>
-        <!-- <ion-title>Sign in/up</ion-title> -->
+        <ion-title>Sign in/up</ion-title>
     </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
     <ion-card class="ion-no-margin">
@@ -10,10 +10,10 @@
 
         <ion-segment swipe-gesture="true" class="segment" [(ngModel)]="sign">
             <ion-segment-button style="color: white;" value="signin">
-                Sign in
+                {{'Sign.signin' | translate}}
             </ion-segment-button>
             <ion-segment-button style="color: white;" value="signup">
-                Sign up
+                {{'Sign.signup' | translate}}
             </ion-segment-button>
         </ion-segment>
 
@@ -34,14 +34,14 @@
                     </ion-item>
                 </div>
                 <div class="password_forgot">
-                    <ion-button fill="clear">Forgot Password?</ion-button>
+                    <ion-button fill="clear">{{'Sign.forgetpass' | translate}}</ion-button>
                 </div>
                 <div class="sign-btn-wrap">
-                    <ion-button shape="round" fill="solid" class="sign-btn">Login</ion-button>
+                    <ion-button shape="round" fill="solid" class="sign-btn">{{'Sign.login' | translate}}</ion-button>
                 </div>
 
                 <div class="text-tag">
-                    <span>Or via Social media</span>
+                    <span>{{'Sign.viasocialmedia' | translate}}</span>
                 </div>
 
                 <div class="social-btns">
@@ -53,10 +53,42 @@
         </ion-list>
     </div>
     <div [ngSwitch]="sign">
-        <ion-list *ngSwitchCase="'signup'">
-            <ion-item>
-                <h2>Ruby</h2>
-            </ion-item>
-        </ion-list>
+        <ion-card-content *ngSwitchCase="'signup'">
+            <div class="wrapform">
+                <ion-list>
+                    <ion-item>
+                        <ion-label>{{'Profile.name' | translate}}:</ion-label>
+                        <ion-input color="dark" slot="end"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{'Profile.username' | translate}}:</ion-label>
+                        <ion-input color="dark" slot="end"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{'Profile.email' | translate}}:</ion-label>
+                        <ion-input color="dark" slot="end"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{'Profile.password' | translate}}:</ion-label>
+                        <ion-input color="dark" type="password" slot="end"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{'Profile.gender' | translate}}:</ion-label>
+                        <ion-select slot="end" placeholder="Gender">
+                            <ion-select-option value="Male">Male</ion-select-option>
+                            <ion-select-option value="Female">Female</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{'Profile.phone' | translate}}:</ion-label>
+                        <ion-input color="dark" slot="end"></ion-input>
+                    </ion-item>
+                    <div class="sign-btn-wrap">
+                        <ion-button shape="round" fill="solid" class="sign-btn">{{'Sign.signup' | translate}}</ion-button>
+                    </div>
+
+                </ion-list>
+            </div>
+        </ion-card-content>
     </div>
 </ion-content>

@@ -14,6 +14,79 @@
         "detail": "تفاصيل",
         "favorite": "المفضلة"
     },
+    "Sign": {
+        "signin": "تسجيل الدخول",
+        "signup": "إنشاء حساب",
+        "login": "تسجيل الدخول",
+        "forgetpass": "نسيت كلمة المرور؟",
+        "viasocialmedia": "باستخدام وسائل التواصل"
+    },
+    "cars": {
+        "close": "اغلاق",
+        "budget": "حصر السعر",
+        "body": "لاتوجد سيارات ",
+        "filter": "ابحث",
+        "Select_years_range": "اختر السنوات",
+        "from": "من",
+        "to": "الى",
+        "Select_brand": "اختر الشركة",
+
+        "toyota": "تيوتا",
+        "Nissan": "نيسان",
+        "Hyundai": "هيونداي",
+        "Honda": "هوندا",
+        "Mitsubishi": "متسبيشي",
+        "BMW": "BMW",
+        "Lexus": "لقزز",
+        "Mercedes_Benz": "مرسيدس بنز",
+        "Ford": "فورد",
+        "Kia": "كيا",
+        "Other_make": "Other make",
+        "Chevrolet": "Chevrolet",
+        "Jeep": "جيب",
+        "Land_Rover": "لاند روفر",
+        "Volkswagen": "Volkswagen",
+        "GMC": "جمس",
+        "Mazda": "مازدا",
+        "Prosche": "Prosche",
+        "Audi": "اودي",
+        "Infiniti": "انفنتي",
+        "Dodge": "دودج",
+        "Chery": "Chery",
+        "Renault": "Renault",
+        "Jaguar": "Jaguar",
+        "Suzuki": "Suzuki",
+        "Volvo": "Volvo",
+        "Subaru": "Subaru",
+        "Geely": "Geely",
+        "Hummer": "Hummer",
+        "MG": "MG",
+        "MINI": "MINI",
+        "Isuzu": "Isuzu",
+        "Peugeot": "Peugeot",
+        "Skoda": "Skoda",
+        "Chrysler": "Chrysler",
+        "Ssang_Yong": "Ssang Yong",
+        "Rover": "Rover",
+        "Alfa_Romeo": "Alfa Romeo",
+        "Daihatsu": "Daihatsu",
+        "BYD": "BYD",
+        "Citroen": "Citroen",
+        "Fiat": "Fiat",
+        "Brilliance": "Brilliance",
+        "Opel": "Opel",
+        "Proton": "Proton",
+        "Daewoo": "Daewoo",
+        "Lada": "Lada",
+        "Saipa": "Saipa",
+        "Seat": "Seat",
+        "Speranza": "Speranza"
+
+
+    },
+    "Services": {
+        "body": "لاتوجد خدمات "
+    },
     "addcars": {
         "title": "اضافة سيارة",
         "Price": "السعر",
@@ -60,11 +133,5 @@
     },
     "detail": {
         "title": "تفاصيل"
-    },
-    "Sign": {
-        "title": "تسجيل دخول / تسجيل"
     }
-
-
-
 }
