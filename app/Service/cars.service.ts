@@ -69,6 +69,17 @@ export class CarsService {
     }
 
 
+
+    getFirst10Rows() {
+      return this.CarCollection.ref.orderBy('date').startAt(2).limit(3).get().then(collection => {
+        return        collection.docs.map(doc => doc.data()
+        );
+      });
+    }
+
+   
+
+
   // updateCarIamge(Car_id:string,photos_url: string[]): Promise<void> {
   //         return this.CarCollection.doc(Car_id).update({ photos_url: photos_url });
   //   }
