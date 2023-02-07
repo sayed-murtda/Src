@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { finalize } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 export interface car {
   id?: string;
