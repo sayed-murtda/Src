@@ -28,6 +28,7 @@
   <ion-button (click)="display_filter()"> <span *ngIf="!filter">{{'cars.filter' |translate}}</span> <span *ngIf="filter">{{'cars.close' |translate}}</span>  </ion-button>
 <ion-content [scrollEvents]="true">
 
+  
 
     <ion-card *ngIf="filter">
       <ion-item>
@@ -100,9 +101,12 @@
     </ion-card>
 
 
+    <!-- start container -->
+
+
     <div class="container">
 
-      <div *ngFor="let car of cars; let i=index;">
+      <div *ngFor="let car of Cars; let i=index;">
 
         <ion-card *ngIf="(i)%5==0 && i!=0 && Available_adv">
           <ion-item >
@@ -123,16 +127,16 @@
               <ion-list>
                 <ion-item>
                   <ion-thumbnail slot="start">
-                    <img src='../assets/img/{{car.img}}' alt="">
+                    <img src='https://firebasestorage.googleapis.com/v0/b/cars-ad60a.appspot.com/o/cars%2F{{car.id}}1?alt=media' alt="">
                   </ion-thumbnail>
 
                   <ion-label>
-                    <h1>{{car.name}} {{car.year}}
-                       <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="car.like"><ion-icon name="heart-outline" (click)="likeCar(i)"></ion-icon></span>
-                       <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="!car.like"><ion-icon name='heart' (click)="likeCar(i)"></ion-icon></span>
+                    <h1>{{car.Model}} {{car.Year}}
+                       <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(i)"></ion-icon></span>
+                       <!-- <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="!car.like"><ion-icon name='heart' (click)="likeCar(i)"></ion-icon></span> -->
                     </h1>
                     <h3>
-                      {{car.price}}BD
+                      {{car.Price}}BD
                     </h3>
                     <p>clean inside and outside</p>
                     <div>
@@ -151,6 +155,9 @@
 
   </div>
 
+
+  <!-- end container -->
+  
 <br><br><br>
   
 </ion-content>

@@ -19,8 +19,16 @@ interface Car{
 export class CarsPage implements OnInit {
   @ViewChild (IonContent , { static: true })
   content: any;
+  Cars:any[]=[];
   constructor(public router: Router,public CarsSrv:CarsService) { 
     CarsSrv.getFirst10Rows().then(res => console.log(res));
+
+    CarsSrv.getFirst10Rows().then((res)=>{
+      if(res){
+      this.Cars=res;
+      console.log(this.Cars);
+      }
+    });
   }
 
   ngOnInit() {
