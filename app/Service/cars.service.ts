@@ -17,7 +17,7 @@ export interface car {
   Sold_date:Date;
   Sold:boolean;
   accept:boolean;
-
+  index:number;
   Showrooms_id?:string;
   User_id?:string;
   Tell?:string;
@@ -71,11 +71,17 @@ export class CarsService {
 
 
     getFirst10Rows() {
-      return this.CarCollection.ref.orderBy('date').startAt(2).limit(3).get().then(collection => {
-        return        collection.docs.map(doc => doc.data()
+      return this.CarCollection.ref.orderBy('date').startAt(1).limit(3).get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
         );
       });
     }
+
+
+   
 
    
 

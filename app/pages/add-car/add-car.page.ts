@@ -47,9 +47,10 @@ export class AddCarPage implements OnInit {
   Login(val:any){
     if ( this.AddCarForm.valid && this.images.length>1 ){
       const now = new Date();
-
+      let i=-now;
       let car : car={...this.AddCarForm.value,
         date:now,
+        index:i,
         User_id:null,
         Sold_date:null,
         Sold:false,
