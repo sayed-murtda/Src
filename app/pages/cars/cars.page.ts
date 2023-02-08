@@ -186,7 +186,9 @@ export class CarsPage implements OnInit {
     
   }
 
-  go(i:any){
+  go(id:any){
+    this.CarsSrv.detail_ID = id;
+    console.log(this.CarsSrv.detail_ID);
     this.router.navigateByUrl('/view-detail')
   }
 

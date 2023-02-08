@@ -34,15 +34,15 @@
                 
 
             
-        </div>
+        </div> 
 
         <ion-item class="price">
             <ion-label>
-                <h1>3000BD
-                    <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline"></ion-icon></span>
-                </h1>
-                <h2>Hundai Sonata 2016 Limited</h2>
-                <h3> <ion-icon name="location-outline"></ion-icon> Hamad Town <span style="float: right;">2023/01/29</span> </h3>
+                <h1>{{CarsSrv.detail_ID.Price}}BD
+                    <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(CarsSrv.detail_ID.id)" *ngIf="!CarsSrv.fav_ID.includes(CarsSrv.detail_ID.id)"></ion-icon></span>
+                    <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name='heart' (click)="Unlike(CarsSrv.detail_ID.id)" *ngIf="CarsSrv.fav_ID.includes(CarsSrv.detail_ID.id)"></ion-icon></span>                </h1>
+                <h2>{{CarsSrv.detail_ID.Model}} {{CarsSrv.detail_ID.Year}}</h2>
+                <h3> <ion-icon name="location-outline"></ion-icon> Hamad Town <span style="float: right;">{{CarsSrv.detail_ID.date}}</span> </h3>
             </ion-label>          
         </ion-item>
         <br>
@@ -54,17 +54,15 @@
 
         <ion-item>
             <ion-label>
-                <h2>Brand: <span style="float: right;">Hundai</span></h2>
-                <h2>Model: <span style="float: right;">Sonata</span></h2>
-                <h2>Year: <span style="float: right;">2016</span></h2>
-                <h2>Killometers: <span style="float: right;">50000 to 59999</span></h2>
-                <h2>State: <span style="float: right;">Used</span></h2>
+                <h2>Brand: <span style="float: right;">{{CarsSrv.detail_ID.Brand}}</span></h2>
+                <h2>Model: <span style="float: right;">{{CarsSrv.detail_ID.Model}}</span></h2>
+                <h2>Year: <span style="float: right;">{{CarsSrv.detail_ID.Year}}</span></h2>
+                <h2>Killometers: <span style="float: right;">{{CarsSrv.detail_ID.KM}}</span></h2>
+                <h2>State: <span style="float: right;" *ngIf="!CarsSrv.detail_ID.New">Used</span><span style="float: right;" *ngIf="CarsSrv.detail_ID.New">New</span></h2>
 
                 <br>
                 <h1>Discription:</h1>
-                <h2>-Excellent Condition</h2>
-                <h2>-Agent Maintenance</h2>
-                <h2>-No Accidents</h2>
+                <h2>{{CarsSrv.detail_ID.Disc}}</h2>
             </ion-label>
         </ion-item>
 
