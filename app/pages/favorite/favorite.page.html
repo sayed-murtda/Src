@@ -5,91 +5,37 @@
 <div class="container">
 
 
-  <ion-grid class="box">
-    <ion-row>
-      <ion-col>
-        <ion-list>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img src='../assets/img/sonata2016.jpg' alt="">
-            </ion-thumbnail>
+  <div *ngFor="let car of Cars; let i=index;">
+<div *ngIf="CarsSrv.fav_ID.includes(car.id)">
+    <ion-grid class="box">
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img src='https://firebasestorage.googleapis.com/v0/b/cars-ad60a.appspot.com/o/cars%2F{{car.id}}1?alt=media' alt="">
+              </ion-thumbnail>
 
-            <ion-label>
-              <h1>Sonata 2016
-                 <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name='heart'></ion-icon></span>
-              </h1>
-              <h3>
-                3000BD
-              </h3>
-              <p>clean inside and outside</p>
-              <div>
-                <span style="float:right;">
-                <button id="btn">detail</button>
-                </span>
-              </div>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid class="box">
-    <ion-row>
-      <ion-col>
-        <ion-list>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img src='../assets/img/sonata2016.jpg' alt="">
-            </ion-thumbnail>
-
-            <ion-label>
-              <h1>Sonata 2016
-                 <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name='heart'></ion-icon></span>
-              </h1>
-              <h3>
-                3000BD
-              </h3>
-              <p>clean inside and outside</p>
-              <div>
-                <span style="float:right;">
-                <button id="btn">detail</button>
-                </span>
-              </div>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid class="box">
-    <ion-row>
-      <ion-col>
-        <ion-list>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img src='../assets/img/sonata2016.jpg' alt="">
-            </ion-thumbnail>
-
-            <ion-label>
-              <h1>Sonata 2016
-                 <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name='heart'></ion-icon></span>
-              </h1>
-              <h3>
-                3000BD
-              </h3>
-              <p>clean inside and outside</p>
-              <div>
-                <span style="float:right;">
-                <button id="btn">detail</button>
-                </span>
-              </div>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+              <ion-label>
+                <h1>{{car.Model}} {{car.Year}}
+                  <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="!car.like"><ion-icon name='heart' (click)="Unlike(car.id)" *ngIf="CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
+                </h1>
+                <h3>
+                  {{car.Price}}BD
+                </h3>
+                <p>clean inside and outside</p>
+                <div>
+                  <span style="float:right;">
+                  <button id="btn">detail</button>
+                  </span>
+                </div>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  </div>
 </div>
 </ion-content>
