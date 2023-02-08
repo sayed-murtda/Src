@@ -132,8 +132,8 @@
 
                   <ion-label>
                     <h1>{{car.Model}} {{car.Year}}
-                       <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(i)"></ion-icon></span>
-                       <!-- <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="!car.like"><ion-icon name='heart' (click)="likeCar(i)"></ion-icon></span> -->
+                       <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(car.id)" *ngIf="!CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
+                       <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="!car.like"><ion-icon name='heart' (click)="Unlike(car.id)" *ngIf="CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
                     </h1>
                     <h3>
                       {{car.Price}}BD

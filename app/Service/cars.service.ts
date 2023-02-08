@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { finalize } from 'rxjs/operators';
+import { Storage } from '@ionic/storage';
+
 
 export interface car {
   id?: string;
@@ -32,11 +34,46 @@ export class CarsService {
   private CarCollection: AngularFirestoreCollection<car>;
   public Cars:car[] = [];
   public loading:boolean=false;
+  fav_ID: any[]= [];
 
-
-  constructor(private  afs:  AngularFirestore, private db: AngularFireDatabase, private storage: AngularFireStorage) { 
+  constructor(private  afs:  AngularFirestore,
+              private db: AngularFireDatabase,
+              private storage: AngularFireStorage,
+              private store: Storage
+              )
+  { 
     this.CarCollection  =  this.afs.collection<car>('cars');
   }
+
+
+  // start localStorage part
+
+  Save_fav_ID(id:any){
+    this.fav_ID = this.fav_ID || [];
+    if(!this.fav_ID.includes(id)){
+      
+      this.fav_ID.push(id);
+      console.log(this.fav_ID);
+      this.store.set('fav_ID', this.fav_ID );
+    }
+
+    
+  }
+
+  save_unlike(){
+    this.fav_ID = this.fav_ID || [];
+    this.store.set('fav_ID', this.fav_ID );
+  }
+
+  Get_fav_ID(){
+    this.store.get('fav_ID').then( val => { this.fav_ID = val; });
+  }
+
+
+
+  // end localStorage part
+  
+  
 
 
 

@@ -21,6 +21,10 @@ export class CarsPage implements OnInit {
   content: any;
   Cars:any[]=[];
   constructor(public router: Router,public CarsSrv:CarsService) { 
+
+    CarsSrv.Get_fav_ID();
+
+
     CarsSrv.getFirst10Rows().then(res => console.log(res));
 
     CarsSrv.getFirst10Rows().then((res)=>{
@@ -148,11 +152,21 @@ export class CarsPage implements OnInit {
 
   ];
 
-  likeCar(i:any){
-    // console.log(i);
-    this.cars[i].like = !this.cars[i].like;
+  likeCar(id:any){
+    this.CarsSrv.Save_fav_ID(id);
 
   }
+
+  Unlike(id:any){
+
+   let i = this.CarsSrv.fav_ID.indexOf(id);
+   this.CarsSrv.fav_ID.splice(i,1);
+   this.CarsSrv.save_unlike();
+
+
+    
+  }
+
 
   display_filter(){
     this.content.scrollToTop(500);
