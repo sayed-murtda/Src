@@ -87,7 +87,11 @@ export class CarsService {
   }
 
   Get_fav_ID(){
-    this.store.get('fav_ID').then( val => { this.fav_ID = val; });
+    this.store.get('fav_ID').then( val => { 
+      if(val)
+      this.fav_ID = val;
+      
+    });
   }
 
 
