@@ -129,7 +129,7 @@ export class CarsService {
 
 
     getFirst10Rows() {
-      return this.CarCollection.ref.orderBy('date').startAt(1).limit(3).get().then(collection => {
+      return this.CarCollection.ref.orderBy('date').startAt(1).limit(5).get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a

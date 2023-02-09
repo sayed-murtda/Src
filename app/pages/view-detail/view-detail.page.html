@@ -16,11 +16,11 @@
         <div class="pic">
 
              <ion-slides pager>
-                    <ion-slide>
-                        <ion-img src='../assets/img/sonata2016.jpg'></ion-img>
+                    <ion-slide *ngFor="let x of num_of_img">
+                        <img src='https://firebasestorage.googleapis.com/v0/b/cars-ad60a.appspot.com/o/cars%2F{{CarsSrv.detail_ID.id}}{{x}}?alt=media' alt="">
                     </ion-slide>
                   
-                    <ion-slide>
+                    <!-- <ion-slide>
                         <ion-img src='../assets/img/sonata2016in.jpg'></ion-img>
 
                     </ion-slide>
@@ -28,7 +28,7 @@
                     <ion-slide>
                         <ion-img src='../assets/img/sonata2016bs.jpg'></ion-img>
 
-                    </ion-slide>
+                    </ion-slide> -->
                   
                   </ion-slides>
                 

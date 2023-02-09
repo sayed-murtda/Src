@@ -8,9 +8,14 @@ import { CarsService } from '../../Service/cars.service';
   styleUrls: ['./view-detail.page.scss'],
 }) 
 export class ViewDetailPage implements OnInit {
-
+  count = 0;
+  num_of_img :any[] = [];
   constructor(private navCtrl: NavController, public CarsSrv:CarsService) { 
-    
+    while(this.count<CarsSrv.detail_ID.Image_index){
+      this.count++;
+      this.num_of_img.push(this.count);
+      console.log(this.num_of_img.length);
+    }
     
   }
    
