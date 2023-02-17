@@ -19,6 +19,8 @@ export class AddCarPage implements OnInit {
   AddCarForm: FormGroup;
   imagesBlod :any[]=[];
   images:any[]=[];
+  brand:any[]=[];
+  brandindex=0;
   constructor(private navCtrl: NavController,
     private actionSheetCtrl: ActionSheetController,
     private alertController: AlertController,
@@ -26,6 +28,7 @@ export class AddCarPage implements OnInit {
     public translate: TranslateService,
     private CarSrv:CarsService
     ) {
+      this.brand=CarSrv.brand;
       this.AddCarForm = formbuilder.group({
         Price: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'), Validators.min(100), Validators.max(100000)])],
         Brand: ['', Validators.compose([Validators.required])],
@@ -36,9 +39,7 @@ export class AddCarPage implements OnInit {
         Disc: [''],
         Tell: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],
         WhatsApp: ['', Validators.compose([ Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],        
-        });
-
-        
+        });   
     }
 
   ngOnInit() {
@@ -46,10 +47,16 @@ export class AddCarPage implements OnInit {
 
   Login(val:any){
     if ( this.AddCarForm.valid && this.images.length>1 ){
-      const now = new Date();
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      let now = mm + '/' + dd + '/' + yyyy;
       let i=-now;
       let car : car={...this.AddCarForm.value,
-        date:now,
+        Brand:this.brand[this.AddCarForm.get('Brand')?.value].id,
+        Model:this.brand[this.AddCarForm.get('Brand')?.value].Models[this.AddCarForm.get('Model')?.value],
+        date:now.toString(),
         index:i,
         User_id:null,
         Sold_date:null,
@@ -57,6 +64,8 @@ export class AddCarPage implements OnInit {
         accept:false,
         Image_index:this.images.length
       }
+      console.log(car);
+      
       this.images.forEach((res:any) =>{
          this.fetchBlob(res.path).then((ress:any) =>  this.imagesBlod.push(ress))      } )
       

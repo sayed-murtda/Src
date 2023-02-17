@@ -25,7 +25,6 @@ export class CarsPage implements OnInit {
     CarsSrv.Get_fav_ID();
 
 
-    CarsSrv.getFirst10Rows().then(res => console.log(res));
 
     CarsSrv.getFirst10Rows().then((res)=>{
       if(res){

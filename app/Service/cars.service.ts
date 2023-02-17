@@ -33,6 +33,8 @@ export class CarsService {
 
   private CarCollection: AngularFirestoreCollection<car>;
   public Cars:car[] = [];
+  public brand:any[]=[];
+
   public loading:boolean=false;
   fav_ID: any[]= [];
   detail_ID:any = 
@@ -64,6 +66,7 @@ export class CarsService {
               )
   { 
     this.CarCollection  =  this.afs.collection<car>('cars');
+    this.getbrand().then((res)=> this.brand=res)
   }
 
 
@@ -133,7 +136,17 @@ export class CarsService {
 
 
     getFirst10Rows() {
-      return this.CarCollection.ref.orderBy('date').startAt(1).limit(5).get().then(collection => {
+      return this.CarCollection.ref.orderBy('date').startAt(1).limit(10).get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
+
+    getbrand() {
+      return this.afs.collection<any>('brand').ref.get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a

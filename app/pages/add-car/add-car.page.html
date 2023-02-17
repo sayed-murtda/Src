@@ -50,10 +50,8 @@
     <ion-list >
       <ion-item >
         <ion-label>{{'addcars.Brand'|translate}}:</ion-label> 
-        <ion-select     placeholder="Select Brand"  formControlName="Brand" >
-          <ion-select-option  value="Toyota">Toyota</ion-select-option>
-          <ion-select-option value="Lexus">Lexus</ion-select-option>
-          <ion-select-option value="Mazda">Mazda</ion-select-option>
+        <ion-select     placeholder="Select Brand"  formControlName="Brand"  >
+          <ion-select-option  *ngFor="let item of brand;let i =index;" value="{{i}}"> {{item.id}}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
@@ -61,10 +59,8 @@
     <ion-list >
       <ion-item >
         <ion-label>{{'addcars.Modle'|translate}}:</ion-label> 
-        <ion-select    placeholder="Select Model"  formControlName="Model">
-          <ion-select-option  value="apples">Camry</ion-select-option>
-          <ion-select-option value="oranges">Mazda 6</ion-select-option>
-          <ion-select-option value="bananas">Mazda 3</ion-select-option>
+        <ion-select    placeholder="Select Model"  formControlName="Model"   >
+          <ion-select-option *ngFor="let item of brand[this.AddCarForm.get('Brand')?.value]?.Models;let i =index;"  value="{{i}}">{{item}}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
@@ -105,7 +101,7 @@
       <ion-input type="tel" placeholder="WhatsApp number"  formControlName="WhatsApp"  minlength="8" ></ion-input>
     </ion-item>
 
-    <ion-button color="primary" expand="block" type="sub" >
+    <ion-button color="primary" expand="block" type="sub"     >
       {{'addcars.Send'|translate}} <ion-icon name="share-outline"></ion-icon>
     </ion-button>
 
