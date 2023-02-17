@@ -7,29 +7,18 @@
 .pic{
 
     .img{
-        background-color: aliceblue;
-        object-fit: cover;
-        // max-width: 100vw;
-        min-width:  95vw;
-        min-height: 45vh ;
-        max-height: 45vh;
-    }
-    ion-img{
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: aliceblue;
-        object-fit: fill;
-        width: fit-content;
-        // max-width: 95vw;
-        // min-width:  95vw;
+        object-fit:  cover;
+        max-width:  95vw;
         min-height: 45vh ;
         max-height: 45vh;
     }
 
+
+
     ion-slides{
-       
-        background-color: aqua;
         max-width: 100vw;
         max-height: 45vh ;
     }
