@@ -148,11 +148,8 @@ export class AddCarPage implements OnInit {
   
 
   async selectImage() {
-    let a:any=100;
-    //  a = window.prompt("sometext");
-    // alert(a);
+  
     const image = await Camera.getPhoto({
-      height:a,
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Uri,
@@ -166,11 +163,7 @@ export class AddCarPage implements OnInit {
 	}
 
   async selectImages() {
-    let a:any=100;
-    // let a = window.prompt("sometext");
-    // alert(a);
     var options:any={
-      height:a,
       correctOrientation:true,
       maximumImagesCount : 4,
       limit:4
