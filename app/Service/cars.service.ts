@@ -136,7 +136,7 @@ export class CarsService {
 
 
     getFirst10Rows() {
-      return this.CarCollection.ref.orderBy('index').limit(10).get().then(collection => {
+      return this.CarCollection.ref.orderBy('index').limit(3).get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a
@@ -146,7 +146,7 @@ export class CarsService {
     }
 
     getNextFirst10Rows(index:any) {
-      return this.CarCollection.ref.orderBy('index').limit(10).startAfter(index).get().then(collection => {
+      return this.CarCollection.ref.orderBy('index').limit(3).startAfter(index).get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a
