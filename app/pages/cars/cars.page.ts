@@ -1,16 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {IonContent} from '@ionic/angular'
-import { CarsService } from '../../Service/cars.service';
+import { car, CarsService } from '../../Service/cars.service';
 
-interface Car{
-  name: string;
-  price: number;
-  year: number;
-  img: string;
-  discription: string;
-  like: boolean;
-}
+
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.page.html',
@@ -30,6 +23,12 @@ export class CarsPage implements OnInit {
       if(res){
       this.Cars=res;
       console.log(this.Cars);
+      if(res[0].index)
+      CarsSrv.getNextFirst10Rows(res[2].index).then((res)=>{
+        if(res){
+        console.log(res);
+        }
+      });
       }
     });
   }
@@ -96,59 +95,7 @@ export class CarsPage implements OnInit {
 
 
 
-  cars: Car[] = [
-
-    {
-    name: 'Sonata',
-    price: 3000 ,
-    year:2016,
-    img: 'sonata2016.jpg',
-    discription:'nice',
-    like: true
-    },
-
-    {
-      name: 'Sonata',
-      price: 3000 ,
-      year:2016,
-      img: 'sonata2016.jpg',
-      discription:'nice',
-      like: true
-    },
-
-    {
-        name: 'Sonata',
-        price: 3000 ,
-        year:2016,
-        img: 'sonata2016.jpg',
-        discription:'nice',
-        like: true
-    },
-    {
-      name: 'Sonata',
-      price: 3000 ,
-      year:2016,
-      img: 'sonata2016.jpg',
-      discription:'nice',
-      like: true
-  },
-  {
-    name: 'Sonata',
-    price: 3000 ,
-    year:2016,
-    img: 'sonata2016.jpg',
-    discription:'nice',
-    like: true
-},
-{
-  name: 'Sonata',
-  price: 3000 ,
-  year:2016,
-  img: 'sonata2016.jpg',
-  discription:'nice',
-  like: true
-},
-
+  cars: car[] = [
   ];
 
   likeCar(id:any){
