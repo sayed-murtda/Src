@@ -4,9 +4,6 @@
 
 <ion-card *ngIf="CarsSrv.loading" class="loadingcard" >
 
-  
-   
-
     <div class="load">
 
       <div class="loadtext">
@@ -18,16 +15,15 @@
        </div>
       </div>
 
- 
-
 </ion-card>
 
   
-
-
   <ion-button (click)="display_filter()"> <span *ngIf="!filter">{{'cars.filter' |translate}}</span> <span *ngIf="filter">{{'cars.close' |translate}}</span>  </ion-button>
 <ion-content [scrollEvents]="true">
 
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   
 
     <ion-card *ngIf="filter">
@@ -55,10 +51,10 @@
       </ion-item>
 
       <ion-item>
-        <ion-checkbox slot="start" [(ngModel)]="new" (ionChange)="new_Cars()"></ion-checkbox>
+        <ion-checkbox slot="start" [(ngModel)]="new"></ion-checkbox>
         <ion-label>New</ion-label>
 
-        <ion-checkbox  (ionChange)="old_Cars()"></ion-checkbox>
+        <ion-checkbox></ion-checkbox>
         <ion-label>Used</ion-label>
       </ion-item>
 
@@ -110,14 +106,7 @@
 
         <ion-card *ngIf="(i)%5==0 && i!=0 && Available_adv">
           <ion-item >
-
-            
-              <img class="advertisement" src='../assets/img/advr.jpg' alt="">
-              <img class="advertisement" src='../assets/img/advr.jpg' alt="">
-              <img class="advertisement" src='../assets/img/advr.jpg' alt="">
-              <img class="advertisement" src='../assets/img/advr.jpg' alt="">
-              <img class="advertisement" src='../assets/img/advr.jpg' alt="">
-
+              <ion-img class="advertisement" src='../assets/img/advr.jpg'></ion-img>
           </ion-item>
         </ion-card>
 

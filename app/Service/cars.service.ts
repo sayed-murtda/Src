@@ -37,27 +37,7 @@ export class CarsService {
 
   public loading:boolean=false;
   fav_ID: any[]= [];
-  detail_ID:any = 
-    {
-      id : ' ',
-      Price :'',
-      Brand: '',
-      Model: '',
-      Year:'',
-      KM: '',
-      New: '',
-      Disc:'',
-      date:'',
-      Sold_date:'',
-      Sold:'',
-      accept:'',
-      index: '',
-      Showrooms_id :'',
-      User_id :'',
-      Tell : '',
-      WhatsApp : '',
-      Image_index: '',
-    };
+  detail_ID:any;
 
   constructor(private  afs:  AngularFirestore,
               private db: AngularFireDatabase,

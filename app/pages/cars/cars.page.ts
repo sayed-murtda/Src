@@ -138,48 +138,29 @@ export class CarsPage implements OnInit {
     this.router.navigateByUrl('/view-detail')
   }
 
-  new_Cars(){
-
-  }
-
-  old_Cars(){
-
-  }
-
-  index:any = 10;
 
   loadData(event:any){
-    console.log(event);
-    this.CarsSrv.getNextFirst10Rows(this.index).then((res)=>{
+    console.log(this.Cars[this.Cars.length-1].index);
+    this.CarsSrv.getNextFirst10Rows(this.Cars[this.Cars.length-1].index).then((res)=>{
       if(res){
         this.Cars.push(...res);
       }
     });
-    this.index+=3;
+    
     event.target.complete();
 
-    if(this.index > 20){
-      event.target.disabled = true;
-    }
-    
-    
-
-
-
-    // CarsSrv.getFirst10Rows().then((res)=>{
-    //   if(res){
-    //   this.Cars=res;
-    //   console.log(this.Cars);
-    //   if(res[0].index)
-    //   CarsSrv.getNextFirst10Rows(res[2].index).then((res)=>{
-    //     if(res){
-    //     console.log(res);
-    //     }
-    //   });
-    //   }
-    // });
-
   }
+
+  handleRefresh(event:any) {
+
+   this.CarsSrv.getFirst10Rows().then((res)=>{
+      if(res){
+      this.Cars=res;
+      console.log(this.Cars);  
+      event.target.complete();
+      }
+    });
+  };
 
 
 }
