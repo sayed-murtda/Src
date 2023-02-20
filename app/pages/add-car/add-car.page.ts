@@ -51,13 +51,14 @@ export class AddCarPage implements OnInit {
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
       var yyyy = today.getFullYear();
-      let now = mm + '/' + dd + '/' + yyyy;
-      let i=-now;
+      let now =  dd + '/' + mm + '/' + yyyy;
+      let i=mm + '/' + dd + '/' + yyyy;
+      let index:number=99999999-parseInt(yyyy+mm+dd);
       let car : car={...this.AddCarForm.value,
         Brand:this.brand[this.AddCarForm.get('Brand')?.value].id,
         Model:this.brand[this.AddCarForm.get('Brand')?.value].Models[this.AddCarForm.get('Model')?.value],
         date:now.toString(),
-        index:i,
+        index:index,
         User_id:null,
         Sold_date:null,
         Sold:false,
