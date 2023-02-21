@@ -17,12 +17,11 @@
             </ion-segment-button>
         </ion-segment>
 
-    </ion-card>
 
 
-    <div [ngSwitch]="sign">
-        <ion-list *ngSwitchCase="'signin'">
-            <ion-card-content>
+
+        <div [ngSwitch]="sign">
+            <ion-card-content *ngSwitchCase="'signin'">
                 <div class="wrapform">
                     <ion-item>
                         <ion-icon name="mail-outline"></ion-icon>
@@ -50,45 +49,45 @@
                     </ion-button>
                 </div>
             </ion-card-content>
-        </ion-list>
-    </div>
-    <div [ngSwitch]="sign">
-        <ion-card-content *ngSwitchCase="'signup'">
-            <div class="wrapform">
-                <ion-list>
-                    <ion-item>
-                        <ion-label>{{'Profile.name' | translate}}:</ion-label>
-                        <ion-input color="dark" slot="end"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>{{'Profile.username' | translate}}:</ion-label>
-                        <ion-input color="dark" slot="end"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>{{'Profile.email' | translate}}:</ion-label>
-                        <ion-input color="dark" slot="end"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>{{'Profile.password' | translate}}:</ion-label>
-                        <ion-input color="dark" type="password" slot="end"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>{{'Profile.gender' | translate}}:</ion-label>
-                        <ion-select slot="end" placeholder="Gender">
-                            <ion-select-option value="Male">Male</ion-select-option>
-                            <ion-select-option value="Female">Female</ion-select-option>
-                        </ion-select>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>{{'Profile.phone' | translate}}:</ion-label>
-                        <ion-input color="dark" slot="end"></ion-input>
-                    </ion-item>
-                    <div class="sign-btn-wrap">
-                        <ion-button shape="round" fill="solid" class="sign-btn">{{'Sign.signup' | translate}}</ion-button>
-                    </div>
+        </div>
+        <div [ngSwitch]="sign">
+            <ion-card-content *ngSwitchCase="'signup'">
+                <div class="wrapform">
+                    <ion-list>
+                        <ion-item>
+                            <ion-label>{{'Profile.name' | translate}}:</ion-label>
+                            <ion-input color="dark" slot="end"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>{{'Profile.username' | translate}}:</ion-label>
+                            <ion-input color="dark" slot="end"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>{{'Profile.email' | translate}}:</ion-label>
+                            <ion-input color="dark" slot="end"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>{{'Profile.password' | translate}}:</ion-label>
+                            <ion-input color="dark" type="password" slot="end"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>{{'Profile.gender' | translate}}:</ion-label>
+                            <ion-select slot="end" placeholder="Gender">
+                                <ion-select-option value="Male">Male</ion-select-option>
+                                <ion-select-option value="Female">Female</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>{{'Profile.phone' | translate}}:</ion-label>
+                            <ion-input color="dark" slot="end"></ion-input>
+                        </ion-item>
+                        <div class="sign-btn-wrap">
+                            <ion-button shape="round" fill="solid" class="sign-btn">{{'Sign.signup' | translate}}</ion-button>
+                        </div>
 
-                </ion-list>
-            </div>
-        </ion-card-content>
-    </div>
+                    </ion-list>
+                </div>
+            </ion-card-content>
+        </div>
+    </ion-card>
 </ion-content>
