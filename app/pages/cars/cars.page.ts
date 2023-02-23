@@ -51,6 +51,15 @@ export class CarsPage implements OnInit {
 
   car_models_display: any[] = [];
 
+  All_Cars: any[] = [
+                    {brand: "Toyota", models: ["4Runner", "86", "Aurion", "Avalon", "Avensis", "Camry", "Celica", "Corolla", "Cressida", "Crown", "Echo", "FJ Cruser", "Fortuner", "Hiace", "Highlander", "Hillux", "IQ", "Innova", "Land Cruiser", "Land Cruiser 76", "Other", "Prado", "Prius", "Rav 4", "Scion", "Sequoia", "Starlet", "Supra", "Tacoma", "Tercel","Tundra", "XA", "Yaris","Zelas", "Avanza"]},
+                    {brand: "Nissan", models: ["300ZX", "350Z", "370Z", "Altima", "Armada", "Bluebird", "Datsun", "GT-R", "Golria", "Juke", "Livina", "March", "Maxima", "Micra", "Murano", "Navana", "Pathfinder", "Patrol", "Qashqai", "S130", "Sentra", "Skyline", "Sunny", "Terrano", "Tiida", "Titan", "Van", "X-Trail", "Xterra"]},
+                    {brand: "Hyundai", models: ["Accent", "Atos", "Avanti","Azera","Centennial", "Coupe", "Elantra","Entourage","Excel", "Galloper", "Genesis", "Getz", "Grandeur","H1", "H100","i10", "i20", "i30","Matrix","Other","Peny", "Santa Fe","Santamo", "Sonata", "Terracan","Tiburon", "Trajet", "Tucson", "Veloster","Velacruz","Verna","Viva"]},
+                    {brand: "Lexus", models: ["CT-Series","ES-Series", "GS-Series","GX-Series", "IS-Series","LS-Series", "LX-Series","Other","RX-Series","SC-Series"]},
+                    {brand: "Honda", models: ["Accord","CR-V","CR-X","City", "Civic","Element","HR-V","Jazz", "Legend","MIR-V","Odyssey","Other","Pickup","Pilot", "Prelude","S2000","Van"]},
+
+                    ];
+
   cars_info: any[] = [   
                         {brand: "Seat", models: ["Alhambra", "Altea", "Altea XL", "Arosa", "Cordoba", "Cordoba Vario", "Exeo", "Ibiza", "Ibiza ST", "Exeo ST", "Leon", "Leon ST", "Inca", "Mii", "Toledo"]},
                         {brand: "Renault", models: ["Captur", "Clio", "Clio Grandtour", "Espace", "Express", "Fluence", "Grand Espace", "Grand Modus", "Grand Scenic", "Kadjar", "Kangoo", "Kangoo Express", "Koleos", "Laguna", "Laguna Grandtour", "Latitude", "Mascott", "Mégane", "Mégane CC", "Mégane Combi", "Mégane Grandtour", "Mégane Coupé", "Mégane Scénic", "Scénic", "Talisman", "Talisman Grandtour", "Thalia", "Twingo", "Wind", "Zoé"]},
