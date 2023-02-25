@@ -51,7 +51,9 @@ export class CarsPage implements OnInit {
 
   car_models_display: any[] = [];
 
-  All_Cars: any[] = [
+
+// our cars list 
+  cars_info: any[] = [
                     {brand: "Toyota", models: ["4Runner", "86", "Aurion", "Avalon", "Avensis", "Camry", "Celica", "Corolla", "Cressida", "Crown", "Echo", "FJ Cruser", "Fortuner", "Hiace", "Highlander", "Hillux", "IQ", "Innova", "Land Cruiser", "Land Cruiser 76", "Other", "Prado", "Prius", "Rav 4", "Scion", "Sequoia", "Starlet", "Supra", "Tacoma", "Tercel","Tundra", "XA", "Yaris","Zelas", "Avanza"]},
                     {brand: "Nissan", models: ["300ZX", "350Z", "370Z", "Altima", "Armada", "Bluebird", "Datsun", "GT-R", "Golria", "Juke", "Livina", "March", "Maxima", "Micra", "Murano", "Navana", "Pathfinder", "Patrol", "Qashqai", "S130", "Sentra", "Skyline", "Sunny", "Terrano", "Tiida", "Titan", "Van", "X-Trail", "Xterra"]},
                     {brand: "Hyundai", models: ["Accent", "Atos", "Avanti","Azera","Centennial", "Coupe", "Elantra","Entourage","Excel", "Galloper", "Genesis", "Getz", "Grandeur","H1", "H100","i10", "i20", "i30","Matrix","Other","Peny", "Santa Fe","Santamo", "Sonata", "Terracan","Tiburon", "Trajet", "Tucson", "Veloster","Velacruz","Verna","Viva"]},
@@ -103,7 +105,7 @@ export class CarsPage implements OnInit {
                     {brand: "Sepranza", models: ["A11", "A113", "A213", "A516", "A620", "M11", "Triggo"]},
                     ];
 
-  cars_info: any[] = [   
+  All_Cars: any[] = [   
                         // {brand: "Seat", models: ["Alhambra", "Altea", "Altea XL", "Arosa", "Cordoba", "Cordoba Vario", "Exeo", "Ibiza", "Ibiza ST", "Exeo ST", "Leon", "Leon ST", "Inca", "Mii", "Toledo"]},
                         // {brand: "Renault", models: ["Captur", "Clio", "Clio Grandtour", "Espace", "Express", "Fluence", "Grand Espace", "Grand Modus", "Grand Scenic", "Kadjar", "Kangoo", "Kangoo Express", "Koleos", "Laguna", "Laguna Grandtour", "Latitude", "Mascott", "Mégane", "Mégane CC", "Mégane Combi", "Mégane Grandtour", "Mégane Coupé", "Mégane Scénic", "Scénic", "Talisman", "Talisman Grandtour", "Thalia", "Twingo", "Wind", "Zoé"]},
                         // {brand: "Peugeot", models: ["1007", "107", "106", "108", "2008", "205", "205 Cabrio", "206", "206 CC", "206 SW", "207", "207 CC", "207 SW", "306", "307", "307 CC", "307 SW", "308", "308 CC", "308 SW", "309", "4007", "4008", "405", "406", "407", "407 SW", "5008", "508", "508 SW", "605", "806", "607", "807", "Bipper", "RCZ"]},
