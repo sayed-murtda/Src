@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="social-btns">
-                    <ion-button fill="clear" class="googlebtn ion-no-padding">
+                    <ion-button (click)="signup(email,password)" fill="clear" class="googlebtn ion-no-padding">
                         <ion-img src="../../../assets/img/google.png"></ion-img>
                     </ion-button>
                 </div>
@@ -82,7 +82,7 @@
                             <ion-input color="dark" slot="end"></ion-input>
                         </ion-item>
                         <div class="sign-btn-wrap">
-                            <ion-button shape="round" fill="solid" class="sign-btn">{{'Sign.signup' | translate}}</ion-button>
+                            <ion-button (click)="signup(email,password)" shape="round" fill="solid" class="sign-btn">{{'Sign.signup' | translate}}</ion-button>
                         </div>
 
                     </ion-list>
