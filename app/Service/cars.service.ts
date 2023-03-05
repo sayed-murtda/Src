@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { finalize } from 'rxjs/operators';
@@ -34,6 +34,7 @@ export class CarsService {
   private CarCollection: AngularFirestoreCollection<car>;
   public Cars:car[] = [];
   public brand:any[]=[];
+  private CarBrands: AngularFirestoreCollection<any>;
 
   public loading:boolean=false;
   fav_ID: any[]= [];
@@ -44,7 +45,8 @@ export class CarsService {
               private storage: AngularFireStorage,
               private store: Storage
               )
-  { 
+  {
+    this.CarBrands  =  this.afs.collection<any>('brand');
     this.CarCollection  =  this.afs.collection<car>('cars');
     this.getbrand().then((res)=> this.brand=res)
   }
@@ -144,6 +146,13 @@ export class CarsService {
         );
       });
     }
+
+
+    updateCars(id: any ,Cars:any) {
+      return  this.CarBrands.doc(id).set(Cars);
+    }
+
+      
 
 
    

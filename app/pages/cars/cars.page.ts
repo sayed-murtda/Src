@@ -16,7 +16,7 @@ export class CarsPage implements OnInit {
   constructor(public router: Router,public CarsSrv:CarsService) { 
 
     CarsSrv.Get_fav_ID();
-
+    // this.upload_Cars();
 
 
     CarsSrv.getFirst10Rows().then((res)=>{
@@ -46,13 +46,25 @@ export class CarsPage implements OnInit {
   end_budget:any;
   display_models = false;
   display_cars = false;
-
-
+  temp: any[] = [];
+  id: any = 'Toyota';
 
   car_models_display: any[] = [];
 
 
 // our cars list 
+
+  upload_Cars(){
+    this.cars_info.forEach(element => {
+      this.temp = [];
+      element.models.forEach((car: any) =>{
+        this.temp.push(car);
+      });
+       this.CarsSrv.updateCars(element.brand , element);
+    });
+    
+  }
+
   cars_info: any[] = [
                     {brand: "Toyota", models: ["4Runner", "86", "Aurion", "Avalon", "Avensis", "Camry", "Celica", "Corolla", "Cressida", "Crown", "Echo", "FJ Cruser", "Fortuner", "Hiace", "Highlander", "Hillux", "IQ", "Innova", "Land Cruiser", "Land Cruiser 76", "Other", "Prado", "Prius", "Rav 4", "Scion", "Sequoia", "Starlet", "Supra", "Tacoma", "Tercel","Tundra", "XA", "Yaris","Zelas", "Avanza"]},
                     {brand: "Nissan", models: ["300ZX", "350Z", "370Z", "Altima", "Armada", "Bluebird", "Datsun", "GT-R", "Golria", "Juke", "Livina", "March", "Maxima", "Micra", "Murano", "Navana", "Pathfinder", "Patrol", "Qashqai", "S130", "Sentra", "Skyline", "Sunny", "Terrano", "Tiida", "Titan", "Van", "X-Trail", "Xterra"]},
