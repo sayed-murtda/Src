@@ -60,7 +60,7 @@
       <ion-item >
         <ion-label>{{'addcars.Modle'|translate}}:</ion-label> 
         <ion-select    placeholder="Select Model"  formControlName="Model"   >
-          <ion-select-option *ngFor="let item of brand[this.AddCarForm.get('Brand')?.value]?.models;let i =index;"  value="{{i}}">{{item}}</ion-select-option>
+          <ion-select-option *ngFor="let item of brand[this.AddCarForm.get('Brand')?.value]?.Models;let i =index;"  value="{{i}}">{{item}}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
