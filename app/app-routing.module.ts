@@ -22,6 +22,11 @@ const routes: Routes = [
     path: 'add-showroom',
     loadChildren: () => import('./pages/add-showroom/add-showroom.module').then( m => m.AddShowroomPageModule)
   },
+  {
+    path: 'a-home',
+    loadChildren: () => import('./admin/a-home/a-home.module').then( m => m.AHomePageModule)
+  },
+
 
 
 
