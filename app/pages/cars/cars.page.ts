@@ -29,22 +29,27 @@ export class CarsPage implements OnInit {
 
   ngOnInit() {
   }
-  new= false;
-  old= false;
+  new= false; //
+  old= false; //
   Available_adv = true;
   filter = false;
-  car_selected_brand: any;
-  first_year:any;
-  last_year: any;
-  start_budget:any;
-  end_budget:any;
+  car_selected_brand: any; //
+  first_year:any; //
+  last_year: any; //
+  start_budget:any; //
+  end_budget:any; //
   display_models = false;
   display_cars = false;
   temp: any[] = [];
   id: any = 'Toyota';
 
   car_models_display: any[] = [];
+  
 
+  filter_cars(){
+    
+    this.CarsSrv.filter_cars();
+  }
 
 // our cars list 
 
@@ -184,7 +189,8 @@ export class CarsPage implements OnInit {
     this.car_models_display = [];
     for(var i = 0; i < this.cars_info.length; i++){
       if(this.cars_info[i].brand == this.car_selected_brand){
-        this.car_models_display = this.cars_info[i].models;
+        console.log(this.cars_info[i].Models);
+        this.car_models_display = this.cars_info[i].Models;
         console.log(this.car_models_display);
       }
     }

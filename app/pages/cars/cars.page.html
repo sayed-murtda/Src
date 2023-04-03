@@ -54,7 +54,7 @@
         <ion-checkbox slot="start" [(ngModel)]="new"></ion-checkbox>
         <ion-label>New</ion-label>
 
-        <ion-checkbox></ion-checkbox>
+        <ion-checkbox [(ngModel)]="old"></ion-checkbox>
         <ion-label>Used</ion-label>
       </ion-item>
 
@@ -88,7 +88,7 @@
 
     <div align="center">
 
-      <ion-button fill="outline">Filter</ion-button>
+      <ion-button fill="outline" (click)="filter_cars()">Filter</ion-button>
       
     </div>
       

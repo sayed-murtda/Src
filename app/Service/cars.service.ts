@@ -116,9 +116,11 @@ export class CarsService {
     }
 
 
+    Hyundai = 'Hyundai';
+    model = 'Sonata';
 
     getFirst10Rows() {
-      return this.CarCollection.ref.orderBy('index').limit(5).get().then(collection => {
+      return this.CarCollection.ref.limit(5).get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a
@@ -126,6 +128,128 @@ export class CarsService {
         );
       });
     }
+
+    filter_Brand_Price_NewOld() {
+      return this.CarCollection.ref.where("Brand" ,"==", this.filter_brand)
+                                   .where("Price" ,">=", this.filter_first_price)
+                                   .where("Price" ,"<=", this.filter_last_price)
+                                   .where("New" ,"==", this.filter_new_or_old)
+                                   .get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
+
+    filter_everything() {
+      return this.CarCollection.ref.where("Price" ,">=", this.filter_first_price)
+                                   .where("Price" ,"<=", this.filter_last_price)
+                                   .get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
+
+    filter_first_price = 0; // alwayes search
+    filter_last_price = 9999999; // alwayes search
+    filter_first_year = 0;
+    filter_last_year= 2100;
+    filter_brand: any;
+    filter_model: any;
+    filter_new_or_old: any;
+    
+
+    filter_cars(last_year?:any,first_year?:any,start_price?:any, end_price?:any, New?:any, Old?:any, brand?:any, model?:any) {
+      
+      var check_first_y = false; // to know if we searched about last year
+      var check_last_y = false; // to know if we searched about first year
+      var new_check = false; 
+      var old_check = false;
+      var model_check = false;
+
+      if(last_year){
+        this.filter_last_year = last_year;
+        check_last_y = true;
+      }
+        
+
+      if(first_year){
+        this.filter_first_year = first_year;
+        check_first_y = true;
+      }
+      
+      if(start_price) // alwayes search
+      this.filter_first_price = start_price;
+
+      if(end_price) // alwayes search
+      this.filter_last_price = end_price;
+
+      if(New){
+        this.filter_new_or_old = 'New';
+        new_check = true;
+      }
+      
+      if(Old){
+        this.filter_new_or_old = 'Used';
+        old_check = true;
+      }
+      
+      if(brand)
+      this.filter_brand = brand;
+
+      if(model){
+        this.filter_model = model;
+        model_check = true;
+      }
+      
+
+
+
+      // ------------------------------------------------------
+
+
+      if(brand){
+        this.filter_Brand_Price_NewOld();
+      } 
+      else if(brand && model && Old){
+
+        this.filter_brand = brand;
+        this.filter_model = model;
+        this.filter_new_or_old = 'Used';
+
+        return this.CarCollection.ref.limit(5).where("Brand" ,"==", this.filter_brand)
+                                              .where("Model" ,"==", this.model)
+                                              .where("Price" ,">=", this.filter_first_price)
+                                              .where("Price" ,"<=", this.filter_last_price)
+                                              .where("Year" ,">=", this.filter_first_year)
+                                              .where("Year" ,"<=", this.filter_last_year)
+                                              .where("New" ,"==", this.filter_new_or_old)
+                                              .get().then(collection => {
+          return   collection.docs.map(doc =>{
+            let a = {id: doc.id ,...doc.data()}
+            return a
+          } 
+          );
+        });
+      } // ------------------------------------------------------------------------------------------------
+
+
+      
+      return this.CarCollection.ref.limit(5).where("Brand" ,"==", this.Hyundai).get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
+
+
 
     getNextFirst10Rows(index:any) {
       return this.CarCollection.ref.orderBy('index').limit(5).startAfter(index).get().then(collection => {
