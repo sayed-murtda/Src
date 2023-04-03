@@ -29,15 +29,19 @@ export class CarsPage implements OnInit {
 
   ngOnInit() {
   }
-  new= false; //
-  old= false; //
+
   Available_adv = true;
   filter = false;
-  car_selected_brand: any; //
+
   first_year:any; //
   last_year: any; //
   start_budget:any; //
   end_budget:any; //
+  new= false; //
+  old= false; //
+  car_selected_brand: any; //
+
+
   display_models = false;
   display_cars = false;
   temp: any[] = [];
@@ -47,8 +51,8 @@ export class CarsPage implements OnInit {
   
 
   filter_cars(){
-    
     this.CarsSrv.filter_cars();
+
   }
 
 // our cars list 
