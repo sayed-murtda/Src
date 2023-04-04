@@ -7,7 +7,7 @@ import { car, CarsService } from '../../Service/cars.service';
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.page.html',
-  styleUrls: ['./cars.page.scss'],
+  styleUrls: ['./cars.page.scss'], 
 })
 export class CarsPage implements OnInit {
   @ViewChild (IonContent , { static: true })
@@ -30,17 +30,20 @@ export class CarsPage implements OnInit {
   ngOnInit() {
   }
 
+  show_filter = false;
   Available_adv = true;
   filter = false;
+  new= false; // 
+  old= false; //
 
   first_year:any; //
   last_year: any; //
-  start_budget:any; //
-  end_budget:any; //
-  new= false; //
-  old= false; //
-  car_selected_brand: any; //
-
+  start_budget:any; // got it
+  end_budget:any; // got it
+  New_cars:any; // 
+  Old_cars:any; // 
+  car_selected_brand: any; // got it
+  choosed_filter_cars: any[] = []; // models
 
   display_models = false;
   display_cars = false;
@@ -50,8 +53,26 @@ export class CarsPage implements OnInit {
   car_models_display: any[] = [];
   
 
+  add_filter_car(car:any){
+    var add = true;
+    for(var i=0; i<this.choosed_filter_cars.length; i++){
+      if(this.choosed_filter_cars[i]== car){
+        this.choosed_filter_cars.splice(i, 1);
+        add = false;
+      }
+    }
+    if(add){
+      this.choosed_filter_cars.push(car);
+    }
+  }
+  
+
   filter_cars(){
-    this.CarsSrv.filter_cars();
+    this.CarsSrv.filter_cars(this.first_year, this.last_year, this.start_budget, this.end_budget,
+                             this.New_cars, this.Old_cars,this.car_selected_brand,
+                             this.choosed_filter_cars);
+    
+    this.show_filter = true;
 
   }
 
@@ -190,6 +211,7 @@ export class CarsPage implements OnInit {
   }
 
   viewCars(){
+    this.choosed_filter_cars = [];
     this.car_models_display = [];
     for(var i = 0; i < this.cars_info.length; i++){
       if(this.cars_info[i].brand == this.car_selected_brand){

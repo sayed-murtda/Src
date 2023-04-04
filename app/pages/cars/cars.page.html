@@ -1,6 +1,6 @@
 <app-headerpage title="{{'title.cars'|translate}}" >
 
-</app-headerpage>
+</app-headerpage> 
 
 <ion-card *ngIf="CarsSrv.loading" class="loadingcard" >
 
@@ -51,10 +51,10 @@
       </ion-item>
 
       <ion-item>
-        <ion-checkbox slot="start" [(ngModel)]="new"></ion-checkbox>
+        <ion-checkbox slot="start" [(ngModel)]="new" [(ngModel)]="New_cars"></ion-checkbox>
         <ion-label>New</ion-label>
 
-        <ion-checkbox [(ngModel)]="old"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="old" [(ngModel)]="Old_cars"></ion-checkbox>
         <ion-label>Used</ion-label>
       </ion-item>
 
@@ -64,7 +64,7 @@
         <ion-list>
           <ion-item>
             <ion-select [(ngModel)]="car_selected_brand"  (ionChange)="viewCars()">
-              <ion-select-option *ngFor="let car of cars_info" value= {{car.brand}}>{{car.brand}}</ion-select-option>
+              <ion-select-option *ngFor="let car of cars_info" value= {{car.brand}} >{{car.brand}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
@@ -79,7 +79,7 @@
       </ion-item>
             <div *ngFor="let car of car_models_display">
           <ion-item>
-            <ion-checkbox slot="start" value="{{car}}"></ion-checkbox>
+            <ion-checkbox slot="start" value="{{car}}" (ionChange)="add_filter_car(car)"></ion-checkbox>
             <ion-label>{{car}}</ion-label>
           </ion-item>
           </div>
@@ -102,50 +102,96 @@
 
     <div class="container">
 
-      <div *ngFor="let car of Cars; let i=index;">
 
-        <ion-card *ngIf="(i)%5==0 && i!=0 && Available_adv">
-          <ion-item >
-              <ion-img class="advertisement" src='../assets/img/advr.jpg'></ion-img>
-          </ion-item>
-        </ion-card>
 
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-list>
-                <ion-item>
-                  <ion-thumbnail slot="start">
-                    <img src='https://firebasestorage.googleapis.com/v0/b/cars-ad60a.appspot.com/o/cars%2F{{car.id}}1?alt=media' alt="">
-                  </ion-thumbnail>
+        <div *ngIf="show_filter">
 
-                  <ion-label>
-                    <h1>{{car.Model}} {{car.Year}}
-                       <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(car.id)" *ngIf="!CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
-                       <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="!car.like"><ion-icon name='heart' (click)="Unlike(car.id)" *ngIf="CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
-                    </h1>
-                    <h3>
-                      {{car.Price}}BD
-                    </h3>
-                    <p>clean inside and outside</p>
-                    <div>
-                      <span style="float:right;">
-                      <button id="btn"  (click)="go(car)">detail</button>
-                      </span>
-                    </div>
-                  </ion-label>
-                </ion-item>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-
-      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-        <ion-infinite-scroll-content>
+          <div *ngFor="let car of this.CarsSrv.filter; let i=index;">    
+    
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-list>
+                    <ion-item>
+                      <ion-thumbnail slot="start">
+                        <img src='https://firebasestorage.googleapis.com/v0/b/cars-ad60a.appspot.com/o/cars%2F{{car.id}}1?alt=media' alt="">
+                      </ion-thumbnail>
+    
+                      <ion-label>
+                        <h1>{{car.Model}} {{car.Year}}
+                           <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(car.id)" *ngIf="!CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
+                           <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="!car.like"><ion-icon name='heart' (click)="Unlike(car.id)" *ngIf="CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
+                        </h1>
+                        <h3>
+                          {{car.Price}}BD
+                        </h3>
+                        <p>clean inside and outside</p>
+                        <div>
+                          <span style="float:right;">
+                          <button id="btn"  (click)="go(car)">detail</button>
+                          </span>
+                        </div>
+                      </ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
           
-        </ion-infinite-scroll-content>
-      </ion-infinite-scroll>
+         </div> <!-- end filter show -->
+
+
+         <div *ngIf="!show_filter">
+          <div *ngFor="let car of Cars; let i=index;">
+
+                  <ion-card *ngIf="(i)%5==0 && i!=0 && Available_adv">
+                    <ion-item >
+                        <ion-img class="advertisement" src='../assets/img/advr.jpg'></ion-img>
+                    </ion-item>
+                  </ion-card>
+
+
+
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <ion-list>
+                          <ion-item>
+                            <ion-thumbnail slot="start">
+                              <img src='https://firebasestorage.googleapis.com/v0/b/cars-ad60a.appspot.com/o/cars%2F{{car.id}}1?alt=media' alt="">
+                            </ion-thumbnail>
+
+                            <ion-label>
+                              <h1>{{car.Model}} {{car.Year}}
+                                <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(car.id)" *ngIf="!CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
+                                <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="!car.like"><ion-icon name='heart' (click)="Unlike(car.id)" *ngIf="CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
+                              </h1>
+                              <h3>
+                                {{car.Price}}BD
+                              </h3>
+                              <p>clean inside and outside</p>
+                              <div>
+                                <span style="float:right;">
+                                <button id="btn"  (click)="go(car)">detail</button>
+                                </span>
+                              </div>
+                            </ion-label>
+                          </ion-item>
+                        </ion-list>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+
+                <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+                  <ion-infinite-scroll-content>
+                    
+                  </ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+         </div>
+
+      
     
 
   </div>

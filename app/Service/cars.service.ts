@@ -190,8 +190,9 @@ export class CarsService {
     filter_new_or_old: any;
 
     filter: any[] = []; 
+    key = false;
 
-    filter_cars(last_year?:any,first_year?:any,start_price?:any, end_price?:any, New?:any, Old?:any, brand?:any, model?:any) {
+   filter_cars(first_year?:any,last_year?:any,start_price?:any, end_price?:any, New?:any, Old?:any, brand?:any, model?:any) {
       
       this.filter= []; 
 
@@ -201,22 +202,29 @@ export class CarsService {
       var old_check = false;
       var model_check = false;
 
-      if(last_year){
-        this.filter_last_year = last_year;
-        check_last_y = true;
-      }
-        
 
       if(first_year){
         this.filter_first_year = first_year;
         check_first_y = true;
+        
       }
-      
+
+      if(last_year){
+        this.filter_last_year = last_year;
+        check_last_y = true;
+        
+      }
+         
       if(start_price) // alwayes search
       this.filter_first_price = start_price;
 
       if(end_price) // alwayes search
       this.filter_last_price = end_price;
+
+      if(New && Old){ // no need to make filter to them
+        New = null;
+        Old = null;
+      }
 
       if(New){
         this.filter_new_or_old = 'New';
@@ -227,7 +235,7 @@ export class CarsService {
         this.filter_new_or_old = 'Used';
         old_check = true;
       }
-      
+
       if(brand)
       this.filter_brand = brand;
 
@@ -243,7 +251,23 @@ export class CarsService {
         this.filter_Brand_Price_NewOld().then((res)=>{
           if(res){
           this.filter=res;
-          console.log(this.filter);
+
+          //----------------
+          if(first_year){
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year >= first_year)
+          }
+          if(last_year){
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= first_year)
+          }
+          if(model){
+            for(var i=0; i<model.length; i++){
+              this.filter = this.filter.filter((new_Filter)=> new_Filter.Model == model[i])
+            }      
+          }
+
+          //----------------
+
+          console.log(this.filter);   
           }
         });
 
@@ -253,6 +277,28 @@ export class CarsService {
         this.filter_Brand_Price().then((res)=>{
           if(res){
           this.filter=res;
+
+          //----------------
+          if(first_year){
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year >= first_year)
+          }
+          if(last_year){
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= first_year)
+          }
+          if(model){
+            for(var i=0; i<model.length; i++){
+              this.filter = this.filter.filter((new_Filter)=> new_Filter.Model == model[i])
+            }      
+          }
+          if(New){
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.New == 'New')
+          }
+          if(Old){
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.New == 'Used')
+          }
+
+          //----------------
+   
           console.log(this.filter);
           }
         });
@@ -263,24 +309,62 @@ export class CarsService {
         this.filter_Price_NewOld().then((res)=>{
           if(res){
           this.filter=res;
+
+          //----------------
+          if(first_year){
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year >= first_year)
+          }
+          if(last_year){
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= first_year)
+          }
+          if(brand){
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.brand == brand)
+          }
+          if(model){
+            for(var i=0; i<model.length; i++){
+              this.filter = this.filter.filter((new_Filter)=> new_Filter.Model == model[i])
+            }      
+          }
+
+          //----------------
           console.log(this.filter);
           }
         });
-
-
       }
       else{ // price
         this.filter_everything().then((res)=>{
           if(res){
           this.filter=res;
-          console.log(this.filter);
-          }
-        });
 
-        
+            if(first_year){
+              this.filter = this.filter.filter((new_Filter)=> new_Filter.Year >= first_year)
+            }
+            if(last_year){
+              this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= first_year)
+            }
+            if(brand){
+              this.filter = this.filter.filter((new_Filter)=> new_Filter.brand == brand)
+            }
+            if(model){
+              for(var i=0; i<model.length; i++){
+                this.filter = this.filter.filter((new_Filter)=> new_Filter.Model == model[i])
+              }      
+            }
+            if(New){
+              this.filter = this.filter.filter((new_Filter)=> new_Filter.New == 'New')
+            }
+            if(Old){
+              this.filter = this.filter.filter((new_Filter)=> new_Filter.New == 'Used')
+            }
+
+            console.log(this.filter);
+          }
+        });     
       }
 
-    } // end of filter function
+      
+
+    }// end of filter function
 
 
 
@@ -323,24 +407,7 @@ export class CarsService {
 
 
 
-  // this.filter_brand = brand;
-  // this.filter_model = model;
-  // this.filter_new_or_old = 'Used';
 
-  // return this.CarCollection.ref.limit(5).where("Brand" ,"==", this.filter_brand)
-  //                                       .where("Model" ,"==", this.model)
-  //                                       .where("Price" ,">=", this.filter_first_price)
-  //                                       .where("Price" ,"<=", this.filter_last_price)
-  //                                       .where("Year" ,">=", this.filter_first_year)
-  //                                       .where("Year" ,"<=", this.filter_last_year)
-  //                                       .where("New" ,"==", this.filter_new_or_old)
-  //                                       .get().then(collection => {
-  //   return   collection.docs.map(doc =>{
-  //     let a = {id: doc.id ,...doc.data()}
-  //     return a
-  //   } 
-  //   );
-  // });
       
     
 }
