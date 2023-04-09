@@ -11,6 +11,9 @@ export class SigninupPage implements OnInit {
 sign="signin";
 email='';
 password='';
+user:any={
+  type:'user'
+};
   constructor(public UserSrv:UserService) {
    }
 
@@ -19,6 +22,7 @@ password='';
 
 
   login(email:any,password:any){
+   
     this.UserSrv.loginUser(email,password);
   }
   reset(email:any){
@@ -28,6 +32,8 @@ password='';
     this.UserSrv.logoutUser;
   }
   signup(email:any,password:any){
-    this.UserSrv.signupUser(email,password);
+    console.log(this.user);
+    this.UserSrv.adduser(email,password,this.user);
   }
+
 }
