@@ -244,6 +244,8 @@ export class CarsPage implements OnInit {
   }
 
   handleRefresh(event:any) {
+    this.show_filter = false;
+    this.CarsSrv.filter = [];
 
    this.CarsSrv.getFirst10Rows().then((res)=>{
       if(res){

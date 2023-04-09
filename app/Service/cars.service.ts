@@ -267,7 +267,7 @@ export class CarsService {
             this.filter = this.filter.filter((new_Filter)=> new_Filter.Year >= first_year)
           }
           if(last_year){
-            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= first_year)
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= last_year)
           }
           if(model){
             for(var i=0; i<model.length; i++){
@@ -293,7 +293,7 @@ export class CarsService {
             this.filter = this.filter.filter((new_Filter)=> new_Filter.Year >= first_year)
           }
           if(last_year){
-            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= first_year)
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= last_year)
           }
           if(model){
             for(var i=0; i<model.length; i++){
@@ -325,7 +325,7 @@ export class CarsService {
             this.filter = this.filter.filter((new_Filter)=> new_Filter.Year >= first_year)
           }
           if(last_year){
-            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= first_year)
+            this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= last_year)
           }
           if(brand){
             this.filter = this.filter.filter((new_Filter)=> new_Filter.brand == brand)
@@ -350,7 +350,7 @@ export class CarsService {
               this.filter = this.filter.filter((new_Filter)=> new_Filter.Year >= first_year)
             }
             if(last_year){
-              this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= first_year)
+              this.filter = this.filter.filter((new_Filter)=> new_Filter.Year <= last_year)
             }
             if(brand){
               this.filter = this.filter.filter((new_Filter)=> new_Filter.brand == brand)
