@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../Service/user.service';
 import { userInfo } from 'os';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signinup',
@@ -14,7 +15,8 @@ password='';
 user:any={
   type:'user'
 };
-  constructor(public UserSrv:UserService) {
+  constructor(public UserSrv:UserService,
+    public route: Router) {
    }
 
   ngOnInit() {
@@ -23,7 +25,7 @@ user:any={
 
   login(email:any,password:any){
    
-    this.UserSrv.loginUser(email,password);
+    this.UserSrv.loginUser(email,password).then(()=> this.route.navigateByUrl('/tabs/profile') );
   }
   reset(email:any){
     this.UserSrv.resetPassword(email);
@@ -31,9 +33,13 @@ user:any={
   logout(){
     this.UserSrv.logoutUser;
   }
-  signup(email:any,password:any){
+  signup(password:any){
     console.log(this.user);
-    this.UserSrv.adduser(email,password,this.user);
+    this.UserSrv.adduser(this.user?.email,password,this.user);
+  }
+
+  close(){
+    this.route.navigateByUrl('/');
   }
 
 }

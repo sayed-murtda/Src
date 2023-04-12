@@ -3,7 +3,10 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage-angular';
+import { LanguageService } from '../language.service';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -13,19 +16,32 @@ import { Storage } from '@ionic/storage';
 export class UserService {
 
   private UserCollection: AngularFirestoreCollection<any>;
-  public User:any[] = [];
+  public User:any = {};
 
   constructor(private  afs:  AngularFirestore,
     private db: AngularFireDatabase,
     private storage: AngularFireStorage,
     private store: Storage,
-    private afAuth: AngularFireAuth) { 
-      this.UserCollection  =  this.afs.collection<any>('users');
+    private afAuth: AngularFireAuth,
+    public langSrv:LanguageService,
+    private navCtrl: NavController,
+    public route: Router) { 
+      this.UserCollection  =  this.afs.collection<any>('Users');
     }
 
     loginUser(newEmail: string, newPassword: string): Promise<any> {
-      console.log("hi");
-      return this.afAuth.signInWithEmailAndPassword(newEmail, newPassword).catch((res)=> console.log('hi'));
+      return this.afAuth.signInWithEmailAndPassword(newEmail, newPassword).then((res)=>{
+        const userId = res.user;
+        console.log(userId?.uid);
+        this.langSrv.signin=true;
+
+        let id:any="adfadf";
+         id = userId?.uid;
+         this.getuser(id).subscribe((res)=>{
+          this.User=res.data();
+          this.route.navigateByUrl('/tabs/profile')
+         });
+      }).catch((res)=> console.log('hwi'));
     }
     resetPassword(email: string): Promise<void> {
       return this.afAuth.sendPasswordResetEmail(email);
@@ -40,14 +56,38 @@ export class UserService {
 
     adduser(newEmail: string, newPassword: string,user:any){
       
-        this.signupUser(newEmail,newPassword,user).then((resolvedValue)=>{
-
-              const userId = resolvedValue.userId;
-              this.afs.collection('Users').doc(userId).set({type: user})
-              console.log('done')
-
+      this.afAuth.createUserWithEmailAndPassword(newEmail,newPassword).then((resolvedValue)=>{
+          
+              const userId = resolvedValue.user?.uid;
+              this.afs.collection('Users').doc(userId).set({...user})
+              this.User=user;
+              this.langSrv.setUser(user);
+              this.navCtrl.navigateBack("/tabs/profile");     
          }).catch(()=> console.log('erroe') )
   }
+
+  isSingin():boolean{
+     if(this.langSrv.signin){
+      this.User=this.langSrv.user;
+      return true;
+     }else
+     return false;
+  }
+
+  out(){
+    this.langSrv.out();
+  }
+
+  
+  getUserById(id:string){
+    return  this.UserCollection.doc(id).get();
+  }
+
+  getuser(id:any){
+    return this.UserCollection
+     .doc(id)
+     .get()
+     }
       
    
   

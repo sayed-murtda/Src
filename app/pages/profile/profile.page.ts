@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../../Service/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,13 +15,27 @@ export class ProfilePage implements OnInit {
     email:"alcndb@gmail.com",
     phone:"35053631",
     gender:"Male",
-    password: "123456",
+    password:'1234'
+  }];
 
-
-  }]
-  constructor() { }
-
+ 
+  constructor(public UserSrv:UserService,
+    public route: Router) {   }
+   ionViewWillEnter(){    
+    if(this.UserSrv.isSingin()){
+      console.log("hiprofile");
+      console.log(this.UserSrv.User)
+    }else{
+      this.route.navigateByUrl('/signinup');
+    }
+   }
   ngOnInit() {
+
+  }
+
+  out(){
+    this.route.navigateByUrl('/');
+    this.UserSrv.out()
   }
 
 }

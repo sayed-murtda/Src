@@ -1,11 +1,15 @@
-<!-- <ion-header>
-    <ion-toolbar>
-        <ion-title>Sign in/up</ion-title>
+<ion-header>
+    <ion-toolbar id="header" color="primary" >
+      <ion-button (click)="close()" color="light" slot="end" fill="clear" >
+        <ion-icon  name="close-outline" style="font-size: 24px;" ></ion-icon>
+        </ion-button>
+
     </ion-toolbar>
-</ion-header> -->
+  </ion-header>
 
 <ion-content>
     <ion-card class="ion-no-margin">
+        
         <ion-img src="../../../assets/img/header1.png"></ion-img>
 
         <ion-segment swipe-gesture="true" class="segment" [(ngModel)]="sign">
@@ -36,7 +40,7 @@
                     <ion-button fill="clear">{{'Sign.forgetpass' | translate}}</ion-button>
                 </div>
                 <div class="sign-btn-wrap">
-                    <ion-button shape="round" fill="solid" class="sign-btn">{{'Sign.login' | translate}}</ion-button>
+                    <ion-button (click)="login(email,password)" shape="round" fill="solid" class="sign-btn">{{'Sign.login' | translate}}</ion-button>
                 </div>
 
                 <div class="text-tag">
@@ -44,12 +48,14 @@
                 </div>
 
                 <div class="social-btns">
-                    <ion-button fill="clear" class="googlebtn ion-no-padding">
+                    <ion-button  fill="clear" class="googlebtn ion-no-padding">
                         <ion-img src="../../../assets/img/google.png"></ion-img>
                     </ion-button>
                 </div>
             </ion-card-content>
         </div>
+
+
         <div [ngSwitch]="sign">
             <ion-card-content *ngSwitchCase="'signup'">
                 <div class="wrapform">
@@ -68,7 +74,7 @@
                         </ion-item>
                         <ion-item>
                             <ion-label>{{'Profile.password' | translate}}:</ion-label>
-                            <ion-input color="dark" type="password" slot="end"  ></ion-input>
+                            <ion-input color="dark" type="password" slot="end"  [(ngModel)]="password" ></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label>{{'Profile.gender' | translate}}:</ion-label>
@@ -82,7 +88,7 @@
                             <ion-input color="dark" slot="end" [(ngModel)]="user.phone"></ion-input>
                         </ion-item>
                         <div class="sign-btn-wrap">
-                            <ion-button (click)="signup(email,password)" shape="round" fill="solid" class="sign-btn">{{'Sign.signup' | translate}}</ion-button>
+                            <ion-button (click)="signup(password)" shape="round" fill="solid" class="sign-btn">{{'Sign.signup' | translate}}</ion-button>
                         </div>
 
                     </ion-list>

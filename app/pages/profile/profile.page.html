@@ -1,5 +1,16 @@
-<app-headerpage title="{{'Profile.title'|translate}}"></app-headerpage>
+<ion-header>
+    <ion-toolbar id="header" color="primary" >
+      <ion-buttons slot="start" style="position: absolute;" >
+        <ion-menu-button  ></ion-menu-button>
+        </ion-buttons>
+        <ion-title style="text-transform: capitalize; text-align:center;" color="light" >     
+            {{'Profile.title'|translate}}        </ion-title>
 
+            <ion-buttons (click)="out()" slot="end" >
+                <ion-icon   color="light" style="font-size: 35px;" name="log-out-outline"></ion-icon>
+            </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 <ion-content>
     <div style="display: flex; justify-content: center;">
         <ion-icon color="dark" class="profilePic ion-padding" name="person-circle-outline"></ion-icon>
@@ -7,7 +18,7 @@
     <ion-list *ngFor="let x of profile, let i=index;">
         <ion-item>
             <ion-label>{{'Profile.name' | translate}}:</ion-label>
-            <ion-input color="dark" slot="end" [(ngModel)]="profile[i].name"></ion-input>
+            <ion-input color="dark" slot="end" ></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>{{'Profile.username' | translate}}:</ion-label>
