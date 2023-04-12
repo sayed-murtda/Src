@@ -11,10 +11,11 @@ export class LanguageService {
   moon='sunny-outline';
   check_ar:any=false;
   check_en:any=true;
+  signin=false;
+  user:any={};
   constructor(private translate:TranslateService,private storage: Storage) { 
     this.init();
-
-   
+    this.getUser();
   }
 
   async init(){
@@ -73,5 +74,28 @@ export class LanguageService {
     }
     this.storage.set('darkMode',this.darkMode);
   }
+
+  setUser(user:any){
+    this.storage.set('user',JSON.stringify(user));
+    this.signin=true;
+  }
+
+  getUser(){
+    this.storage.get('user').then((res)=>{
+      if(res){
+        this.user=JSON.parse(res);
+        this.signin=true;
+        console.log(JSON.parse(res));
+      }
+    });
+  }
+
+  out(){
+    this.signin=false;
+    this.storage.remove('user');
+  }
+
+
+  
 
 }
