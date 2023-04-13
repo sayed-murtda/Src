@@ -5,6 +5,12 @@
             <ion-icon name="add-outline"></ion-icon>
         </ion-fab-button>
     </ion-fab>
+
+    <ion-fab (click)="singin()" *ngIf="!lanSrv.signin" vertical="bottom" horizontal="center" translucent="true"  >
+        <ion-fab-button >
+            <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
     <ion-tab-bar slot="bottom">
         <ion-tab-button tab="cars">
             <ion-icon [name]="selectTab == 'cars' ? 'car-sport-sharp' : 'car-sport-outline'"></ion-icon>
@@ -22,7 +28,11 @@
         <ion-tab-button tab="favorite" class="wishlist">
             <ion-icon [name]="selectTab == 'favorite' ? 'heart' : 'heart-outline'"></ion-icon>
         </ion-tab-button>
-        <ion-tab-button tab="profile">
+        <ion-tab-button tab="profile" *ngIf="lanSrv.signin">
+            <ion-icon [name]="selectTab == 'profile' ? 'person' : 'person-outline'"></ion-icon>
+        </ion-tab-button>
+ 
+          <ion-tab-button (click)="singin()" *ngIf="!lanSrv.signin">
             <ion-icon [name]="selectTab == 'profile' ? 'person' : 'person-outline'"></ion-icon>
         </ion-tab-button>
     </ion-tab-bar>

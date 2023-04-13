@@ -24,8 +24,7 @@ user:any={
 
 
   login(email:any,password:any){
-   
-    this.UserSrv.loginUser(email,password).then(()=> this.route.navigateByUrl('/tabs/profile') );
+    this.UserSrv.loginUser(email,password);
   }
   reset(email:any){
     this.UserSrv.resetPassword(email);

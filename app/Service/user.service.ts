@@ -16,7 +16,12 @@ import { Router } from '@angular/router';
 export class UserService {
 
   private UserCollection: AngularFirestoreCollection<any>;
-  public User:any = {};
+  public User:any = {
+    name:'',
+    email:'',
+    gender:'',
+    phone:'',
+  };
 
   constructor(private  afs:  AngularFirestore,
     private db: AngularFireDatabase,
@@ -27,18 +32,26 @@ export class UserService {
     private navCtrl: NavController,
     public route: Router) { 
       this.UserCollection  =  this.afs.collection<any>('Users');
+
+      this.afAuth.authState.subscribe(user => {
+        if (user) {
+          console.log("yes  id:"+ user.uid);
+        }else
+        console.log('not log in');
+        
+      });
+
     }
 
     loginUser(newEmail: string, newPassword: string): Promise<any> {
       return this.afAuth.signInWithEmailAndPassword(newEmail, newPassword).then((res)=>{
         const userId = res.user;
-        console.log(userId?.uid);
         this.langSrv.signin=true;
-
-        let id:any="adfadf";
+        let id:any="";
          id = userId?.uid;
          this.getuser(id).subscribe((res)=>{
           this.User=res.data();
+          this.langSrv.setUser({id:id,...this.User});
           this.route.navigateByUrl('/tabs/profile')
          });
       }).catch((res)=> console.log('hwi'));
@@ -61,13 +74,14 @@ export class UserService {
               const userId = resolvedValue.user?.uid;
               this.afs.collection('Users').doc(userId).set({...user})
               this.User=user;
-              this.langSrv.setUser(user);
+              this.langSrv.setUser({id:userId,...user});
               this.navCtrl.navigateBack("/tabs/profile");     
          }).catch(()=> console.log('erroe') )
   }
 
   isSingin():boolean{
      if(this.langSrv.signin){
+        if(this.User.email=='')
       this.User=this.langSrv.user;
       return true;
      }else
@@ -76,6 +90,7 @@ export class UserService {
 
   out(){
     this.langSrv.out();
+    this.afAuth.signOut();
   }
 
   

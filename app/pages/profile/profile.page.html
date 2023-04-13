@@ -18,23 +18,15 @@
     <ion-list *ngFor="let x of profile, let i=index;">
         <ion-item>
             <ion-label>{{'Profile.name' | translate}}:</ion-label>
-            <ion-input color="dark" slot="end" ></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>{{'Profile.username' | translate}}:</ion-label>
-            <ion-input color="dark" slot="end" [(ngModel)]="profile[i].username"></ion-input>
+            <ion-input color="dark" slot="end" [(ngModel)]="this.UserSrv.User.name" ></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>{{'Profile.email' | translate}}:</ion-label>
-            <ion-input color="dark" slot="end" [(ngModel)]="profile[i].email"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>{{'Profile.password' | translate}}:</ion-label>
-            <ion-input color="dark" type="password" slot="end" [(ngModel)]="profile[i].password"></ion-input>
+            <ion-input color="dark" slot="end" [(ngModel)]="this.UserSrv.User.email"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>{{'Profile.gender' | translate}}:</ion-label>
-            <ion-select slot="end" [(ngModel)]="profile[i].gender" placeholder="Gender">
+            <ion-select slot="end" [(ngModel)]="this.UserSrv.User.gender" placeholder="Gender">
                 <ion-select-option value="Male">Male</ion-select-option>
                 <ion-select-option value="Female">Female</ion-select-option>
             </ion-select>
@@ -42,7 +34,7 @@
         </ion-item>
         <ion-item>
             <ion-label>{{'Profile.phone' | translate}}:</ion-label>
-            <ion-input color="dark" slot="end" [(ngModel)]="profile[i].phone"></ion-input>
+            <ion-input color="dark" slot="end" [(ngModel)]="this.UserSrv.User.phone"></ion-input>
         </ion-item>
     </ion-list>
 </ion-content>

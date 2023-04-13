@@ -5,6 +5,7 @@ import { car, CarsService } from '../../Service/cars.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Filesystem } from '@capacitor/filesystem';
+import { UserService } from '../../Service/user.service';
 
 
 
@@ -26,7 +27,8 @@ export class AddCarPage implements OnInit {
     private alertController: AlertController,
     public formbuilder: FormBuilder,
     public translate: TranslateService,
-    private CarSrv:CarsService
+    private CarSrv:CarsService,
+    private UserSrv:UserService
     ) {
       this.brand=CarSrv.brand;
       this.AddCarForm = formbuilder.group({
@@ -47,6 +49,7 @@ export class AddCarPage implements OnInit {
 
   Login(val:any){
     if ( this.AddCarForm.valid && this.images.length>1 ){
+      let id:string=this.UserSrv.User.id;
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -61,11 +64,11 @@ export class AddCarPage implements OnInit {
         Model:this.brand[this.AddCarForm.get('Brand')?.value].Models[this.AddCarForm.get('Model')?.value],
         date:now.toString(),
         index:index,
-        User_id:null,
+        User_id:id,
         Sold_date:null,
         Sold:false,
         accept:false,
-        Image_index:this.images.length
+        Image_index:this.images.length,
       }
       console.log(car);
       

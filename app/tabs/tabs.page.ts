@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonTabs } from '@ionic/angular';
+import { LanguageService } from '../language.service';
 
 @Component({
   selector: 'app-tabs',
@@ -12,7 +13,8 @@ export class TabsPage {
   @ViewChild('tabs') tabs: any;
 
   
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    public lanSrv:LanguageService) { }
 
   ngOnInit() {
   }
@@ -23,5 +25,9 @@ export class TabsPage {
 
   onClick(){
     this.router.navigateByUrl('/add-car')
+  }
+
+  singin(){
+    this.router.navigateByUrl('/signinup')
   }
 }
