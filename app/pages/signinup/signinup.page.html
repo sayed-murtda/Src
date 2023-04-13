@@ -1,6 +1,7 @@
 <ion-header>
     <ion-toolbar id="header" color="primary" >
       <ion-button (click)="close()" color="light" slot="end" fill="clear" >
+    
         <ion-icon  name="close-outline" style="font-size: 24px;" ></ion-icon>
         </ion-button>
 
@@ -43,15 +44,7 @@
                     <ion-button (click)="login(email,password)" shape="round" fill="solid" class="sign-btn">{{'Sign.login' | translate}}</ion-button>
                 </div>
 
-                <div class="text-tag">
-                    <span>{{'Sign.viasocialmedia' | translate}}</span>
-                </div>
-
-                <div class="social-btns">
-                    <ion-button  fill="clear" class="googlebtn ion-no-padding">
-                        <ion-img src="../../../assets/img/google.png"></ion-img>
-                    </ion-button>
-                </div>
+    
             </ion-card-content>
         </div>
 
@@ -63,10 +56,6 @@
                         <ion-item>
                             <ion-label>{{'Profile.name' | translate}}:</ion-label>
                             <ion-input color="dark" slot="end" [(ngModel)]="user.name" ></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>{{'Profile.username' | translate}}:</ion-label>
-                            <ion-input color="dark" slot="end" [(ngModel)]="user.username" ></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label>{{'Profile.email' | translate}}:</ion-label>

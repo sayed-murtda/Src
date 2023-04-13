@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Filesystem } from '@capacitor/filesystem';
 import { UserService } from '../../Service/user.service';
+import {  Router } from '@angular/router';
 
 
 
@@ -22,14 +23,22 @@ export class AddCarPage implements OnInit {
   images:any[]=[];
   brand:any[]=[];
   brandindex=0;
-  constructor(private navCtrl: NavController,
+  constructor(
+        private CarSrv:CarsService,
+      private navCtrl: NavController,
     private actionSheetCtrl: ActionSheetController,
     private alertController: AlertController,
     public formbuilder: FormBuilder,
     public translate: TranslateService,
-    private CarSrv:CarsService,
-    private UserSrv:UserService
+    private UserSrv:UserService,
+    private route:Router
     ) {
+      if(this.UserSrv.isSingin()){
+        console.log("hiprofile");
+        console.log(this.UserSrv.User)
+      }else{
+        this.route.navigateByUrl('/signinup');
+      }
       this.brand=CarSrv.brand;
       this.AddCarForm = formbuilder.group({
         Price: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]*'), Validators.min(100), Validators.max(100000)])],
@@ -48,8 +57,10 @@ export class AddCarPage implements OnInit {
   }
 
   Login(val:any){
-    if ( this.AddCarForm.valid && this.images.length>1 ){
-      let id:string=this.UserSrv.User.id;
+    let id:string=this.UserSrv.User.id;
+    console.log(id);
+    if ( this.AddCarForm.valid && this.images.length>0 ){
+     
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

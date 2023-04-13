@@ -46,9 +46,10 @@ export class CarsService {
               private store: Storage
               )
   {
+    console.log("HI");
     this.CarBrands  =  this.afs.collection<any>('brand');
     this.CarCollection  =  this.afs.collection<car>('cars');
-    this.getbrand().then((res)=> this.brand=res)
+    this.addbrand();
   }
 
 
@@ -384,10 +385,13 @@ export class CarsService {
       return this.afs.collection<any>('brand').ref.get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
-          return a
+          return a;
         } 
         );
       });
+    }
+    addbrand() {      
+      this.getbrand().then((res)=> this.brand=res)      
     }
 
 

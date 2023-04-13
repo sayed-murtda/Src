@@ -17,6 +17,7 @@ export class UserService {
 
   private UserCollection: AngularFirestoreCollection<any>;
   public User:any = {
+    id:'',
     name:'',
     email:'',
     gender:'',
