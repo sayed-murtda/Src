@@ -39,7 +39,8 @@ export class CarsService {
   public loading:boolean=false;
   fav_ID: any[]= [];
   detail_ID:any;
-
+  detail_cars: any[] = [];
+  detail_cars_display: any[] = [];
   constructor(private  afs:  AngularFirestore,
               private db: AngularFireDatabase,
               private storage: AngularFireStorage,
@@ -132,6 +133,17 @@ export class CarsService {
 
     getNextFirst10Rows(index:any) {
       return this.CarCollection.ref.orderBy('index').limit(3).startAfter(index).get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
+
+    get_detail_cars() {
+      return this.CarCollection.ref.limit(5).where("Brand" ,"==", this.detail_ID.Brand)
+                                   .get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a
