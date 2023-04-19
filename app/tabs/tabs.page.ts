@@ -30,4 +30,11 @@ export class TabsPage {
   singin(){
     this.router.navigateByUrl('/signinup')
   }
+
+  admin(){
+    this.router.navigateByUrl('/a-home')
+
+
+  }
+
 }

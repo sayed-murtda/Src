@@ -92,7 +92,7 @@ export class AddShowroomPage implements OnInit {
   
 
   back(){
-    this.navCtrl.navigateBack("/");
+    this.navCtrl.back();
   }
 
   async presentAlert(mas:any) {

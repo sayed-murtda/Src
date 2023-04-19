@@ -28,13 +28,27 @@
         <ion-tab-button tab="favorite" class="wishlist">
             <ion-icon [name]="selectTab == 'favorite' ? 'heart' : 'heart-outline'"></ion-icon>
         </ion-tab-button>
-        <ion-tab-button tab="profile" *ngIf="lanSrv.signin">
+
+        <!-- <ion-tab-button (click)="singin()" *ngIf="lanSrv.admin">
+            <ion-icon [name]="selectTab == 'profile' ? 'settings' : 'settings-outline'  "></ion-icon>
+        </ion-tab-button> -->
+
+        <ion-tab-button (click)="singin()" *ngIf="!lanSrv.signin ">
             <ion-icon [name]="selectTab == 'profile' ? 'person' : 'person-outline'"></ion-icon>
         </ion-tab-button>
+
+        <ion-tab-button tab="profile" *ngIf="lanSrv.signin && lanSrv.user.type=='user' ">
+            <ion-icon [name]="selectTab == 'profile' ? 'person' : 'person-outline'"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button  (click)="admin()"  *ngIf="lanSrv.signin && lanSrv.user.type=='admin' ">
+            <ion-icon [name]="selectTab == 'profile' ? 'settings' : 'settings-outline'"></ion-icon>
+        </ion-tab-button>
+
+
  
-          <ion-tab-button (click)="singin()" *ngIf="!lanSrv.signin">
-            <ion-icon [name]="selectTab == 'profile' ? 'person' : 'person-outline'"></ion-icon>
-        </ion-tab-button>
+      
+        
     </ion-tab-bar>
 
 

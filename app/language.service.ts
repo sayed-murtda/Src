@@ -78,6 +78,7 @@ export class LanguageService {
   setUser(user:any){
     this.storage.set('user',JSON.stringify(user));
     this.signin=true;
+    this.user=user;
   }
 
   getUser(){

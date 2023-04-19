@@ -6,30 +6,89 @@
       </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
 
-  <ion-item>
-    <ion-label>Manage Brand</ion-label>
-  </ion-item>
+  <ion-grid>
 
-  <ion-item>
-    <ion-label>Manage Showroom</ion-label>
-  </ion-item>
+    <ion-row>
+      <ion-col (click)="goTo('/')" size="6">
+        <ion-card     color="primary">
+          <ion-icon name="phone-portrait-sharp"></ion-icon>
+          <h2>User InterFace</h2>
+        </ion-card>
+      </ion-col>
+      <ion-col (click)="goTo('/add-showroom')" size="6">
+        <ion-card   color="primary">
+          <ion-icon name="add"></ion-icon>
+          <h2>add Showroom</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-  <ion-item>
-    <ion-label>Manage FlatCars</ion-label>
-  </ion-item>
 
-  <ion-item>
-    <ion-label>Manage User</ion-label>
-  </ion-item>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card     color="primary">
+          <ion-icon name="car-sport-sharp"></ion-icon>
+          <h2>Cars</h2>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card   color="primary">
+          <ion-icon name="add"></ion-icon>
+          <h2>add Cars</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-  <ion-item>
-    <ion-label>Manage Cars</ion-label>
-  </ion-item>
 
-  <ion-item>
-    <ion-label>Manage Admin</ion-label>
-  </ion-item>
 
+
+
+
+
+    <ion-row>
+      <ion-col col-6>
+        <ion-card     color="primary">
+          <ion-icon name="person"></ion-icon>
+          <h2>Profile</h2>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card   padding color="danger">
+          <ion-icon name="people"></ion-icon>
+          <h2>Group</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card   padding color="danger">
+          <ion-icon name="settings"></ion-icon>
+          <h2>Settings</h2>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card   padding color="danger">
+          <ion-icon name="list"></ion-icon>
+          <h2>Tasks</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card   padding color="danger">
+          <ion-icon name="add"></ion-icon>
+          <h2>Add Task</h2>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+          <ion-card   padding color="danger">
+            <ion-icon name="calendar"></ion-icon>
+            <h2>Appointment</h2>
+          </ion-card>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
