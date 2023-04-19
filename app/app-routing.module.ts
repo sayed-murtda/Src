@@ -26,6 +26,11 @@ const routes: Routes = [
     path: 'a-home',
     loadChildren: () => import('./admin/a-home/a-home.module').then( m => m.AHomePageModule)
   },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
+  },
+
 
 
 
