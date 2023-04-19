@@ -42,8 +42,12 @@ export class AddShowroomPage implements OnInit {
   ngOnInit() {
   }
 
+  
+submit(){
+}
+
   Login(val:any){
-    if ( this.AddCarForm.valid && this.images.length>1 ){
+    if ( this.AddCarForm.valid && this.images.length==1 ){
       const now = new Date();
       let i=-now;
       let car : car={...this.AddCarForm.value,
@@ -199,4 +203,5 @@ export class AddShowroomPage implements OnInit {
       console.log(this.images);
  
 }
+
 }
