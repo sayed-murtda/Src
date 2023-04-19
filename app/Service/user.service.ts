@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage-angular';
 import { LanguageService } from '../language.service';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { log } from 'console';
 
 
 @Injectable({
@@ -53,6 +54,10 @@ export class UserService {
          this.getuser(id).subscribe((res)=>{
           this.User=res.data();
           this.langSrv.setUser({id:id,...this.User});
+          console.log(this.User);
+          if(this.User.type=='admin')
+          this.route.navigateByUrl('/a-home')
+          else
           this.route.navigateByUrl('/tabs/profile')
          });
       }).catch((res)=> console.log('hwi'));
