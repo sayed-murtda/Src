@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { NavController } from '@ionic/angular';
 import { CarsService } from '../../Service/cars.service';
-
+ 
 @Component({
   selector: 'app-view-detail',
   templateUrl: './view-detail.page.html',
@@ -10,12 +10,15 @@ import { CarsService } from '../../Service/cars.service';
 export class ViewDetailPage implements OnInit {
   count = 0;
   num_of_img :any[] = [];
+  detail_cars: any[] = [];
   constructor(private navCtrl: NavController, public CarsSrv:CarsService) { 
     while(this.count<CarsSrv.detail_ID.Image_index){
       this.count++;
       this.num_of_img.push(this.count);
       console.log(this.num_of_img.length);
     }
+   
+
     
   }
    
@@ -34,11 +37,13 @@ export class ViewDetailPage implements OnInit {
 
   Unlike(id:any){
 
-    let i = this.CarsSrv.fav_ID.indexOf(id);
-    this.CarsSrv.fav_ID.splice(i,1);
-    this.CarsSrv.save_unlike();
-   
-   }
+   let i = this.CarsSrv.fav_ID.indexOf(id);
+   this.CarsSrv.fav_ID.splice(i,1);
+   this.CarsSrv.save_unlike();
+
+
+    
+  }
 
   
 

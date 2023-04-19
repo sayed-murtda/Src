@@ -122,98 +122,24 @@
 
         
         <div class="scrolling-wrapper">
+            
+            <div class="card" *ngFor="let car of this.CarsSrv.detail_cars_display">
 
-            <div class="card">
-                <img src='../assets/img/Sonata2017.jpg' alt="" class="extPic">
+                <img src='https://firebasestorage.googleapis.com/v0/b/cars-ad60a.appspot.com/o/cars%2F{{car.id}}1?alt=media' alt="" class="extPic">
                 <ion-item color="rgb(224, 240, 240);" lines="none">
                     <ion-label>
                         <h2> 
-                            Sonata 2017
-                            <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline"></ion-icon></span>                   
-                        </h2>
+                            {{car.Model}} {{car.Year}}
+                            <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(car.id)" *ngIf="!CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>
+                            <span style="float: right; color: rgb(244, 6, 6);" slot="end" *ngIf="!car.like"><ion-icon name='heart' (click)="Unlike(car.id)" *ngIf="CarsSrv.fav_ID.includes(car.id)"></ion-icon></span>                        </h2>
 
-                        <h2>4000BD</h2>
-                        <h3>3000 to 5000 km</h3>
-                        <p><ion-icon name="person-outline"></ion-icon> Hasan Ali <span style="float: right;">2023/2/1</span></p>
+                        <h2>{{car.Price}}BD</h2>
+                        <h3>{{car.KM}}KM</h3>
+                        <p><ion-icon name="person-outline"></ion-icon> Hasan Ali <span style="float: right;">{{car.date}}</span></p>
                     </ion-label>
                 </ion-item>
 
-
             </div>
-
-            <div class="card">
-                <img src='../assets/img/Sonata2017.jpg' alt="" class="extPic">
-                <ion-item color="rgb(224, 240, 240);" lines="none">
-                    <ion-label>
-                        <h2> 
-                            Sonata 2017
-                            <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline"></ion-icon></span>                   
-                        </h2>
-
-                        <h2>4000BD</h2>
-                        <h3>3000 to 5000 km</h3>
-                        <p><ion-icon name="person-outline"></ion-icon> Hasan Ali <span style="float: right;">2023/2/1</span></p>
-                    </ion-label>
-                </ion-item>
-
-
-            </div>
-
-            <div class="card">
-                <img src='../assets/img/Sonata2017.jpg' alt="" class="extPic">
-                <ion-item color="rgb(224, 240, 240);" lines="none">
-                    <ion-label>
-                        <h2> 
-                            Sonata 2017
-                            <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline"></ion-icon></span>                   
-                        </h2>
-
-                        <h2>4000BD</h2>
-                        <h3>3000 to 5000 km</h3>
-                        <p><ion-icon name="person-outline"></ion-icon> Hasan Ali <span style="float: right;">2023/2/1</span></p>
-                    </ion-label>
-                </ion-item>
-
-
-            </div>
-
-            <div class="card">
-                <img src='../assets/img/Sonata2017.jpg' alt="" class="extPic">
-                <ion-item color="rgb(224, 240, 240);" lines="none">
-                    <ion-label>
-                        <h2> 
-                            Sonata 2017
-                            <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline"></ion-icon></span>                   
-                        </h2>
-
-                        <h2>4000BD</h2>
-                        <h3>3000 to 5000 km</h3>
-                        <p><ion-icon name="person-outline"></ion-icon> Hasan Ali <span style="float: right;">2023/2/1</span></p>
-                    </ion-label>
-                </ion-item>
-
-
-            </div>
-
-            <div class="card">
-                <img src='../assets/img/Sonata2017.jpg' alt="" class="extPic">
-                <ion-item color="rgb(224, 240, 240);" lines="none">
-                    <ion-label>
-                        <h2> 
-                            Sonata 2017
-                            <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline"></ion-icon></span>                   
-                        </h2>
-
-                        <h2>4000BD</h2>
-                        <h3>3000 to 5000 km</h3>
-                        <p><ion-icon name="person-outline"></ion-icon> Hasan Ali <span style="float: right;">2023/2/1</span></p>
-                    </ion-label>
-                </ion-item>
-
-
-            </div>
-
-
 
         </div>
 

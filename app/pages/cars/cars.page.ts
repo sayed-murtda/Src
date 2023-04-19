@@ -225,8 +225,24 @@ export class CarsPage implements OnInit {
   }
 
   go(id:any){
+    this.CarsSrv.detail_cars=[];
+    this.CarsSrv.detail_cars_display = [];
     this.CarsSrv.detail_ID = id;
     console.log(this.CarsSrv.detail_ID);
+
+    this.CarsSrv.get_detail_cars().then((res)=>{
+      if(res){
+
+        this.CarsSrv.detail_cars = res;
+        console.log(this.CarsSrv.detail_cars);
+
+        this.CarsSrv.detail_cars.forEach(car => {
+          if(this.CarsSrv.detail_ID.id != car.id) {
+            this.CarsSrv.detail_cars_display.push(car);
+          }  
+        });
+      }
+    });
     this.router.navigateByUrl('/view-detail')
   }
 
