@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, AlertController, NavController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
-import { car, ShowroomService } from '../../Service/showroom.service';
+import { Showroom, ShowroomService } from '../../Service/showroom.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Filesystem } from '@capacitor/filesystem';
+import { log } from 'console';
 
 @Component({
   selector: 'app-add-showroom',
@@ -16,7 +17,7 @@ export class AddShowroomPage implements OnInit {
   AddCarForm: FormGroup;
   imagesBlod :any[]=[];
   images:any[]=[];
-  car:car = {} as car;
+  Showroom:Showroom = {} as Showroom;
   constructor(private navCtrl: NavController,
     private actionSheetCtrl: ActionSheetController,
     private alertController: AlertController,
@@ -47,24 +48,21 @@ submit(){
 }
 
   Login(val:any){
-    if ( this.AddCarForm.valid && this.images.length==1 ){
-      const now = new Date();
-      let i=-now;
-      let car : car={...this.AddCarForm.value,
+    if ( this.AddCarForm.valid && this.images.length==1 || true){
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      let now =  dd + '/' + mm + '/' + yyyy;
+      let Showroom : any={...this.AddCarForm.value,
         date:now,
-        index:i,
-        User_id:null,
-        Sold_date:null,
-        Sold:false,
-        accept:false,
-        Image_index:this.images.length
+        hours:['','','','','','','']
       }
       this.images.forEach((res:any) =>{
          this.fetchBlob(res.path).then((ress:any) =>  this.imagesBlod.push(ress))      } )
-      
       this.showSrv.loading=true;
       this.back();
-      this.showSrv.addCar(car,this.imagesBlod).then(()=>{
+      this.showSrv.addShowroom(Showroom,this.imagesBlod).then(()=>{
         console.log("done all add with image");
       });
     }
