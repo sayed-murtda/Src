@@ -4,40 +4,36 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 
-export interface car {
+export interface Showroom {
   id?: string;
   Name: string;
   Email: string;
-  Password: string;
   City: string;
   Insta: string;
+  location: string;
   Tell: number;
   WhatsApp : number;
-
-  Showrooms_id?:string;
-  User_id?:string;
-  phone?:string;
-  whatsApp?:string;
-  photos_url?:string[]
+  date:Date;
+  hours:string[];
 }
 @Injectable({
   providedIn: 'root'
 })
 export class ShowroomService {
 
-  private CarCollection: AngularFirestoreCollection<car>;
-  public Cars:car[] = [];
+  private showroomCollection: AngularFirestoreCollection<Showroom>;
+  public Cars:Showroom[] = [];
   public loading:boolean=false;
 
 
   constructor(private  afs:  AngularFirestore, private db: AngularFireDatabase, private storage: AngularFireStorage) { 
-    this.CarCollection  =  this.afs.collection<car>('cars');
+    this.showroomCollection  =  this.afs.collection<Showroom>('showrooms');
   }
 
 
 
-  async addCar(Car: car, images: any[]): Promise<any> {
-    return this.CarCollection.add(Car)
+  async addShowroom(Showroom: Showroom, images: any[]): Promise<any> {
+    return this.showroomCollection.add(Showroom)
       .then(async (docRef) => {
         let i = 1;
         for (const img of images) {
@@ -49,7 +45,7 @@ export class ShowroomService {
   }
 
     async uploadFile(id: any, image: any) {
-      const filePath = 'cars/';
+      const filePath = 'showrooms/';
       const ref = this.storage.ref(filePath + id);
       const task = ref.put(image);
       return new Promise<void>((resolve, reject) => {
@@ -67,7 +63,7 @@ export class ShowroomService {
 
 
     getFirst10Rows() {
-      return this.CarCollection.ref.orderBy('date').startAt(1).limit(3).get().then(collection => {
+      return this.showroomCollection.ref.orderBy('date').startAt(1).limit(3).get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a
@@ -75,4 +71,6 @@ export class ShowroomService {
         );
       });
     }
+
+
 }
