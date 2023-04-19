@@ -10,7 +10,7 @@ export interface Showroom {
   Email: string;
   City: string;
   Insta: string;
-  location: string;
+  Location: string;
   Tell: number;
   WhatsApp : number;
   date:Date;
