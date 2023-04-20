@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { log } from 'console';
 import { finalize } from 'rxjs/operators';
+import { UserService } from './user.service';
 
 export interface Showroom {
   id?: string;
@@ -26,22 +28,28 @@ export class ShowroomService {
   public loading:boolean=false;
 
 
-  constructor(private  afs:  AngularFirestore, private db: AngularFireDatabase, private storage: AngularFireStorage) { 
+  constructor(private  afs:  AngularFirestore, private db: AngularFireDatabase, private storage: AngularFireStorage,private UserSrv:UserService) { 
     this.showroomCollection  =  this.afs.collection<Showroom>('showrooms');
   }
 
 
 
-  async addShowroom(Showroom: Showroom, images: any[]): Promise<any> {
-    return this.showroomCollection.add(Showroom)
+  async addShowroom(Showroom: any, img: any): Promise<any> {
+    let password=Showroom.Password;
+    delete Showroom['Password'];
+    console.log(Showroom);
+    console.log(password);
+    console.log(img);
+    this.UserSrv.addshowroom(Showroom.Email,password).then((res:any)=>{
+      const userId = res.user?.uid;
+      return this.showroomCollection.add(Showroom)
       .then(async (docRef) => {
-        let i = 1;
-        for (const img of images) {
-          await this.uploadFile(docRef.id + i, img);
-          i++;
-        }
+        await this.uploadFile(docRef.id, img[0]);
+
         this.loading=false;
       });
+    })
+   
   }
 
     async uploadFile(id: any, image: any) {
