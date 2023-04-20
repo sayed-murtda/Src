@@ -123,7 +123,7 @@ submit(){
           text: 'Gallery',
           icon:'image',
           handler: ()=>{
-            this.selectImages();
+            this.selectImage3();
           }
         },
         {
@@ -140,8 +140,8 @@ submit(){
 
   }
 
-  delete(i:any){
-    this.images.splice(i,1)
+  delete(){
+    this.images=[];
   }
 
  
@@ -157,6 +157,24 @@ submit(){
       allowEditing: false,
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera // Camera, Photos or Prompt!
+  });
+
+
+  if (image) {
+      this.saveImage(image)
+  }
+	}
+
+  async selectImage3() {
+    let a:any=100;
+    //  a = window.prompt("sometext");
+    // alert(a);
+    const image = await Camera.getPhoto({
+      height:a,
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Photos // Camera, Photos or Prompt!
   });
 
 

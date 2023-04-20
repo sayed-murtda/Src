@@ -85,6 +85,10 @@ export class UserService {
          }).catch(()=> console.log('erroe') )
   }
 
+  addshowroom(newEmail: string, newPassword: string): Promise<any>{
+    return this.afAuth.createUserWithEmailAndPassword(newEmail,newPassword);
+  }
+
   isSingin():boolean{
      if(this.langSrv.signin){
         if(this.User.email=='')
