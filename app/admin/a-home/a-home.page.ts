@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { UserService } from '../../Service/user.service';
 
 @Component({
   selector: 'app-a-home',
@@ -8,7 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class AHomePage implements OnInit {
 
-  constructor(private navController: NavController) { }
+  constructor(private navController: NavController,public UserSrv:UserService) { }
 
   ngOnInit() {
   }
@@ -17,5 +18,11 @@ export class AHomePage implements OnInit {
     this.navController.navigateRoot(url);
 
   }
+
+  out(){
+    this.navController.navigateRoot('/');
+    this.UserSrv.out()
+  }
+
 
 }
