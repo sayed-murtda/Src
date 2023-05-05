@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage-angular';
+import { log } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -79,6 +80,8 @@ export class LanguageService {
     this.storage.set('user',JSON.stringify(user));
     this.signin=true;
     this.user=user;
+    console.log(user);
+    
   }
 
   getUser(){

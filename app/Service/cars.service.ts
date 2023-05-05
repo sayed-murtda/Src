@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { finalize } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
+import { log } from 'console';
 
 
 export interface car {

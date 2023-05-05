@@ -51,8 +51,9 @@ export class UserService {
         this.langSrv.signin=true;
         let id:any="";
          id = userId?.uid;
-         this.getuser(id).subscribe((res)=>{
-          this.User=res.data();
+         this.getuser(id).subscribe((res2)=>{
+          this.User={id:id,...res2.data()};
+          console.log(this.User);
           this.langSrv.setUser({id:id,...this.User});
           console.log(this.User);
           if(this.User.type=='admin')

@@ -74,42 +74,60 @@
                 </ion-label>
             </ion-item>
 
-        <ion-card>
+        <ion-card *ngIf="CarsSrv.detail_ID.User_id">
             <ion-item lines="none">
-                <img style="float: left;" src="../assets/img/Hyundai_logo.jpg" alt="" class="logo">
-                <ion-label>
-                    <h2>Hyundai</h2>
-                    <h3> <ion-icon name="location-outline"></ion-icon> Hamad Town</h3>
-                </ion-label>
+                <div class="links">
+                    <a  class="card-phone" href="tel:+973{{CarsSrv.detail_ID.Tell}}" target="_blank">
+                        <ion-item >
+                            <ion-icon class="showroomLinks" color="dark" name="call"></ion-icon> 
+                            <ion-label>+33702322</ion-label>
+                        </ion-item>
+                    </a>
+                </div>
+                <div class="links">
+                    <a class="card-phone" href="https://wa.me/973{{CarsSrv.detail_ID.WhatsApp}}" target="_blank">
+                        <ion-item >
+                            <ion-icon class="whatsapp showroomLinks" name="logo-whatsapp"></ion-icon>
+                            <ion-label>+33702322</ion-label>
+                        </ion-item>
+
+                    </a>
+                </div>  
             </ion-item>
-
-            <ion-grid>
-                <ion-row>
-
-                    <ion-col size="3">
-                        <img src="../assets/img/tele.png" alt="" class="Social_logos">   
-                    </ion-col>
-
-                    <ion-col size="3">
-                        <img src="../assets/img/location.jpg" alt="" class="Social_logos">   
-                    </ion-col>
-
-
-                    <ion-col size="3">
-                        <img src="../assets/img/Instagram_logo.jpg" alt="" class="Social_logos">   
-                    </ion-col>
-
-
-                    <ion-col size="3">
-                        <img src="../assets/img/Whatsapp_logo.jpg" alt="" class="Social_logos">   
-                    </ion-col>
-
-
-                </ion-row>
-            </ion-grid>
-                    
-                          
         </ion-card>
+
+        <!-- <ion-card >
+            <ion-item lines="none">
+                <img class="showroomImg" src="{{showroom.logo}}" onclick="">
+                <h6 class="ion-padding"><b>{{showroom.name}}</b><br>
+                    <h6>{{showroom.city}}</h6>
+                </h6>
+            </ion-item>
+            <ion-card-content>
+                <ion-item lines="none">
+                    <div class="links">
+                        <a href="tel:+973{{showroom.number}}" target="_blank">
+                            <ion-icon class="showroomLinks" color="dark" name="call"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="links">
+                        <a href="{{showroom.location}}" target="_blank">
+                            <img class="showroomLinks" src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Maps_Pin_FullColor.max-1000x1000.png">
+                        </a>
+                    </div>
+                    <div class="links">
+                        <a href="{{showroom.instagram}}" target="_blank">
+                            <img class="showroomLinks" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png">
+                        </a>
+                    </div>
+                    <div class="links">
+                        <a href="https://wa.me/973{{showroom.whatsapp}}" target="_blank">
+                            <ion-icon class="whatsapp showroomLinks" name="logo-whatsapp"></ion-icon>
+                        </a>
+                    </div>
+                </ion-item>
+            </ion-card-content>
+        </ion-card> -->
         
 
 
