@@ -7,7 +7,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { UserService } from '../../Service/user.service';
 import {  Router } from '@angular/router';
-import { log } from 'console';
 
 
 
@@ -221,48 +220,10 @@ export class AddCarPage implements OnInit {
       name:fileName,
       path:photo.webPath});
       console.log(this.images);
- 
 }
 
 send(image:any){
   this.fetchBlob(image.path).then((ress:any) =>  this.sendBlobToPHP(ress));  
-  // this.convertImageToBinary(image);
-//   const data: string = "<file contents here>";
-
-//   const xhr: XMLHttpRequest = new XMLHttpRequest();
-//   xhr.withCredentials = true;
-  
-//   xhr.addEventListener("readystatechange", function() {
-//     if (this.readyState === 4) {
-//       console.log('yes');
-//       console.log(this.responseText);
-//     }else
-//     console.log('yes2');
-//   });
-
-//   xhr.open("POST", "http://localhost/ser/carapi/car.php");
-//   // xhr.open("POST", "https://sayedmurtdha.com/carapi/car.php");
-//   xhr.setRequestHeader("accept", "application/json");
-//   // xhr.setRequestHeader("api-key", "7e6131b9-a422-4f95-98a2-581e3374cac9");
-//   xhr.setRequestHeader("Content-Type", "application/octet-stream");
-//     console.log(image);
-
-//   this.fetchBlob(image).then((res:any)=>{
-//     this.convertToBinaryString2(image).then((res) => {
-//       console.log(res);
-//     // xhr.send(JSON.stringify(image.path));
-//     }
-//     );
-//     this.convertBlobToBase64(res).then((nn:any)=>{
-//       let file = this.convertBlobToBinary(res);
-//       console.log(res);
-//     });
-  
-
-// });
-
-
-
 }
 
 convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
@@ -391,8 +352,8 @@ sendapi(data:any){
   });
 
   xhr.open("POST", "http://localhost/ser/carapi/car.php");
-  // xhr.open("POST", "https://sayedmurtdha.com/carapi/car.php");
-  xhr.setRequestHeader("accept", "application/json");
+  xhr.open("POST", "https://sayedmurtdha.com/carapi/car.php");
+  // xhr.setRequestHeader("accept", "application/json");
   // xhr.setRequestHeader("api-key", "7e6131b9-a422-4f95-98a2-581e3374cac9");
   xhr.setRequestHeader("Content-Type", "application/octet-stream");
   xhr.send(JSON.stringify(data));

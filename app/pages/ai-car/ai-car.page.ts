@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { ActionSheetController, AlertController, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { log } from 'console';
 
 @Component({
   selector: 'app-ai-car',
@@ -12,6 +11,7 @@ import { log } from 'console';
 export class AiCarPage implements OnInit {
   imagesBlod :any[]=[];
   images:any[]=[];
+  all={};
   car:number=0;
   model:any='';
   make:any='';
@@ -66,11 +66,8 @@ export class AiCarPage implements OnInit {
   }
 
   async selectImage() {
-    let a:any=100;
-    //  a = window.prompt("sometext");
-    // alert(a);
+ 
     const image = await Camera.getPhoto({
-      height:a,
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Uri,
@@ -88,16 +85,11 @@ export class AiCarPage implements OnInit {
       name:fileName,
       path:photo.webPath});
       console.log(this.images);
- 
 }
 
   async selectImage3() {
-    let a:any=100;
-    //  a = window.prompt("sometext");
-    // alert(a);
     const image = await Camera.getPhoto({
-      height:a,
-      quality: 90,
+      quality: 100,
       allowEditing: false,
       resultType: CameraResultType.Uri,
       source: CameraSource.Photos // Camera, Photos or Prompt!
@@ -108,6 +100,7 @@ export class AiCarPage implements OnInit {
       this.saveImage(image)
   }
 	}
+ 
 
   send(){
     if(this.images.length>0)
@@ -135,6 +128,12 @@ export class AiCarPage implements OnInit {
         let car = cars.detections;
         console.log(cars);
         console.log(car);
+        this.all=car;
+        this.color="colorWithMaxProbability";
+        this.make="maxProbabilityDetails.make_name";
+        this.model="maxProbabilityDetails.model_name";
+        this.year="maxProbabilityDetails.years";
+        // alert(JSON.stringify(xhr.responseText));
         this.print2(car);
         console.log('Image uploaded successfully');
       } else {
@@ -489,7 +488,6 @@ for (let i = 0; i < probabilities.length; i++) {
     colorWithMaxProbability = name;
   }
 }
-this.color=colorWithMaxProbability;
 console.log('Color with Maximum Probability:', colorWithMaxProbability);
 
 maxProbability = 0;
@@ -501,7 +499,7 @@ for (let i = 0; i < mmg.length; i++) {
     maxProbabilityDetails = { make_name, model_name, years };
   }
 }
-
+this.color=colorWithMaxProbability;
 this.make=maxProbabilityDetails.make_name;
 this.model=maxProbabilityDetails.model_name;
 this.year=maxProbabilityDetails.years;
