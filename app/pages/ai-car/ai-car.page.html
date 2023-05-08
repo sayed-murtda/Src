@@ -41,4 +41,33 @@
     {{'addcars.Send'|translate}} <ion-icon name="share-outline"></ion-icon>
   </ion-button>
 
+  <div *ngIf="car==0" >
+    <ion-item>
+      <ion-label>Plase add the car image</ion-label>
+    </ion-item>
+  </div>
+  <div *ngIf="car==1" >
+
+    <ion-item>
+      <ion-label>Model</ion-label>
+      <ion-label>{{model}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Make</ion-label>
+      <ion-label>{{make}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Color</ion-label>
+      <ion-label>{{color}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Year</ion-label>
+      <ion-label>{{year}}</ion-label>
+    </ion-item>
+  </div>
+  <div *ngIf="car==-1" >
+    <ion-label>The picture is not clear or does not contain a car</ion-label>
+
+  </div>
+
 </ion-content>

@@ -60,9 +60,9 @@ export class AddCarPage implements OnInit {
 
   Login(val:any){
     let id:string=this.UserSrv.User.id;
-    console.log(id);
-    this.send(this.images[0]);
-    if ( this.AddCarForm.valid && this.images.length>0 && false){
+    // console.log(id);
+    // this.send(this.images[0]);
+    if ( this.AddCarForm.valid && this.images.length>0 ){
      
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');

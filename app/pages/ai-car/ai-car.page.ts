@@ -12,8 +12,9 @@ import { log } from 'console';
 export class AiCarPage implements OnInit {
   imagesBlod :any[]=[];
   images:any[]=[];
-  car:any=false;
+  car:number=0;
   model:any='';
+  make:any='';
   color:any='';
   year:any='';
   constructor(private navCtrl: NavController,
@@ -109,13 +110,14 @@ export class AiCarPage implements OnInit {
 	}
 
   send(){
-    this.test();
     if(this.images.length>0)
     this.fetchBlob(this.images[0].path).then((ress:any) =>  this.sendBlobToPHP(ress));
     else
     console.log('add car');
   }
-
+  printcar(){
+    console.log("Adf");
+  }
   sendBlobToPHP(blob:any) {
     // Create a FormData object
     const formData = new FormData();
@@ -125,16 +127,23 @@ export class AiCarPage implements OnInit {
     
     // Send the FormData object via AJAX
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost/ser/carapi/car.php'); // Replace 'upload.php' with the URL of your PHP script
-    xhr.onload = function() {
+    // xhr.open('POST', 'http://localhost/ser/carapi/car.php'); // Replace 'upload.php' with the URL of your PHP script
+    xhr.open('POST', 'https://sayedmurtdha.com/carapi/car.php'); // Replace 'upload.php' with the URL of your PHP script
+    xhr.onload = () => {
       if (xhr.status === 200) {
-        console.log(this.responseText);
+        let cars = JSON.parse(xhr.responseText);
+        let car = cars.detections;
+        console.log(cars);
+        console.log(car);
+        this.print2(car);
         console.log('Image uploaded successfully');
       } else {
+        this.car=-1;
         console.error('Image upload failed');
       }
     };
     xhr.send(formData);
+
   }
 
   fetchBlob(uri:any) {
@@ -455,15 +464,16 @@ let f={
 // console.log(a);
 // console.log(b);
 console.log(f);
-this.print(f.detections);
+this.print2(f.detections);
 
 
 
 
 }
 
-print(car:any){
+print2(car:any){
 if(car.length>0){
+  this.car=1;
 
 console.log(car);
 let probabilities = car[0].color;
@@ -479,7 +489,7 @@ for (let i = 0; i < probabilities.length; i++) {
     colorWithMaxProbability = name;
   }
 }
-
+this.color=colorWithMaxProbability;
 console.log('Color with Maximum Probability:', colorWithMaxProbability);
 
 maxProbability = 0;
@@ -492,12 +502,16 @@ for (let i = 0; i < mmg.length; i++) {
   }
 }
 
+this.make=maxProbabilityDetails.make_name;
+this.model=maxProbabilityDetails.model_name;
+this.year=maxProbabilityDetails.years;
 console.log('Make Name:', maxProbabilityDetails.make_name);
 console.log('Model Name:', maxProbabilityDetails.model_name);
 console.log('Years:', maxProbabilityDetails.years);
 }
 else {
-  console.log('no car');
+  this.car=-1;
+  console.log("no car");
   
 }
 }
