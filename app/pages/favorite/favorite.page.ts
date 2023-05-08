@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarsService } from '../../Service/cars.service';
-@Component({
+@Component({ 
   selector: 'app-favorite',
   templateUrl: './favorite.page.html',
   styleUrls: ['./favorite.page.scss'],
@@ -8,7 +8,7 @@ import { CarsService } from '../../Service/cars.service';
 export class FavoritePage implements OnInit {
   Cars:any[]=[];
   constructor(public CarsSrv:CarsService) {
-    CarsSrv.getFirst10Rows().then((res)=>{
+    CarsSrv.get_everything().then((res)=>{
       if(res){
       this.Cars=res;
       console.log(this.Cars);
