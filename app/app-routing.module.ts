@@ -38,6 +38,11 @@ const routes: Routes = [
     path: 'mycars',
     loadChildren: () => import('./pages/mycars/mycars.module').then( m => m.MycarsPageModule)
   },
+  {
+    path: 'ai-car',
+    loadChildren: () => import('./pages/ai-car/ai-car.module').then( m => m.AiCarPageModule)
+  },
+
 
 
 

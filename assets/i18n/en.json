@@ -12,7 +12,8 @@
         "cars": "cars",
         "Services": "Services",
         "detail": "details",
-        "favorite": "favorite"
+        "favorite": "favorite",
+        "Ai-car":"Ai Detecting Car"
 
     },
     "Sign": {

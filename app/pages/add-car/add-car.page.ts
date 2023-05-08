@@ -4,9 +4,11 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 import { car, CarsService } from '../../Service/cars.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { Filesystem } from '@capacitor/filesystem';
+import { Directory, Filesystem } from '@capacitor/filesystem';
 import { UserService } from '../../Service/user.service';
 import {  Router } from '@angular/router';
+import { log } from 'console';
+
 
 
 
@@ -59,7 +61,8 @@ export class AddCarPage implements OnInit {
   Login(val:any){
     let id:string=this.UserSrv.User.id;
     console.log(id);
-    if ( this.AddCarForm.valid && this.images.length>0 ){
+    this.send(this.images[0]);
+    if ( this.AddCarForm.valid && this.images.length>0 && false){
      
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
@@ -220,5 +223,202 @@ export class AddCarPage implements OnInit {
       console.log(this.images);
  
 }
+
+send(image:any){
+  this.fetchBlob(image.path).then((ress:any) =>  this.sendBlobToPHP(ress));  
+  // this.convertImageToBinary(image);
+//   const data: string = "<file contents here>";
+
+//   const xhr: XMLHttpRequest = new XMLHttpRequest();
+//   xhr.withCredentials = true;
+  
+//   xhr.addEventListener("readystatechange", function() {
+//     if (this.readyState === 4) {
+//       console.log('yes');
+//       console.log(this.responseText);
+//     }else
+//     console.log('yes2');
+//   });
+
+//   xhr.open("POST", "http://localhost/ser/carapi/car.php");
+//   // xhr.open("POST", "https://sayedmurtdha.com/carapi/car.php");
+//   xhr.setRequestHeader("accept", "application/json");
+//   // xhr.setRequestHeader("api-key", "7e6131b9-a422-4f95-98a2-581e3374cac9");
+//   xhr.setRequestHeader("Content-Type", "application/octet-stream");
+//     console.log(image);
+
+//   this.fetchBlob(image).then((res:any)=>{
+//     this.convertToBinaryString2(image).then((res) => {
+//       console.log(res);
+//     // xhr.send(JSON.stringify(image.path));
+//     }
+//     );
+//     this.convertBlobToBase64(res).then((nn:any)=>{
+//       let file = this.convertBlobToBinary(res);
+//       console.log(res);
+//     });
+  
+
+// });
+
+
+
+}
+
+convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
+  const reader = new FileReader;
+  reader.onerror = reject;
+  reader.onload = () => {
+      resolve(reader.result);
+  };
+  reader.readAsDataURL(blob);
+});
+
+async startUpload(file: any) {
+  const response = await fetch(file.data);
+  const blob = await response.blob();
+  const formData = new FormData();
+  formData.append('file', blob, file.name);
+  console.log(formData);
+}
+
+
+
+ uploadFile(inputElement:any) {
+  var file = inputElement.files[0];
+  var reader:any = new FileReader();
+  reader.onloadend = function() {
+    console.log('Encoded Base 64 File String:', reader.result);
+    
+    /******************* for Binary ***********************/
+    var data=(reader.result).split(',')[1];
+     var binaryBlob = atob(data);
+     console.log('Encoded Binary File String:', binaryBlob);
+  }
+  reader.readAsDataURL(file);
+}
+
+convertImageToBinary(event: any) {
+  const file = event;
+  console.log(event);
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    const imageData = reader.result as string;
+    const binaryData = window.btoa(imageData);
+    this.sendapi(binaryData);
+    console.log(binaryData);
+  };
+
+  reader.readAsBinaryString(file);
+}
+
+async convertBlobToBinary(blob: Blob){
+  const reader = new FileReader();
+  let binaryData:any="2423";
+  reader.onload = () => {
+    binaryData = reader.result as ArrayBuffer;
+    return binaryData;
+
+  }
+//   reader.readAsArrayBuffer(blob);
+//  return reader;
+  
+
+}
+
+async  convertImageToBinary2(imagePath: string): Promise<string> {
+  // Read the image file as binary data
+  const fileData = await Filesystem.readFile({
+    path: imagePath,
+    directory: Directory.Data // Adjust the directory based on your image file's location
+  });
+
+  // Convert the file data to a base64 string
+  const base64Data = fileData.data;
+
+  // Return the base64 string
+  return base64Data;
+}
+
+convertToBinaryString(image:any) {
+  fetch(image.webPath)
+    .then(response => response.blob())
+    .then(blob => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const binaryString = reader.result;
+        console.log(binaryString);
+      };
+      reader.readAsBinaryString(blob);
+    })
+    .catch(error => {
+      console.log('Error:', error);
+    });
+}
+convertToBinaryString2(image:any) {
+  return new Promise((resolve, reject) => {
+    fetch(image.webPath)
+      .then(response => response.blob())
+      .then(blob => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const binaryString = reader.result;
+          resolve(binaryString);
+        };
+        reader.onerror = reject;
+        reader.readAsBinaryString(blob);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
+
+sendapi(data:any){
+  console.log("------------sendapi-------");
+  console.log(data);
+  console.log("-------------------");
+  const xhr: XMLHttpRequest = new XMLHttpRequest();
+  xhr.withCredentials = true;
+  
+  xhr.addEventListener("readystatechange", function() {
+    if (this.readyState === 4) {
+      console.log('yes');
+      console.log(this.responseText);
+    }else
+    console.log('yes2');
+  });
+
+  xhr.open("POST", "http://localhost/ser/carapi/car.php");
+  // xhr.open("POST", "https://sayedmurtdha.com/carapi/car.php");
+  xhr.setRequestHeader("accept", "application/json");
+  // xhr.setRequestHeader("api-key", "7e6131b9-a422-4f95-98a2-581e3374cac9");
+  xhr.setRequestHeader("Content-Type", "application/octet-stream");
+  xhr.send(JSON.stringify(data));
+}
+
+ sendBlobToPHP(blob:any) {
+  // Create a FormData object
+  const formData = new FormData();
+  
+  // Append the blob to the FormData object
+  formData.append('file', blob, 'image.png');
+  
+  // Send the FormData object via AJAX
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost/ser/carapi/car.php'); // Replace 'upload.php' with the URL of your PHP script
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      console.log(this.responseText);
+      console.log('Image uploaded successfully');
+    } else {
+      console.error('Image upload failed');
+    }
+  };
+  xhr.send(formData);
+}
+
+
 
 }
