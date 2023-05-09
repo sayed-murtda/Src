@@ -7,14 +7,15 @@
         "notification": "Notification",
         "AboutUs": "About Us",
         "ContactUs": "Contact Us"
+        
     },
     "title": {
         "cars": "cars",
         "Services": "Services",
         "detail": "details",
         "favorite": "favorite",
-        "Ai-car":"Ai Detecting Car"
-
+        "Ai-car":"Ai Detecting Car",
+        "Contact":"Contact Us"
     },
     "Sign": {
         "signin": "Sign In",
