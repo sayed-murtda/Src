@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShowroomService } from '../../../Service/showroom.service';
 
 @Component({
   selector: 'app-showrooms',
@@ -6,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./showrooms.page.scss'],
 })
 export class ShowroomsPage implements OnInit {
+  showrooms:any=[];
+  constructor(public showroom:ShowroomService) { 
+    showroom.getFirst10Rows().then((res)=>{
+      console.log(res);
+      this.showrooms=res;
+    })
 
-  constructor() { }
-  showrooms =[{
+  }
+  showrooms2 =[{
     name:'Honda Showroom',
     city:'Muharraq',
     location:'https://goo.gl/maps/nuE3yZnBUFNHqxETA',

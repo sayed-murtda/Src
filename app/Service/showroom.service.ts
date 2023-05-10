@@ -29,7 +29,7 @@ export class ShowroomService {
 
 
   constructor(private  afs:  AngularFirestore, private db: AngularFireDatabase, private storage: AngularFireStorage,private UserSrv:UserService) { 
-    this.showroomCollection  =  this.afs.collection<Showroom>('showrooms');
+    this.showroomCollection  =  this.afs.collection<Showroom>('Users');
   }
 
 
@@ -42,10 +42,9 @@ export class ShowroomService {
     console.log(img);
     this.UserSrv.addshowroom(Showroom.Email,password).then((res:any)=>{
       const userId = res.user?.uid;
-      return this.showroomCollection.add(Showroom)
+      return this.afs.collection('Users').doc(userId).set({...Showroom,'type':"showroom"})
       .then(async (docRef) => {
-        await this.uploadFile(docRef.id, img[0]);
-
+        await this.uploadFile(userId, img[0]);
         this.loading=false;
       });
     })
@@ -70,8 +69,8 @@ export class ShowroomService {
 
 
 
-    getFirst10Rows() {
-      return this.showroomCollection.ref.orderBy('date').startAt(1).limit(3).get().then(collection => {
+    getFirst10Rows(){
+      return this.showroomCollection.ref.where('type','==','showroom').get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a

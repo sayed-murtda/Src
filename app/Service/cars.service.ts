@@ -123,7 +123,7 @@ export class CarsService {
     model = 'Sonata';
 
     getFirst10Rows() {
-      return this.CarCollection.ref.orderBy('index').limit(3).get().then(collection => {
+      return this.CarCollection.ref.orderBy('index').limit(10).get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a
