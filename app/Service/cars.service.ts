@@ -26,6 +26,7 @@ export interface car {
   Tell?:string;
   WhatsApp?:string;
   Image_index:number;
+  rate:string;
 }
 @Injectable({
   providedIn: 'root'
@@ -91,7 +92,7 @@ export class CarsService {
 
 
   async addCar(Car: car, images: any[]): Promise<any> {
-    return this.CarCollection.add(Car)
+    return this.afs.collection<car>('WaitingCars').add(Car)
       .then(async (docRef) => {
         let i = 1;
         for (const img of images) {

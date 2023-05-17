@@ -114,7 +114,7 @@ export class AddCarPage implements OnInit {
       });
 
       
-
+  
 
   }
 
@@ -160,14 +160,15 @@ export class AddCarPage implements OnInit {
     let id:string=this.UserSrv.User.id;
     // console.log(id);
     // this.send(this.images[0]);
+    this.rate_car();
     if ( this.AddCarForm.valid && this.images.length>0 ){
      
       var today = new Date();
+      var yyyy = today.getFullYear();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
       var HH = String(today.getHours() + 1).padStart(2, '0'); //January is 0!
       var MM = String(today.getMinutes() + 1).padStart(2, '0'); //January is 0!
-      var yyyy = today.getFullYear();
       let now =  dd + '/' + mm + '/' + yyyy;
       let i=mm + '/' + dd + '/' + yyyy;
       let index:number=99999999-parseInt(yyyy+mm+dd+HH+MM);
@@ -180,6 +181,7 @@ export class AddCarPage implements OnInit {
         Sold_date:null,
         Sold:false,
         accept:false,
+        rate:this.AI_rate,
         Image_index:this.images.length,
       }
       console.log(car);
