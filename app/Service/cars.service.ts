@@ -456,6 +456,24 @@ export class CarsService {
         );
       });
     }
+    getWaitforshowroom(id:any,type:string) {
+      return this.afs.collection<car>('WaitingCars').ref.where(type,"==",id).get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
+    getSoldforshowroom(id:any,type:string) {
+      return this.afs.collection<car>('Sold').ref.where(type,"==",id).get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
 
     
 

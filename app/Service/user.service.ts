@@ -116,8 +116,11 @@ export class UserService {
      .doc(id)
      .get()
      }
-      
-   
+
   
+   
+  gettype():string{
+   return this.langSrv.user.type;
+  }
   
 }

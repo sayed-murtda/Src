@@ -15,8 +15,16 @@ export class MycarsPage implements OnInit {
     
   constructor(      private navCtrl: NavController  ,public CarSrv:CarsService ,public UserSrv:UserService ) {
     console.log(UserSrv.User.id);
+    let type='Showrooms_id';
+
     let id=UserSrv.User.id;
-    CarSrv.getacceptforshowroom(id,'Showrooms_id').then(res=> this.accept=res)
+    if(UserSrv.gettype()=='user')
+     type='User_id';
+    
+    CarSrv.getacceptforshowroom(id,type).then(res=> this.accept=res)
+    CarSrv.getWaitforshowroom(id,type).then(res=> this.waitCars=res)
+    CarSrv.getSoldforshowroom(id,type).then(res=> this.Sold=res)
+
 
     console.log(this.accept);
     
