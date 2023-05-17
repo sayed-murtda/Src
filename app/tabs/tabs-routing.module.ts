@@ -29,6 +29,9 @@ const routes: Routes = [
       },  {
         path: 'favorite',
         loadChildren: () => import('../pages/favorite/favorite.module').then( m => m.FavoritePageModule)
+      }, {
+        path: 'showroom-profile',
+        loadChildren: () => import('../pages/showroom-profile/showroom-profile.module').then( m => m.ShowroomProfilePageModule)
       },
       {
         path: 'cars',

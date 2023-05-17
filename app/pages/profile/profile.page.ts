@@ -21,6 +21,8 @@ export class ProfilePage implements OnInit {
  
   constructor(public UserSrv:UserService,
     public route: Router) {   }
+
+    
    ionViewWillEnter(){    
     if(this.UserSrv.isSingin()){
       console.log("hiprofile");

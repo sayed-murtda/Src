@@ -59,7 +59,7 @@ export class UserService {
           if(this.User.type=='admin')
           this.route.navigateByUrl('/a-home')
           else if(this.User.type=='showroom')
-          this.route.navigateByUrl('/showroom-profile')
+          this.route.navigateByUrl('/tabs/showroom-profile')
           else
           this.route.navigateByUrl('/tabs/profile')
          });

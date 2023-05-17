@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ShowroomProfilePageRoutingModule } from './showroom-profile-routing.module';
 
 import { ShowroomProfilePage } from './showroom-profile.page';
+import { ComponentsModule } from 'src/app/Component/Components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ShowroomProfilePageRoutingModule
+    ShowroomProfilePageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ShowroomProfilePage]
 })

@@ -45,7 +45,7 @@
             <ion-icon [name]="selectTab == 'profile' ? 'settings' : 'settings-outline'"></ion-icon>
         </ion-tab-button>
 
-        <ion-tab-button  (click)="showroom()"  *ngIf="lanSrv.signin && lanSrv.user.type=='showroom' ">
+        <ion-tab-button  tab="showroom-profile"  *ngIf="lanSrv.signin && lanSrv.user.type=='showroom' ">
             <ion-icon [name]="selectTab == 'profile' ? 'settings' : 'settings-outline'"></ion-icon>
         </ion-tab-button>
         
