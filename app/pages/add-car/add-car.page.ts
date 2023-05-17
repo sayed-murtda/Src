@@ -203,7 +203,7 @@ export class AddCarPage implements OnInit {
       value => {
         this.presentAlert(value);
       }
-    )
+    ) 
     else
       for(var i =0;i<image.length;i++){
         this.saveImage(image[i])
