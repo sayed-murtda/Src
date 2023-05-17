@@ -43,7 +43,7 @@
                     <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(CarsSrv.detail_ID.id)" *ngIf="!CarsSrv.fav_ID.includes(CarsSrv.detail_ID.id)"></ion-icon></span>
                     <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name='heart' (click)="Unlike(CarsSrv.detail_ID.id)" *ngIf="CarsSrv.fav_ID.includes(CarsSrv.detail_ID.id)"></ion-icon></span>                </h1>
                 <h2>{{CarsSrv.detail_ID.Model}} {{CarsSrv.detail_ID.Year}}</h2>
-                <h3> <ion-icon name="location-outline"></ion-icon> Hamad Town <span style="float: right;">{{CarsSrv.detail_ID.date}}</span> </h3>
+                <h3> <span style="color: rgb(203, 68, 11); font-weight: bold;"> AI Rating: </span> <span style="color:rgb(24, 240, 13); font-weight: bold;">10</span>  <span style="float: right;">{{CarsSrv.detail_ID.date}}</span> </h3>
             </ion-label>          
         </ion-item>
         <br>
