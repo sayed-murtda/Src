@@ -36,5 +36,10 @@ export class TabsPage {
 
 
   }
+  showroom(){
+    this.router.navigateByUrl('/showroom-profile')
+
+
+  }
 
 }
