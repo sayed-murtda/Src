@@ -18,6 +18,105 @@ import {  Router } from '@angular/router';
   styleUrls: ['./add-car.page.scss'],
 })
 export class AddCarPage implements OnInit {
+  
+  AI_rate: any = 0;
+  avg_price: any = 0;
+  avg_km: any = 0;
+  counter: any =0;
+  get_price: any; // ok
+  get_km:any; // ok
+  AI_price: any;
+  AI_model: any;
+  AI_year: any;
+  AI_KM: any;
+  cars:any[] = [];
+
+  rate_car(){
+    // alert('price '+this.get_price +' - km '+this.get_km)
+    
+    
+    let avgKm:any = 0;
+    let avgPrice:any = 0;
+      this.CarSrv.get_by_model(this.brand[this.AddCarForm.get('Brand')?.value].Models[this.AddCarForm.get('Model')?.value]).then((res)=>{
+        if(res){
+        this.cars=res;
+        console.log(this.cars);
+
+        this.cars.forEach(car => {
+          //  alert(this.AI_year)
+          if(car.Year == this.AI_year){
+            this.counter++;
+            avgPrice +=car.Price;
+            avgKm += car.KM;
+          }
+        });
+        
+        if(this.counter !=0){
+        avgPrice = avgPrice/this.counter;
+        avgKm = avgKm/this.counter;
+        alert(avgPrice +'-'+avgKm)
+        this.AI_price = (avgPrice/this.get_price)*10;
+        this.AI_KM = (avgKm/this.get_km)*10;
+
+        //--------------------
+
+        let rating_price: number;
+        
+        if (this.get_price <= avgPrice) {
+          rating_price= 10;
+        } else if (this.get_price >= avgPrice * 1.1 && this.get_price < avgPrice * 1.2) {
+          rating_price = 6;
+        } else if (this.get_price >= avgPrice * 1.2 && this.get_price < avgPrice * 1.3) {
+          rating_price = 3;
+        } else {
+          rating_price = 1;
+        }
+
+        
+        
+        // if(this.AI_price >10)
+        // this.AI_price =10;
+
+        let rating_km: number;
+
+        if(this.get_km <= avgKm){
+        rating_km =10;
+      } else if (this.get_km >= avgKm * 1.1 && this.get_km < avgKm * 1.2) {
+        rating_km = 9;
+      } else if (this.get_km >= avgKm * 1.2 && this.get_km < avgKm * 1.3) {
+        rating_km = 8;
+      }else if (this.get_km >= avgKm * 1.3 && this.get_km < avgKm * 1.4) {
+        rating_km = 7;
+      }else if (this.get_km >= avgKm * 1.4 && this.get_km < avgKm * 1.5) {
+        rating_km = 6;
+      }else if (this.get_km >= avgKm * 1.5 && this.get_km < avgKm * 1.6) {
+        rating_km = 5;
+      }else if (this.get_km >= avgKm * 1.6 && this.get_km < avgKm * 1.7) {
+        rating_km = 4;
+      }else if (this.get_km >= avgKm * 1.7 && this.get_km < avgKm * 1.8) {
+        rating_km = 3;
+      }else if (this.get_km >= avgKm * 1.8 && this.get_km < avgKm * 1.9) {
+        rating_km = 2;
+      } else {
+        rating_km = 1;
+      }
+        
+        this.AI_rate = (rating_price+rating_km)/2;
+        alert(rating_price+' - '+rating_km+' - '+this.AI_rate)
+        }
+        else
+        this.AI_rate = '--';
+
+
+        
+
+        }
+      });
+
+      
+
+
+  }
 
   AddCarForm: FormGroup;
   imagesBlod :any[]=[];

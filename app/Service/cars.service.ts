@@ -215,6 +215,17 @@ export class CarsService {
       });
     }
 
+    get_by_model(model:any) {
+      return this.CarCollection.ref.where("Model" ,"==", 'Elantra')
+                                   .get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
+
     filter_first_price = 0; // alwayes search
     filter_last_price = 9999999; // alwayes search
     filter_first_year = 0;

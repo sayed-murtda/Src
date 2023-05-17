@@ -40,17 +40,17 @@
     <form [formGroup]="AddCarForm" (ngSubmit)="Login(AddCarForm.value)">
       
      
-        
+        <ion-button (click)="rate_car()">check</ion-button>
 
     <ion-item class="price">
         <ion-label>{{'addcars.Price'|translate}}:</ion-label> 
-        <ion-input type="number" placeholder="1000BD" formControlName="Price"  ></ion-input>
+        <ion-input [(ngModel)]="get_price" type="number" placeholder="1000BD" formControlName="Price"  ></ion-input>
     </ion-item>
 
     <ion-list >
       <ion-item > 
         <ion-label>{{'addcars.Brand'|translate}}:</ion-label> 
-        <ion-select     placeholder="Select Brand"  formControlName="Brand"  >
+        <ion-select  placeholder="Select Brand"  formControlName="Brand"  >
           <ion-select-option  *ngFor="let item of brand;let i =index;" value="{{i}}"> {{item.id}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -59,7 +59,7 @@
     <ion-list >
       <ion-item >
         <ion-label>{{'addcars.Modle'|translate}}:</ion-label> 
-        <ion-select    placeholder="Select Model"  formControlName="Model"   >
+        <ion-select  placeholder="Select Model"  formControlName="Model"   >
           <ion-select-option *ngFor="let item of brand[this.AddCarForm.get('Brand')?.value]?.Models;let i =index;"  value="{{i}}">{{item}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -67,12 +67,12 @@
 
     <ion-item>
       <ion-label>{{'addcars.Year'|translate}}:</ion-label> 
-      <ion-input type="number" placeholder="2020" max="2030" min="1900"  formControlName="Year" ></ion-input>
+      <ion-input [(ngModel)]="AI_year" type="number" placeholder="2020" max="2030" min="1900"  formControlName="Year" ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>{{'addcars.Killometers'|translate}}:</ion-label> 
-      <ion-input type="number" placeholder="90000KM"  formControlName="KM" ></ion-input>
+      <ion-input [(ngModel)]="get_km" type="number" placeholder="90000KM"  formControlName="KM" ></ion-input>
     </ion-item>
 
     <ion-list >
