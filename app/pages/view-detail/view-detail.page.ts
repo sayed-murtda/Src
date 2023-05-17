@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { NavController } from '@ionic/angular';
 import { CarsService } from '../../Service/cars.service';
+import { ShowroomService } from '../../Service/showroom.service';
  
 @Component({
   selector: 'app-view-detail',
@@ -11,16 +12,24 @@ export class ViewDetailPage implements OnInit {
   count = 0;
   num_of_img :any[] = [];
   detail_cars: any[] = [];
-  constructor(private navCtrl: NavController, public CarsSrv:CarsService) {
+  showroom:any={};
+  constructor(private navCtrl: NavController, public CarsSrv:CarsService,    public ShowSrv:ShowroomService    ) {
     if(!CarsSrv.detail_ID?.id)
     this.go();
 
-    
+    if(CarsSrv.detail_ID?.Showrooms_id)
+    ShowSrv.getShowroomById(CarsSrv.detail_ID?.Showrooms_id).then((res)=> {
+      this.showroom=res;
+    }
+    );
+
     while(this.count<CarsSrv.detail_ID.Image_index){
       this.count++;
       this.num_of_img.push(this.count);
       console.log(this.num_of_img.length);
     }
+
+
     
    
 

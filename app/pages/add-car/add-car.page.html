@@ -90,13 +90,12 @@
       <ion-textarea placeholder="Type Discription here"  formControlName="Disc"></ion-textarea>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="this.langSrv.user.type!='showroom'" >
       <ion-label>{{'addcars.Tell'|translate}}</ion-label>
       <ion-input type="tel" placeholder="Phone number"  formControlName="Tell" minlength="8"></ion-input>
     </ion-item>
 
-    
-    <ion-item>
+    <ion-item *ngIf="this.langSrv.user.type!='showroom'">
       <ion-label>{{'addcars.WhatsApp'|translate}}</ion-label>
       <ion-input type="tel" placeholder="WhatsApp number"  formControlName="WhatsApp"  minlength="8" ></ion-input>
     </ion-item>

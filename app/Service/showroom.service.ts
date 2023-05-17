@@ -78,6 +78,17 @@ export class ShowroomService {
         );
       });
     }
+ 
+    async getShowroomById(showroomId: string) {
+      const docRef = this.showroomCollection.ref.doc(showroomId);
+      const doc = await docRef.get();
+    
+      if (doc.exists) {
+        return { id: doc.id, ...doc.data() };
+      } else {
+        throw new Error("Showroom not found");
+      }
+    }
 
 
 }

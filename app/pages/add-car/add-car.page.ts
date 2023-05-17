@@ -7,6 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { UserService } from '../../Service/user.service';
 import {  Router } from '@angular/router';
+import { LanguageService } from '../../language.service';
+import { ShowroomService } from '../../Service/showroom.service';
 
 
 
@@ -131,7 +133,8 @@ export class AddCarPage implements OnInit {
     public formbuilder: FormBuilder,
     public translate: TranslateService,
     private UserSrv:UserService,
-    private route:Router
+    private route:Router,
+    public langSrv:LanguageService,
     ) {
       if(this.UserSrv.isSingin()){
         console.log("hiprofile");
@@ -150,18 +153,20 @@ export class AddCarPage implements OnInit {
         Disc: [''],
         Tell: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],
         WhatsApp: ['', Validators.compose([ Validators.pattern('[0-9]*'), Validators.minLength(8), Validators.maxLength(8)])],        
-        });   
+        });  
+        
     }
 
   ngOnInit() {
   }
 
   Login(val:any){
-    let id:string=this.UserSrv.User.id;
-    // console.log(id);
-    // this.send(this.images[0]);
     this.rate_car();
-    if ( this.AddCarForm.valid && this.images.length>0 ){
+    let id:string=this.UserSrv.User.id;
+    let idshoow:string=this.UserSrv.User.id;
+    if(this.langSrv.user.type=='showroom'){
+      this.Loginshowroom(val);
+    } else if ( this.AddCarForm.valid && this.images.length>0 ){
      
       var today = new Date();
       var yyyy = today.getFullYear();
@@ -193,6 +198,55 @@ export class AddCarPage implements OnInit {
       this.back();
       this.CarSrv.addCar(car,this.imagesBlod).then(()=>{
         console.log("done all add with image");
+      });
+    }
+    else {
+      this.translate.get('addcars.AlertSend').subscribe(
+        value => {
+          this.presentAlert(value);
+        }
+      )
+    }
+  //  alert('Login Successful ' + val.username);
+  }
+
+  Loginshowroom(val:any){
+    this.rate_car();
+    let id:string=this.UserSrv.User.id;
+    this.AddCarForm.get('Tell')?.setValue('00000000');
+    this.AddCarForm.get('WhatsApp')?.setValue('00000000');
+    if ( this.AddCarForm.valid && this.images.length>0 ){
+     
+      var today = new Date();
+      var yyyy = today.getFullYear();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var HH = String(today.getHours() + 1).padStart(2, '0'); //January is 0!
+      var MM = String(today.getMinutes() + 1).padStart(2, '0'); //January is 0!
+      let now =  dd + '/' + mm + '/' + yyyy;
+      let i=mm + '/' + dd + '/' + yyyy;
+      let index:number=99999999-parseInt(yyyy+mm+dd+HH+MM);
+      let car : car={...this.AddCarForm.value,
+        Brand:this.brand[this.AddCarForm.get('Brand')?.value].id,
+        Model:this.brand[this.AddCarForm.get('Brand')?.value].Models[this.AddCarForm.get('Model')?.value],
+        date:now.toString(),
+        index:index,
+        Showrooms_id:id,
+        Sold_date:null,
+        Sold:false,
+        accept:false,
+        rate:this.AI_rate,
+        Image_index:this.images.length,
+      }
+      console.log(car);
+      
+      this.images.forEach((res:any) =>{
+         this.fetchBlob(res.path).then((ress:any) =>  this.imagesBlod.push(ress))      } )
+      
+      this.CarSrv.loading=true;
+      this.back();
+      this.CarSrv.addCarShowrooms(car,this.imagesBlod).then(()=>{
+        console.log("done all add with image - addCarShowrooms");
       });
     }
     else {

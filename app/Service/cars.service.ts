@@ -103,6 +103,19 @@ export class CarsService {
       });
   }
 
+  async addCarShowrooms(Car: car, images: any[]): Promise<any> {
+    return this.CarCollection.add(Car)
+      .then(async (docRef) => {
+        let i = 1;
+        for (const img of images) {
+          await this.uploadFile(docRef.id + i, img);
+          i++;
+        }
+        this.loading=false;
+      });
+  }
+
+
     async uploadFile(id: any, image: any) {
       const filePath = 'cars/';
       const ref = this.storage.ref(filePath + id);
