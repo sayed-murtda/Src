@@ -11,4 +11,61 @@
 
 <ion-content>
 
+  <ion-accordion-group>
+    <ion-accordion value="first" >
+
+      <ion-item slot="header" color="secondary">
+        <ion-label>Wating Accepts Cars</ion-label>
+      </ion-item>
+
+
+         
+          
+
+        
+
+
+    </ion-accordion>
+    <ion-accordion value="second">
+      <ion-item slot="header" color="secondary">
+        <ion-label>Accepts Cars</ion-label>
+      </ion-item>
+      <div  slot="content" *ngFor="let car of accept; let i=index;">    
+    
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-thumbnail slot="start">
+                    <img src='https://firebasestorage.googleapis.com/v0/b/cars-ad60a.appspot.com/o/cars%2F{{car.id}}1?alt=media' alt="">
+                  </ion-thumbnail>
+
+                  <ion-label>
+                    <h1>{{car.Model}} {{car.Year}}
+                      <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="trash-outline"  ></ion-icon></span>
+                   
+                    </h1>
+                    <h3>
+                      {{car.Price}}BD
+                    </h3>
+                    <p>{{car.Disc}}</p>
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="third">
+      <ion-item slot="header" color="secondary">
+        <ion-label>Sold Cars</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Sold Cars</div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+
+
 </ion-content>

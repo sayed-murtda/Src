@@ -447,18 +447,24 @@ export class CarsService {
       return  this.CarBrands.doc(id).set(Cars);
     }
 
+    getacceptforshowroom(id:any,type:string) {
+      return this.CarCollection.ref.where(type,"==",id).get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
+
+    
+
       
 
 
    
 
    
-
-
-  // updateCarIamge(Car_id:string,photos_url: string[]): Promise<void> {
-  //         return this.CarCollection.doc(Car_id).update({ photos_url: photos_url });
-  //   }
-
 
 
 
