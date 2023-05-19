@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { CarsService } from '../../Service/cars.service';
 import { UserService } from '../../Service/user.service';
 
@@ -12,8 +12,10 @@ export class MycarsPage implements OnInit {
     waitCars:any[]=[];
     accept:any[]=[];
     Sold:any[]=[];
+
+
     
-  constructor(      private navCtrl: NavController  ,public CarSrv:CarsService ,public UserSrv:UserService ) {
+  constructor(      private navCtrl: NavController  ,public CarSrv:CarsService ,public UserSrv:UserService,private alertController: AlertController ) {
     console.log(UserSrv.User.id);
     let type='Showrooms_id';
 
@@ -36,4 +38,34 @@ export class MycarsPage implements OnInit {
   back(){
     this.navCtrl.navigateBack("/");
   }
+
+  delete(id:any){
+    alert(id);
+  }
+
+  async presentAlert(car:any) {
+    const alert = await this.alertController.create({
+      header: 'Are you sure to Delete ?',
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: 'No',
+          cssClass: 'alert-button-cancel',
+          
+        },
+        {
+          text: 'Delete',
+          cssClass: 'alert-button-confirm',
+          handler:  () => {
+            this.delete(car);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+
+
 }

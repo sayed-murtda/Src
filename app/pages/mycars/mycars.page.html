@@ -32,8 +32,7 @@
 
                   <ion-label>
                     <h1>{{car.Model}} {{car.Year}}
-                      <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="trash-outline"  ></ion-icon></span>
-                   
+                      <span  style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon (click)="presentAlert(car)"name="trash-outline"  ></ion-icon></span>
                     </h1>
                     <h3>
                       {{car.Price}}BD
@@ -106,7 +105,9 @@
 
                   <ion-label>
                     <h1>{{car.Model}} {{car.Year}}
-                      <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="trash-outline"  ></ion-icon></span>
+                      <ion-buttons slot="start">
+                        <span  style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon (click)="delete(car.id)" name="trash-outline"  ></ion-icon></span>
+                      </ion-buttons>
                    
                     </h1>
                     <h3>
