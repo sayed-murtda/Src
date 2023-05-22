@@ -15,7 +15,9 @@
         "detail": "details",
         "favorite": "favorite",
         "Ai-car":"Ai Detecting Car",
-        "Contact":"Contact Us"
+        "Contact":"Contact Us",
+        "Mycars":"My Cars"    
+
     },
     "Sign": {
         "signin": "Sign In",
@@ -23,6 +25,11 @@
         "login": "Login",
         "forgetpass": "Forgot Password?",
         "viasocialmedia": "Or via Social media"
+    },
+    "Mycars":{
+        "Wating":"Wating Accepts Cars",
+        "Accept":"Accepted cars",
+        "complete":"Sold Cars"
     },
     "cars": {
         "close": "Close",

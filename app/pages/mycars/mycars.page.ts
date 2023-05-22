@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 import { CarsService } from '../../Service/cars.service';
 import { UserService } from '../../Service/user.service';
+import { type } from 'os';
 
 @Component({
   selector: 'app-mycars',
@@ -12,20 +13,20 @@ export class MycarsPage implements OnInit {
     waitCars:any[]=[];
     accept:any[]=[];
     Sold:any[]=[];
-
-
+    type:any='';
+    id:any='';
     
   constructor(      private navCtrl: NavController  ,public CarSrv:CarsService ,public UserSrv:UserService,private alertController: AlertController ) {
     console.log(UserSrv.User.id);
-    let type='Showrooms_id';
+     this.type='Showrooms_id';
 
-    let id=UserSrv.User.id;
+    this.id=UserSrv.User.id;
     if(UserSrv.gettype()=='user')
-     type='User_id';
+    this.type='User_id';
     
-    CarSrv.getacceptforshowroom(id,type).then(res=> this.accept=res)
-    CarSrv.getWaitforshowroom(id,type).then(res=> this.waitCars=res)
-    CarSrv.getSoldforshowroom(id,type).then(res=> this.Sold=res)
+    CarSrv.getacceptforshowroom(this.id,this.type).then(res=> this.accept=res)
+    CarSrv.getWaitforshowroom(this.id,this.type).then(res=> this.waitCars=res)
+    CarSrv.getSoldforshowroom(this.id,this.type).then(res=> this.Sold=res)
 
 
     console.log(this.accept);
@@ -39,8 +40,27 @@ export class MycarsPage implements OnInit {
     this.navCtrl.navigateBack("/");
   }
 
-  delete(id:any){
-    alert(id);
+  delete(car:any){
+   this.CarSrv.deleteWaitingCars(car.id).then(()=>{
+    this.CarSrv.addfinshcar(car).then(()=> {
+    
+    this.CarSrv.getacceptforshowroom(this.id,this.type).then(res=> this.accept=res)
+    this.CarSrv.getWaitforshowroom(this.id,this.type).then(res=> this.waitCars=res)
+    this.CarSrv.getSoldforshowroom(this.id,this.type).then(res=> this.Sold=res)
+
+    });
+   })
+  }
+
+  sold(car:any){
+    this.CarSrv.deleteAcceptCars(car.id).then(()=>{
+      this.CarSrv.addfinshcar(car).then(()=> {
+      this.CarSrv.getacceptforshowroom(this.id,this.type).then(res=> this.accept=res)
+      this.CarSrv.getWaitforshowroom(this.id,this.type).then(res=> this.waitCars=res)
+      this.CarSrv.getSoldforshowroom(this.id,this.type).then(res=> this.Sold=res)
+  
+      });
+     })
   }
 
   async presentAlert(car:any) {
@@ -58,6 +78,29 @@ export class MycarsPage implements OnInit {
           cssClass: 'alert-button-confirm',
           handler:  () => {
             this.delete(car);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async presentAlertSold(car:any) {
+    const alert = await this.alertController.create({
+      header: 'Are you sure to Complete ٍSold ?',
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: 'No',
+          cssClass: 'alert-button-cancel',
+          
+        },
+        {
+          text: 'Yes',
+          cssClass: 'alert-button-confirm',
+          handler:  () => {
+            this.sold(car);
           },
         },
       ],

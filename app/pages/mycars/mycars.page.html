@@ -5,7 +5,7 @@
   <ion-button (click)="back()"   slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
 
 
-<ion-title>{{'addcars.title'|translate}}</ion-title>
+<ion-title>{{'title.Mycars'|translate}}</ion-title>
 </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,9 @@
     <ion-accordion value="first" >
 
       <ion-item slot="header" color="secondary">
-        <ion-label>Wating Accepts Cars</ion-label>
+        <ion-badge slot="end" color="light" style="float: right; color: rgb(0, 0, 0);" >{{waitCars.length}}</ion-badge>
+
+        <ion-label>{{'Mycars.Wating'|translate}}</ion-label>
       </ion-item>
 
 
@@ -54,7 +56,9 @@
 
     <ion-accordion value="second">
       <ion-item slot="header" color="secondary">
-        <ion-label>Accepts Cars</ion-label>
+        <ion-badge slot="end" color="light" style="float: right; color: rgb(0, 0, 0);" >{{accept.length}}</ion-badge>
+
+        <ion-label>{{'Mycars.Accept'|translate}}</ion-label>
       </ion-item>
       <div  slot="content" *ngFor="let car of accept; let i=index;">    
     
@@ -69,7 +73,7 @@
 
                   <ion-label>
                     <h1>{{car.Model}} {{car.Year}}
-                      <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="trash-outline"  ></ion-icon></span>
+                      <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon (click)="presentAlertSold(car)" name="stop-circle-outline"  ></ion-icon></span>
                    
                     </h1>
                     <h3>
@@ -89,7 +93,9 @@
 
     <ion-accordion value="third">
       <ion-item slot="header" color="secondary">
-        <ion-label>Sold Cars</ion-label>
+        <ion-badge slot="end" color="light" style="float: right; color: rgb(0, 0, 0);" >{{Sold.length}}</ion-badge>
+
+        <ion-label>{{'Mycars.complete'|translate}}</ion-label>
       </ion-item>
     
       <div  slot="content" *ngFor="let car of Sold; let i=index;">    
@@ -104,12 +110,7 @@
                   </ion-thumbnail>
 
                   <ion-label>
-                    <h1>{{car.Model}} {{car.Year}}
-                      <ion-buttons slot="start">
-                        <span  style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon (click)="delete(car.id)" name="trash-outline"  ></ion-icon></span>
-                      </ion-buttons>
-                   
-                    </h1>
+                    <h1>{{car.Model}} {{car.Year}}</h1>
                     <h3>
                       {{car.Price}}BD
                     </h3>

@@ -115,6 +115,27 @@ export class CarsService {
       });
   }
 
+  async deleteWaitingCars(carId: string): Promise<void> {
+      await this.afs.collection<car>('WaitingCars').doc(carId).delete();
+  }
+
+  async deleteAcceptCars(carId: string): Promise<void> {
+    await this.CarCollection.doc(carId).delete();
+}
+
+  async deleteCars(carId: string): Promise<void> {
+    await this.CarCollection.doc(carId).delete();
+}
+
+  async addfinshcar(car: car): Promise<void> {
+    await this.afs.collection<car>('CompleteCars').doc(car.id).set(car);
+  }
+
+
+
+
+  
+
 
     async uploadFile(id: any, image: any) {
       const filePath = 'cars/';
@@ -466,7 +487,7 @@ export class CarsService {
       });
     }
     getSoldforshowroom(id:any,type:string) {
-      return this.afs.collection<car>('Sold').ref.where(type,"==",id).get().then(collection => {
+      return this.afs.collection<car>('CompleteCars').ref.where(type,"==",id).get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a
@@ -475,7 +496,7 @@ export class CarsService {
       });
     }
 
-    
+
 
     
 
