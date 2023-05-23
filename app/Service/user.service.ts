@@ -63,7 +63,7 @@ export class UserService {
           else
           this.route.navigateByUrl('/tabs/profile')
          });
-      }).catch((res)=> console.log('hwi'));
+      })
     }
     resetPassword(email: string): Promise<void> {
       return this.afAuth.sendPasswordResetEmail(email);

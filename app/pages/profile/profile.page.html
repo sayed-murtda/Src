@@ -33,14 +33,8 @@
             <ion-label color="dark" slot="end">  {{this.UserSrv.User.phone}} </ion-label>
         </ion-item>
 
-        <ion-item>
-            <ion-button  expand="block" fill="clear" shape="round">
-                Click me
-            </ion-button>
-            
-        </ion-item>
-        <ion-button routerLink="/mycars" expand="block" fill="clear"  color="light">
-            {{'Profile.mycar' |translate}}
+        <ion-button routerLink="/mycars" expand="block" color="secondary">
+            <ion-icon name="car-sport-outline"></ion-icon> &nbsp;&nbsp;&nbsp;   {{'Profile.mycar' |translate}}
         </ion-button>
     </ion-list>
 </ion-content>

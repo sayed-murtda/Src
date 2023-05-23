@@ -37,13 +37,12 @@
                         <ion-input type="password" name="password" [(ngModel)]="password" required></ion-input>
                     </ion-item>
                 </div>
-                <div class="password_forgot">
-                    <ion-button fill="clear">{{'Sign.forgetpass' | translate}}</ion-button>
+                <div *ngIf="display">
+                    <p style="text-align: center; color: red;margin: 4px;">The Password or Email The Wrong, Please sign in again..</p>
                 </div>
                 <div class="sign-btn-wrap">
                     <ion-button (click)="login(email,password)" shape="round" fill="solid" class="sign-btn">{{'Sign.login' | translate}}</ion-button>
                 </div>
-
     
             </ion-card-content>
         </div>

@@ -22,9 +22,12 @@ user:any={
   ngOnInit() {
   }
 
-
+  display=false;
   login(email:any,password:any){
-    this.UserSrv.loginUser(email,password);
+    this.UserSrv.loginUser(email,password).catch( ()=>{
+      this.display=true;
+    }
+    );
   }
   reset(email:any){
     this.UserSrv.resetPassword(email);
