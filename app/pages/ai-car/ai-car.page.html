@@ -37,7 +37,7 @@
    
   </div>
 
-  <ion-button color="primary" expand="block" (click)="send()"   >
+  <ion-button [disabled]="disable" color="primary" expand="block" (click)="send()"   >
     {{'addcars.Send'|translate}} <ion-icon name="share-outline"></ion-icon>
   </ion-button>
 

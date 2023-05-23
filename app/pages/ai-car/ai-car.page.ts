@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
-import { ActionSheetController, AlertController, NavController } from '@ionic/angular';
+import { ActionSheetController, AlertController, LoadingController, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -20,7 +20,7 @@ export class AiCarPage implements OnInit {
   constructor(private navCtrl: NavController,
     private actionSheetCtrl: ActionSheetController,
     private alertController: AlertController,
-    public translate: TranslateService) { }
+    public translate: TranslateService,private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
   }
@@ -111,13 +111,15 @@ export class AiCarPage implements OnInit {
   printcar(){
     console.log("Adf");
   }
+  disable:any=false;
   sendBlobToPHP(blob:any) {
     // Create a FormData object
     const formData = new FormData();
     
     // Append the blob to the FormData object
     formData.append('file', blob, 'image.png');
-    
+    this.showLoading()
+    this.disable=true;
     // Send the FormData object via AJAX
     const xhr = new XMLHttpRequest();
     // xhr.open('POST', 'http://localhost/ser/carapi/car.php'); // Replace 'upload.php' with the URL of your PHP script
@@ -140,8 +142,19 @@ export class AiCarPage implements OnInit {
         this.car=-1;
         console.error('Image upload failed');
       }
+      this.loading.dismiss();
+      this.disable=false;
+
     };
     xhr.send(formData);
+
+  }
+   loading:any;
+    async showLoading() {
+      this.loading= await this.loadingCtrl.create({
+      message: 'Please Waiting Al DETECTING CAR...',
+    });
+    this.loading.present();
 
   }
 
