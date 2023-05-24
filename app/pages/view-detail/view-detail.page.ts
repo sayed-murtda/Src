@@ -47,7 +47,7 @@ export class ViewDetailPage implements OnInit {
   }
 
   go(){
-    this.navCtrl.navigateBack("/");
+    this.navCtrl.back();
   }
 
   likeCar(id:any){

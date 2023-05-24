@@ -41,7 +41,11 @@ const routes: Routes = [
   {
     path: 'ai-car',
     loadChildren: () => import('./pages/ai-car/ai-car.module').then( m => m.AiCarPageModule)
+  },  {
+    path: 'aceeptcars',
+    loadChildren: () => import('./admin/aceeptcars/aceeptcars.module').then( m => m.AceeptcarsPageModule)
   },
+
  
 
 

@@ -131,6 +131,10 @@ export class CarsService {
     await this.afs.collection<car>('CompleteCars').doc(car.id).set(car);
   }
 
+  async addAccept(car: car): Promise<void> {
+    await this.CarCollection.doc(car.id).set(car);
+  }
+
 
 
 
@@ -159,6 +163,16 @@ export class CarsService {
 
     getFirst10Rows() {
       return this.CarCollection.ref.orderBy('index').limit(10).get().then(collection => {
+        return   collection.docs.map(doc =>{
+          let a = {id: doc.id ,...doc.data()}
+          return a
+        } 
+        );
+      });
+    }
+
+    getallcarsnotaccept() {
+      return this.afs.collection<car>('WaitingCars').ref.orderBy('index').get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
           return a
