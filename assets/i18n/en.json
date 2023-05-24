@@ -92,6 +92,10 @@
     },
     "detail": {
         "title": "details"
+    },
+
+    "about":{
+        "us": "We are a team of three computer science students, Sayed Ali ,Sayed Murtadha, and Ali Yusuf, and this application is our senior project. Our goal in creating this application was to provide a valuable resource for Bahraini citizens who are searching for information about cars. We recognized the need for a comprehensive platform that not only allows users to search for cars in local showrooms, but also provides access to other car services such as car instructors, flat cars, and car accessories. Our hope is that our app will make the process of finding and accessing car-related services in Bahrain easier and more convenient for all users."
     }
 
 
