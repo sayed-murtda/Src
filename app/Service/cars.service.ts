@@ -265,7 +265,7 @@ export class CarsService {
     }
 
     get_by_model(model:any) {
-      return this.CarCollection.ref.where("Model" ,"==", 'Elantra')
+      return this.CarCollection.ref.where("Model" ,"==", model)
                                    .get().then(collection => {
         return   collection.docs.map(doc =>{
           let a = {id: doc.id ,...doc.data()}
