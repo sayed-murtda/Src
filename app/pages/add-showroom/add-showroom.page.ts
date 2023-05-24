@@ -148,11 +148,7 @@ submit(){
   
 
   async selectImage() {
-    let a:any=100;
-    //  a = window.prompt("sometext");
-    // alert(a);
     const image = await Camera.getPhoto({
-      height:a,
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Uri,
@@ -166,11 +162,7 @@ submit(){
 	}
 
   async selectImage3() {
-    let a:any=100;
-    //  a = window.prompt("sometext");
-    // alert(a);
     const image = await Camera.getPhoto({
-      height:a,
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Uri,
@@ -184,11 +176,7 @@ submit(){
 	}
 
   async selectImages() {
-    let a:any=100;
-    // let a = window.prompt("sometext");
-    // alert(a);
     var options:any={
-      height:a,
       correctOrientation:true,
       maximumImagesCount : 1,
       limit:1
@@ -217,7 +205,6 @@ submit(){
       name:fileName,
       path:photo.webPath});
       console.log(this.images);
- 
 }
 
 }
