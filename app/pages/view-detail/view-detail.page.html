@@ -43,7 +43,7 @@
                     <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name="heart-outline" (click)="likeCar(CarsSrv.detail_ID.id)" *ngIf="!CarsSrv.fav_ID.includes(CarsSrv.detail_ID.id)"></ion-icon></span>
                     <span style="float: right; color: rgb(244, 6, 6);" slot="end"><ion-icon name='heart' (click)="Unlike(CarsSrv.detail_ID.id)" *ngIf="CarsSrv.fav_ID.includes(CarsSrv.detail_ID.id)"></ion-icon></span>                </h1>
                 <h2>{{CarsSrv.detail_ID.Model}} {{CarsSrv.detail_ID.Year}}</h2>
-                <h3> <span style="color: rgb(203, 68, 11); font-weight: bold;"> AI Rating: </span> <span style="color:rgb(24, 240, 13); font-weight: bold;">{{CarsSrv.detail_ID.Model}}</span>  <span style="float: right;">{{CarsSrv.detail_ID.date}}</span> </h3>
+                <h3> <span style="color: rgb(203, 68, 11); font-weight: bold;"> AI Rating: </span> <span style="color:rgb(24, 240, 13); font-weight: bold;">{{CarsSrv.detail_ID.rate}}</span>  <span style="float: right;">{{CarsSrv.detail_ID.date}}</span> </h3>
             </ion-label>          
         </ion-item>
         <br>
@@ -80,7 +80,7 @@
                     <a  class="card-phone" href="tel:+973{{CarsSrv.detail_ID.Tell}}" target="_blank">
                         <ion-item >
                             <ion-icon class="showroomLinks" color="dark" name="call"></ion-icon> 
-                            <ion-label>+33702322</ion-label>
+                            <ion-label>{{CarsSrv.detail_ID.Tell}}</ion-label>
                         </ion-item>
                     </a>
                 </div>
@@ -88,7 +88,7 @@
                     <a class="card-phone" href="https://wa.me/973{{CarsSrv.detail_ID.WhatsApp}}" target="_blank">
                         <ion-item >
                             <ion-icon class="whatsapp showroomLinks" name="logo-whatsapp"></ion-icon>
-                            <ion-label>+33702322</ion-label>
+                            <ion-label>{{CarsSrv.detail_ID.WhatsApp}}</ion-label>
                         </ion-item>
 
                     </a>
