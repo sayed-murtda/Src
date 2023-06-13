@@ -123,9 +123,10 @@ export class AiCarPage implements OnInit {
     // Send the FormData object via AJAX
     const xhr = new XMLHttpRequest();
     // xhr.open('POST', 'http://localhost/ser/carapi/car.php'); // Replace 'upload.php' with the URL of your PHP script
-    xhr.open('POST', 'https://sayedmurtdha.com/carapi/car.php'); // Replace 'upload.php' with the URL of your PHP script
+    xhr.open('POST', 'https://caripi22.sayedmurtdha.com/'); // Replace 'upload.php' with the URL of your PHP script
     xhr.onload = () => {
       if (xhr.status === 200) {
+        console.log(xhr.status);
         let cars = JSON.parse(xhr.responseText);
         let car = cars.detections;
         console.log(cars);

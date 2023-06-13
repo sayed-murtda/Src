@@ -61,7 +61,6 @@ export class AddCarPage implements OnInit {
             if (this.counter != 0) {
               avgPrice = avgPrice / this.counter;
               avgKm = avgKm / this.counter;
-              alert(avgPrice + '-' + avgKm);
               this.AI_price = (avgPrice / this.get_price) * 10;
               this.AI_KM = (avgKm / this.get_km) * 10;
   
